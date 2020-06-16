@@ -1,0 +1,3 @@
+Update-1: June 8th.
+    - Initial commit
+    - Title screen and place holder for character selection screen
