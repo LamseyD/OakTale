@@ -6,6 +6,7 @@ function Dungeon:init(player)
 
     -- container use to store rooms in a static dungeon
     self.rooms = {}
+    -- possible create a function to generate all rooms at the beginning?
 
     -- current room we're operating in
     self.currentRoom = Room(self.player)
@@ -50,7 +51,7 @@ function Dungeon:render()
 
     self.currentRoom:render()
     
-    if self.nextRoom then
-        self.nextRoom:render()
-    end
+    -- if self.nextRoom then
+    --     self.nextRoom:render()
+    -- end
 end

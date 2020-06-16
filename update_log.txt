@@ -1,3 +1,14 @@
 Update-1: June 8th.
     - Initial commit
     - Title screen and place holder for character selection screen
+
+Update-2: JUNE 16th.
+    - Foundation for Dungeon and Room
+    - Foundation for Player and Entities 
+    - 
+
+
+KNOWN ISSUES: - RIGHT SIDE CLAMPING
+                - MOVING LEFT AND RIGHT WHILE FALLING
+                - SPAWNING IN CAUSES CLIPPING INTO PLATFORM DUE TO PROCESSING POWER?
+                - PRONE STATE OFFSET. NEED LOOK AT HITBOX

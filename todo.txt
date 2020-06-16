@@ -1,6 +1,7 @@
 ->  Create textures ----- DONE
 -> set up entities -----> ONGOING
     + players
+        = OVERHAUL COLLISION SYSTEM.
     + monsters 
         = AI should have an attack state but only triggers if it's aggro-ed and will chase
     + npc?

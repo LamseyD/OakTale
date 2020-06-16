@@ -40,8 +40,6 @@ function PlayerAttackState:init(player, dungeon)
 end
 
 function PlayerAttackState:enter(params)
-
-
     -- restart sword swing animation
     self.player.currentAnimation:refresh()
 end

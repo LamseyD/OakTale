@@ -30,17 +30,7 @@ function PlayerJumpState:update(dt)
 
     self.player.y = self.player.y + (self.player.dy * dt)
 
-    -- look at two tiles above our head and check for collisions; 3 pixels of leeway for getting through gaps
-    local tileLeft = self.player.map:pointToTile(self.player.x + 3, self.player.y)
-    local tileRight = self.player.map:pointToTile(self.player.x + self.player.width - 3, self.player.y)
-
-    -- if we get a collision up top, go into the falling state immediately
-    if (tileLeft and tileRight) and (tileLeft:collidable() or tileRight:collidable()) then
-        self.player.dy = 0
-        self.player:changeState('falling')
-
-    -- else test our sides for blocks
-    elseif love.keyboard.isDown('left') then
+    if love.keyboard.isDown('left') then
         self.player.direction = 'left'
         self.player.x = self.player.x - PLAYER_WALK_SPEED * dt
         -- self.player:checkLeftCollisions(dt)
@@ -49,6 +39,8 @@ function PlayerJumpState:update(dt)
         self.player.x = self.player.x + PLAYER_WALK_SPEED * dt
         -- self.player:checkRightCollisions(dt)
     end
+
+    
 
     -- check if we've collided with any collidable game objects
     -- for k, object in pairs(self.player.level.objects) do
@@ -73,4 +65,20 @@ function PlayerJumpState:update(dt)
     --         gStateMachine:change('start')
     --     end
     -- end
+end
+
+function PlayerJumpState:render()
+    local anim = self.player.currentAnimation
+    local direction_offset_X = 0
+    local rotation_x = 1
+
+    if self.player.direction == 'right' then
+        direction_offset_X = self.player.width
+        rotation_x = -1
+    end 
+
+
+    love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
+        math.floor(self.player.x - self.player.offsetX + direction_offset_X), math.floor(self.player.y - self.player.offsetY), 0, rotation_x, 1)
+
 end

@@ -8,7 +8,7 @@
 
 EntityStandState = Class{__includes = BaseState}
 -- dungeon
-function EntityStandState:init(entity) --, dungeon)
+function EntityStandState:init(entity, dungeon)
     self.entity = entity
     self.entity:changeAnimation('stand')
 -- self.dungeon = dungeon

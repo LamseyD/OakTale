@@ -8,7 +8,7 @@
 
 EntityWalkState = Class{__includes = BaseState}
 -- entity, dungeon
-function EntityWalkState:init(entity)--, dungeon)
+function EntityWalkState:init(entity, dungeon)
     self.entity = entity
     self.entity:changeAnimation('walk')
 -- self.dungeon = dungeon

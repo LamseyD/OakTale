@@ -40,6 +40,7 @@ require 'src/states/entity/player/PlayerWalkState'
 require 'src/states/entity/player/PlayerStandState'
 require 'src/states/entity/player/PlayerFallingState'
 require 'src/states/entity/player/PlayerJumpState'
+require 'src/states/entity/player/PlayerProneState'
 
 --graphics
 require 'graphics/character/character-1/char-1'

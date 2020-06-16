@@ -21,8 +21,8 @@ function PlayerFallingState:update(dt)
     self.player.y = self.player.y + (self.player.dy * dt)
 
     -- look at two tiles below our feet and check for collisions
-    local tileBottomLeft = self.player.map:pointToTile(self.player.x + 1, self.player.y + self.player.height)
-    local tileBottomRight = self.player.map:pointToTile(self.player.x + self.player.width - 1, self.player.y + self.player.height)
+    local tileBottomLeft = self.player.map:pointToTile(self.player.x + 1, self.player.y + self.player.height - 20)
+    local tileBottomRight = self.player.map:pointToTile(self.player.x + self.player.width - 1, self.player.y + self.player.height - 20)
 
     -- if we get a collision beneath us, go into either walking or idle
     if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) then
@@ -36,41 +36,35 @@ function PlayerFallingState:update(dt)
         end
 
         self.player.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.height + 20
-    -- end
-    -- -- go back to start if we fall below the map boundary
-    -- elseif self.player.y > VIRTUAL_HEIGHT then
-    --     gSounds['death']:play()
-    --     gStateMachine:change('start')
-    
     -- -- check side collisions and reset position
     elseif love.keyboard.isDown('left') then
         self.player.direction = 'left'
         self.player.x = self.player.x - PLAYER_WALK_SPEED * dt
-        self.player:checkLeftCollisions(dt)
+        -- self.player:checkLeftCollisions(dt)
     elseif love.keyboard.isDown('right') then
         self.player.direction = 'right'
         self.player.x = self.player.x + PLAYER_WALK_SPEED * dt
-        self.player:checkRightCollisions(dt)
+        -- self.player:checkRightCollisions(dt)
     end
 
     -- -- check if we've collided with any collidable game objects
-    for k, object in pairs(self.player.map.objects) do
-        if object:collides(self.player) then
-            if object.solid then
-                self.player.dy = 0
-                self.player.y = object.y - self.player.height
+    -- for k, object in pairs(self.player.map.objects) do
+    --     if object:collides(self.player) then
+    --         if object.solid then
+    --             self.player.dy = 0
+    --             self.player.y = object.y - self.player.height
 
-                if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
-                    self.player:changeState('walking')
-                else
-                    self.player:changeState('idle')
-                end
-            elseif object.consumable then
-                object.onConsume(self.player)
-                table.remove(self.player.level.objects, k)
-            end
-        end
-    end
+    --             if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
+    --                 self.player:changeState('walking')
+    --             else
+    --                 self.player:changeState('idle')
+    --             end
+    --         elseif object.consumable then
+    --             object.onConsume(self.player)
+    --             table.remove(self.player.level.objects, k)
+    --         end
+    --     end
+    -- end
 
     -- -- check if we've collided with any entities and kill them if so
     -- for k, entity in pairs(self.player.level.entities) do

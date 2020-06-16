@@ -9,16 +9,6 @@ function Room:init(player)
 end
 
 function Room:update(dt)
-
-    --place holder for testing.
-    --should implement in player states
-    -- for k, tile in pairs(self.level.tileMap.tiles) do
-    --     if tile.id == TILE_ID_GROUND then
-    --         if self.player:platform_collision(tile) then
-    --             self.player.y = (tile.y - 1) - self.player.height
-    --         end
-    --     end
-    -- end
     self.player:update(dt)
 end
 
@@ -30,3 +20,44 @@ function Room:render()
     self.tileMap:render()
     self.player:render()
 end
+
+-- function Room:spawnEnemies()
+    -- -- spawn snails in the level
+    -- for x = 1, self.tileMap.width do
+
+    --     -- flag for whether there's ground on this column of the level
+    --     local groundFound = false
+
+    --     for y = 1, self.tileMap.height do
+    --         if not groundFound then
+    --             if self.tileMap.tiles[y][x].id == TILE_ID_GROUND then
+    --                 groundFound = true
+
+    --                 -- random chance, 1 in 20
+    --                 if math.random(20) == 1 then
+                        
+    --                     -- instantiate snail, declaring in advance so we can pass it into state machine
+    --                     local snail
+    --                     snail = Snail {
+    --                         texture = 'creatures',
+    --                         x = (x - 1) * TILE_SIZE,
+    --                         y = (y - 2) * TILE_SIZE + 2,
+    --                         width = 16,
+    --                         height = 16,
+    --                         stateMachine = StateMachine {
+    --                             ['idle'] = function() return SnailIdleState(self.tileMap, self.player, snail) end,
+    --                             ['moving'] = function() return SnailMovingState(self.tileMap, self.player, snail) end,
+    --                             ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
+    --                         }
+    --                     }
+    --                     snail:changeState('idle', {
+    --                         wait = math.random(5)
+    --                     })
+
+    --                     table.insert(self.level.entities, snail)
+    --                 end
+    --             end
+    --         end
+    --     end
+    -- end
+-- end

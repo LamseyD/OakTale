@@ -8,7 +8,7 @@
 
 PlayerWalkState = Class{__includes = EntityWalkState}
 
-function PlayerWalkState:init(player)--, dungeon)
+function PlayerWalkState:init(player, dungeon)
     self.entity = player
     -- self.dungeon = dungeon
     self.entity:changeAnimation('walk')
@@ -26,9 +26,14 @@ function PlayerWalkState:update(dt)
         self.entity:changeState('stand')
     end
 
-    if love.keyboard.wasPressed('space') then
+    if love.keyboard.isDown('space') then
+        self.entity:changeState('jump')
         -- self.entity:changeState('swing-sword')
         -- self.entity:changeState('pot-lift')
+    end
+
+    if love.keyboard.isDown('down') then
+        self.entity:changeState('prone')
     end
 
     -- perform base collision detection against walls
@@ -55,5 +60,5 @@ function PlayerWalkState:render()
 
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
         math.floor(self.entity.x - self.entity.offsetX + extra_offset_X + direction_offset_X), math.floor(self.entity.y - self.entity.offsetY), 0, rotation_x, 1)
-
+    
 end

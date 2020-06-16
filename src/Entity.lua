@@ -59,6 +59,63 @@ function Entity:collides(target)
                 self.y + self.height < target.y or self.y > target.y + target.height)
 end
 
+function Entity:checkLeftCollisions(dt)
+    -- check for left two tiles collision
+    local tileBottomLeft = self.map:pointToTile(self.x + 1, self.y + self.height - 1)
+
+    -- place player outside the X bounds on one of the tiles to reset any overlap
+    if tileBottomLeft and tileBottomLeft:collidable() then
+        self.x = (tileTopLeft.x - 1) * TILE_SIZE + tileTopLeft.width - 1
+    else
+        
+        -- allow us to walk atop solid objects even if we collide with them
+        self.y = self.y - 1
+        local collidedObjects = self:checkObjectCollisions()
+        self.y = self.y + 1
+
+        -- reset X if new collided object
+        if #collidedObjects > 0 then
+            self.x = self.x + self.walkSpeed * dt
+        end
+    end
+end
+
+function Entity:checkRightCollisions(dt)
+    -- check for right two tiles collision
+    local tileBottomRight = self.map:pointToTile(self.x + self.width - 1, self.y + self.height - 1)
+
+    -- place player outside the X bounds on one of the tiles to reset any overlap
+    if tileBottomRight and tileBottomRight:collidable() then
+        self.x = (tileTopRight.x - 1) * TILE_SIZE - self.width
+    else
+        
+        -- allow us to walk atop solid objects even if we collide with them
+        self.y = self.y - 1
+        local collidedObjects = self:checkObjectCollisions()
+        self.y = self.y + 1
+
+        -- reset X if new collided object
+        if #collidedObjects > 0 then
+            self.x = self.x - self.walkSpeed * dt
+        end
+    end
+end
+
+function Entity:checkObjectCollisions()
+    local collidedObjects = {}
+
+    for k, object in pairs(self.level.objects) do
+        if object:collides(self) then
+            if object.solid then
+                table.insert(collidedObjects, object)
+            end
+        end
+    end
+
+    return collidedObjects
+end
+
+
 function Entity:damage(dmg)
     self.health = self.health - dmg
 end
@@ -110,6 +167,10 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
 
     self.x, self.y = self.x + (adjacentOffsetX or 0), self.y + (adjacentOffsetY or 0)
     self.stateMachine:render()
+    love.graphics.setFont(gFonts['title-small'])
+    love.graphics.setColor(0,1,1,1)
+    love.graphics.print("x: " .. self.x, self.x, self.y - 30)
+    love.graphics.print("y: " .. self.y, self.x, self.y - 10)
     love.graphics.setColor(1, 1, 1, 1)
     self.x, self.y = self.x - (adjacentOffsetX or 0), self.y - (adjacentOffsetY or 0)
 end

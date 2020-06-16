@@ -18,70 +18,45 @@ function PlayState:init()
         health = ENTITY_DEFS['char-1'].health,
         offsetY = ENTITY_DEFS['char-1'].offsetY -- Possibly implement offsets for different frames in the ENTITY DEFS table
     }
-    self.current_room = Room(self.player)
+    self.dungeon = Dungeon(self.player)
+    -- self.current_room = Room(self.player)
     self.gravityOn = true
-    self.gravityAmount = 6
-    self.player.map = self.current_room.tileMap
+    self.tileMap = self.dungeon.currentRoom.tileMap
+    self.player.map = self.tileMap
     self.player.stateMachine = StateMachine{
-        ['stand'] = function() return PlayerStandState(self.player) end,
-        ['walk'] = function() return PlayerWalkState(self.player) end,
-        ['attack'] = function() return PlayerAttackState(self.player) end,
-        ['jump'] = function() return PlayerJumpState(self.player, self.gravityAmount) end,
-        ['falling'] = function() return PlayerFallingState(self.player, self.gravityAmount) end
+        ['stand'] = function() return PlayerStandState(self.player, self.dungeon) end,
+        ['walk'] = function() return PlayerWalkState(self.player, self.dungeon) end,
+        ['attack'] = function() return PlayerAttackState(self.player, self.dungeon) end,
+        ['jump'] = function() return PlayerJumpState(self.player, GRAVITY_AMOUNT) end,
+        ['falling'] = function() return PlayerFallingState(self.player, GRAVITY_AMOUNT) end,
+        ['prone'] = function() return PlayerProneState(self.player, self.dungeon) end
     }
 
     self.player:changeState('falling')
-    -- self.dungeon = Dungeon(self.player)
-    
-    
-
-
-    -- self.player = Player({
-    --     x = 0, y = 0,
-    --     width = 16, height = 20,
-    --     texture = 'green-alien',
-    --     stateMachine = StateMachine {
-    --         ['idle'] = function() return PlayerIdleState(self.player) end,
-    --         ['walking'] = function() return PlayerWalkingState(self.player) end,
-    --         ['jump'] = function() return PlayerJumpState(self.player, self.gravityAmount) end,
-    --         ['falling'] = function() return PlayerFallingState(self.player, self.gravityAmount) end
-    --     },
-    --     map = self.tileMap,
-    --     level = self.level
-    -- })
-
-    -- self:spawnEnemies()
-
-    -- self.player:changeState('falling')
 end
 
 function PlayState:update(dt)
     -- Timer.update(dt)
-    -- self.dungeon:update(dt)
-    self.current_room:update(dt)
+    self.dungeon:update(dt)
+    -- self.current_room:update(dt)
 
     -- -- remove any nils from pickups, etc.
     -- self.level:clear()
 
-    -- -- update player and level
-    -- self.player:update(dt)
-    -- self.level:update(dt)
-    -- self:updateCamera()
-
-    -- -- constrain player X no matter which state
-    -- if self.player.x <= 0 then
-    --     self.player.x = 0
-    -- elseif self.player.x > TILE_SIZE * self.tileMap.width - self.player.width then
-    --     self.player.x = TILE_SIZE * self.tileMap.width - self.player.width
-    -- end
+    -- constrain player X no matter which state
+    if self.player.x <= 0 then
+        self.player.x = 0
+    elseif self.player.x + self.player.width > VIRTUAL_WIDTH then
+        self.player.x = VIRTUAL_WIDTH - self.player.width
+    end
 end
 
 function PlayState:render()
 
     -- render dungeon and all entities separate from hearts GUI
     love.graphics.push()
-    -- self.dungeon:render()
-    self.current_room:render()
+    self.dungeon:render()
+    -- self.current_room:render()
     love.graphics.pop()
 
 --     love.graphics.push()
@@ -123,43 +98,3 @@ end
 --[[
     Adds a series of enemies to the level randomly.
 ]]
-function PlayState:spawnEnemies()
-    -- -- spawn snails in the level
-    -- for x = 1, self.tileMap.width do
-
-    --     -- flag for whether there's ground on this column of the level
-    --     local groundFound = false
-
-    --     for y = 1, self.tileMap.height do
-    --         if not groundFound then
-    --             if self.tileMap.tiles[y][x].id == TILE_ID_GROUND then
-    --                 groundFound = true
-
-    --                 -- random chance, 1 in 20
-    --                 if math.random(20) == 1 then
-                        
-    --                     -- instantiate snail, declaring in advance so we can pass it into state machine
-    --                     local snail
-    --                     snail = Snail {
-    --                         texture = 'creatures',
-    --                         x = (x - 1) * TILE_SIZE,
-    --                         y = (y - 2) * TILE_SIZE + 2,
-    --                         width = 16,
-    --                         height = 16,
-    --                         stateMachine = StateMachine {
-    --                             ['idle'] = function() return SnailIdleState(self.tileMap, self.player, snail) end,
-    --                             ['moving'] = function() return SnailMovingState(self.tileMap, self.player, snail) end,
-    --                             ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
-    --                         }
-    --                     }
-    --                     snail:changeState('idle', {
-    --                         wait = math.random(5)
-    --                     })
-
-    --                     table.insert(self.level.entities, snail)
-    --                 end
-    --             end
-    --         end
-    --     end
-    -- end
-end
