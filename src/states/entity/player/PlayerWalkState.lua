@@ -59,6 +59,6 @@ function PlayerWalkState:render()
 
 
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.entity.x - self.entity.offsetX + extra_offset_X + direction_offset_X), math.floor(self.entity.y - self.entity.offsetY), 0, rotation_x, 1)
+        math.floor(self.entity.x - self.entity.offsetX + extra_offset_X + direction_offset_X), math.floor(self.entity.y - self.entity.offsetY + 1), 0, rotation_x, 1)
     
 end

@@ -3,14 +3,14 @@ PlayerProneState = Class{__includes = BaseState}
 function PlayerProneState:init(player, dungeon)
     self.player = player
     self.dungeon = dungeon
-    self.player.offsetY = 0
+    self.player.offsetY = -29
     self.player.offsetX = self.player.direction == 'right' and -self.player.width or 0
     self.player:changeAnimation('prone')
 end
 
 function PlayerAttackState:enter(params)
     -- WIP HERE
-    self.player.y = self.player.y - 32 
+    -- self.player.y = self.player.y - 32 
 end
 
 function PlayerProneState:update(dt)

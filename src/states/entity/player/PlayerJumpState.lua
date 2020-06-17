@@ -12,6 +12,7 @@ function PlayerJumpState:init(player, gravity)
     self.player = player
     self.gravity = gravity
     self.player:changeAnimation('jump')
+    
 end
 
 function PlayerJumpState:enter(params)
@@ -73,8 +74,10 @@ function PlayerJumpState:render()
     local rotation_x = 1
 
     if self.player.direction == 'right' then
-        direction_offset_X = self.player.width
+        self.player.offsetX = -self.player.width + 12
         rotation_x = -1
+    else
+        self.player.offsetX = -12
     end 
 
 

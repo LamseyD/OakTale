@@ -21,8 +21,8 @@ function PlayerFallingState:update(dt)
     self.player.y = self.player.y + (self.player.dy * dt)
 
     -- look at two tiles below our feet and check for collisions
-    local tileBottomLeft = self.player.map:pointToTile(self.player.x + 1, self.player.y + self.player.height - 20)
-    local tileBottomRight = self.player.map:pointToTile(self.player.x + self.player.width - 1, self.player.y + self.player.height - 20)
+    local tileBottomLeft = self.player.map:pointToTile(self.player.x + 1, self.player.y + self.player.height)
+    local tileBottomRight = self.player.map:pointToTile(self.player.x + self.player.width - 1, self.player.y + self.player.height)
 
     -- if we get a collision beneath us, go into either walking or idle
     if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) then
@@ -35,7 +35,7 @@ function PlayerFallingState:update(dt)
             self.player:changeState('stand')
         end
 
-        self.player.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.height + 20
+        self.player.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.height -- + 20
     -- -- check side collisions and reset position
     elseif love.keyboard.isDown('left') then
         self.player.direction = 'left'
@@ -83,12 +83,13 @@ function PlayerFallingState:render()
     local rotation_x = 1
 
     if self.player.direction == 'right' then
-        direction_offset_X = self.player.width
+        self.player.offsetX = -self.player.width + 12
         rotation_x = -1
+    else
+        self.player.offsetX = -12
     end 
 
-
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.player.x - self.player.offsetX + direction_offset_X), math.floor(self.player.y - self.player.offsetY), 0, rotation_x, 1)
+        math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY), 0, rotation_x, 1)
 
 end

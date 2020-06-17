@@ -49,6 +49,7 @@ require 'graphics/character/character-1/char-1'
 require 'src/Entity'
 require 'src/Player'
 require 'src/entity_defs'
+require 'src/Hitbox'
 
 gTextures = {  
     -- hold texture files

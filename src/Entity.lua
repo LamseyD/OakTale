@@ -173,4 +173,8 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
     love.graphics.print("y: " .. self.y, self.x, self.y - 10)
     love.graphics.setColor(1, 1, 1, 1)
     self.x, self.y = self.x - (adjacentOffsetX or 0), self.y - (adjacentOffsetY or 0)
+
+    love.graphics.setColor(0, 1, 1, 1)
+    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    love.graphics.setColor(1, 1, 1, 1)
 end
