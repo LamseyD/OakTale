@@ -3,18 +3,26 @@ PlayerProneState = Class{__includes = BaseState}
 function PlayerProneState:init(player, dungeon)
     self.player = player
     self.dungeon = dungeon
-    self.player.offsetY = -29
-    self.player.offsetX = self.player.direction == 'right' and -self.player.width or 0
+    self.player.offsetY = -10
+    -- self.player.offsetX = self.player.direction == 'right' and -self.player.width or 0
     self.player:changeAnimation('prone')
 end
 
-function PlayerAttackState:enter(params)
+function PlayerProneState:enter(params)
     -- WIP HERE
-    -- self.player.y = self.player.y - 32 
+    -- self.player.y = self.player.y - 32
+    local temp = self.player.hitbox.width 
+    self.player.hitbox.width = self.player.hitbox.height
+    self.player.hitbox.height = temp
+    self.player.hitbox.y = self.player.hitbox.y + 20
 end
 
 function PlayerProneState:update(dt)
     if not love.keyboard.isDown("down") then
+        local temp = self.player.hitbox.width
+        self.player.hitbox.width = self.player.hitbox.height
+        self.player.hitbox.height = temp
+        self.player.hitbox.y = self.player.hitbox.y - 20
         if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
             self.player:changeState('walk')
         end
@@ -24,6 +32,7 @@ function PlayerProneState:update(dt)
         end
         self.player:changeState("stand")
     end
+    self.player.offsetX = self.player.direction == 'right' and -self.player.width - 10 or 10
 end
 
 function PlayerProneState:render()

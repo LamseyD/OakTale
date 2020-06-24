@@ -44,6 +44,7 @@ require 'src/states/entity/player/PlayerProneState'
 
 --graphics
 require 'graphics/character/character-1/char-1'
+require 'graphics/character/character-2/char-2'
 
 --entities
 require 'src/Entity'
@@ -61,14 +62,16 @@ gTextures = {
     ['hene-bg'] = love.graphics.newImage('graphics/misc/hene-background.png'),
     ['tiles'] = love.graphics.newImage('graphics/map/tiles.png'),
     ['toppers'] = love.graphics.newImage('graphics/map/tile_tops.png'),
-    ['character-1'] = love.graphics.newImage('graphics/character/character-1/char-1.png')
+    ['character-1'] = love.graphics.newImage('graphics/character/character-1/char-1.png'),
+    ['character-2'] = love.graphics.newImage('graphics/character/character-2/char-2.png')
 }
 
 gFrames = {
     -- hold entities frames
     ['tiles'] = GenerateQuads(gTextures['tiles'], 16, 16),
     ['toppers'] = GenerateQuads(gTextures['toppers'], 16, 16),
-    ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1)
+    ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1),
+    ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2)
 }
 
 gFrames['tilesets'] = GenerateTileSets(gFrames['tiles'], 

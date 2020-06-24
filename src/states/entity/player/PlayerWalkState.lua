@@ -14,7 +14,7 @@ function PlayerWalkState:init(player, dungeon)
     self.entity:changeAnimation('walk')
     -- render offset for spaced character sprite; negated in render function of state
     self.entity.offsetY = 0
-    self.entity.offsetX = 0
+    
 end
 
 function PlayerWalkState:update(dt)
@@ -35,7 +35,7 @@ function PlayerWalkState:update(dt)
     if love.keyboard.isDown('down') then
         self.entity:changeState('prone')
     end
-
+    self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width - 10 or 10
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
 end
@@ -50,7 +50,6 @@ function PlayerWalkState:render()
     end
 
     if self.entity.direction == 'right' then
-        direction_offset_X = self.entity.width
         if anim:getCurrentFrame() == 16 then
             extra_offset_X = -12
         end
@@ -59,6 +58,6 @@ function PlayerWalkState:render()
 
 
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.entity.x - self.entity.offsetX + extra_offset_X + direction_offset_X), math.floor(self.entity.y - self.entity.offsetY + 1), 0, rotation_x, 1)
+        math.floor(self.entity.x - self.entity.offsetX + extra_offset_X), math.floor(self.entity.y - self.entity.offsetY + 1), 0, rotation_x, 1)
     
 end

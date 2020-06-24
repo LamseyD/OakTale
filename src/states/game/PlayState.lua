@@ -16,13 +16,15 @@ function PlayState:init()
         width = 65, -- Implement a new function to get current width and height from current quad frame
         height = 95,
         health = ENTITY_DEFS['char-1'].health,
-        offsetY = ENTITY_DEFS['char-1'].offsetY -- Possibly implement offsets for different frames in the ENTITY DEFS table
+        offsetY = ENTITY_DEFS['char-1'].offsetY, -- Possibly implement offsets for different frames in the ENTITY DEFS table
+        hitbox_offsetX = ENTITY_DEFS['char-1'].hitbox_offsetX,
+        hitbox_offsetY = ENTITY_DEFS['char-1'].hitbox_offsetY
     }
     self.dungeon = Dungeon(self.player)
     -- self.current_room = Room(self.player)
     self.gravityOn = true
-    self.tileMap = self.dungeon.currentRoom.tileMap
-    self.player.map = self.tileMap
+    -- self.tileMap = self.dungeon.currentRoom.tileMap
+    self.player.level = self.dungeon.currentRoom.level
     self.player.stateMachine = StateMachine{
         ['stand'] = function() return PlayerStandState(self.player, self.dungeon) end,
         ['walk'] = function() return PlayerWalkState(self.player, self.dungeon) end,
@@ -44,10 +46,10 @@ function PlayState:update(dt)
     -- self.level:clear()
 
     -- constrain player X no matter which state
-    if self.player.x <= 0 then
-        self.player.x = 0
-    elseif self.player.x + self.player.width > VIRTUAL_WIDTH then
-        self.player.x = VIRTUAL_WIDTH - self.player.width
+    if self.player.hitbox.x <= 0 then
+        self.player.hitbox.x = 0
+    elseif self.player.hitbox.x + self.player.hitbox.width > VIRTUAL_WIDTH then
+        self.player.hitbox.x = VIRTUAL_WIDTH - self.player.hitbox.width
     end
 end
 

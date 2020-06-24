@@ -83,6 +83,17 @@ function GenerateCharacterQuads(atlas, CHAR_DEF)
     return spritesheet
 end
 
+function GenerateCharacterQuads_2(atlas, CHAR_DEF)
+    local spritesheet = {}
+    local sheetCounter = 1
+    local counter = 1
+    for j, item in pairs(CHAR_DEF["frames"]) do
+        spritesheet[sheetCounter] = love.graphics.newQuad(item["frame"]["x"], item["frame"]["y"], item["frame"]["w"], item["frame"]["h"], atlas:getDimensions())
+        sheetCounter = sheetCounter + 1
+        counter = counter + 1
+    end
+    return spritesheet
+end
 --[[
     Recursive table printing function.
     https://coronalabs.com/blog/2014/09/02/tutorial-printing-table-contents/

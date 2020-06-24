@@ -10,23 +10,19 @@ Player = Class{__includes = Entity}
 
 function Player:init(def)
     Entity.init(self, def)
-    self.hitbox = Hitbox(self.x + 24, self.y + 12, 32, 64)
+    -- self.hitbox = Hitbox(self.x + 24, self.y + 12, self.width, self.height)
     self.dy = 0
     self.dx = 0
 end
 
 function Player:update(dt)
     Entity.update(self, dt)
-    self.hitbox:update(self.x + 24, self.y + 12)
+    -- self.hitbox:update(self.x + 24, self.y + 12)
 end
 
-function Player:collides(target)
-    -- local selfY, selfHeight = self.y + self.height / 2, self.height - self.height / 2
-    
-    -- return not (self.x + self.width < target.x or self.x > target.x + target.width or
-    --             selfY + selfHeight < target.y or selfY > target.y + target.height)
-    self.hitbox:collides(target)
-end
+-- function Player:collides(target)
+--     self.hitbox:collides(target)
+-- end
 
 function Player:checkObjectCollisions()
     -- local collidedObjects = {}
@@ -44,10 +40,6 @@ function Player:checkObjectCollisions()
 
     -- return collidedObjects
     self.hitbox:checkObjectCollisions(self.level)
-end
-
-function Player:getWidth()
-
 end
 
 function Player:render()

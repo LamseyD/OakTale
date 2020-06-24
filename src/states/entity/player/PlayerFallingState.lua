@@ -18,11 +18,11 @@ end
 
 function PlayerFallingState:update(dt)
     self.player.dy = self.player.dy + self.gravity
-    self.player.y = self.player.y + (self.player.dy * dt)
-
+    self.player.hitbox.y = self.player.hitbox.y + (self.player.dy * dt)
+    -- self.player.y = self.player.hitbox.y - 20
     -- look at two tiles below our feet and check for collisions
-    local tileBottomLeft = self.player.map:pointToTile(self.player.x + 1, self.player.y + self.player.height)
-    local tileBottomRight = self.player.map:pointToTile(self.player.x + self.player.width - 1, self.player.y + self.player.height)
+    local tileBottomLeft = self.player.level.tileMap:pointToTile(self.player.hitbox.x + 1, self.player.hitbox.y + self.player.hitbox.height)
+    local tileBottomRight = self.player.level.tileMap:pointToTile(self.player.hitbox.x + self.player.hitbox.width - 1, self.player.hitbox.y + self.player.hitbox.height)
 
     -- if we get a collision beneath us, go into either walking or idle
     if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) then
@@ -35,15 +35,18 @@ function PlayerFallingState:update(dt)
             self.player:changeState('stand')
         end
 
-        self.player.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.height -- + 20
-    -- -- check side collisions and reset position
+        self.player.hitbox.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.hitbox.height -- + 20
+        -- self.player.y = self.player.hitbox.y + 20
+        -- -- check side collisions and reset position
     elseif love.keyboard.isDown('left') then
         self.player.direction = 'left'
-        self.player.x = self.player.x - PLAYER_WALK_SPEED * dt
+        self.player.hitbox.x = self.player.hitbox.x - PLAYER_WALK_SPEED * dt
+        -- self.player.x = self.player.hitbox.x - 12
         -- self.player:checkLeftCollisions(dt)
     elseif love.keyboard.isDown('right') then
         self.player.direction = 'right'
-        self.player.x = self.player.x + PLAYER_WALK_SPEED * dt
+        self.player.hitbox.x = self.player.hitbox.x + PLAYER_WALK_SPEED * dt
+        -- self.player.x = self.player.hitbox.x - 12
         -- self.player:checkRightCollisions(dt)
     end
 

@@ -29,17 +29,17 @@ function EntityWalkState:update(dt)
 
     -- boundary checking on all sides, allowing us to avoid collision detection on tiles
     if self.entity.direction == 'left' then
-        self.entity.x = self.entity.x - self.entity.walkSpeed * dt
+        self.entity.hitbox.x = self.entity.hitbox.x - self.entity.walkSpeed * dt
         
-        if self.entity.x <= 0 then 
-            self.entity.x = 0
+        if self.entity.hitbox.x <= 0 then 
+            self.entity.hitbox.x = 0
             self.bumped = true
         end
     elseif self.entity.direction == 'right' then
-        self.entity.x = self.entity.x + self.entity.walkSpeed * dt
+        self.entity.hitbox.x = self.entity.hitbox.x + self.entity.walkSpeed * dt
 
-        if self.entity.x + self.entity.width >= VIRTUAL_WIDTH then
-            self.entity.x = VIRTUAL_WIDTH
+        if self.entity.hitbox.x + self.entity.hitbox.width >= VIRTUAL_WIDTH then
+            self.entity.hitbox.x = VIRTUAL_WIDTH
             self.bumped = true
         end
     end

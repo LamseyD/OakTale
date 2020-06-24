@@ -13,6 +13,12 @@ function Entity:init(def)
     self.width = def.width
     self.height = def.height
 
+    --hitbox
+    self.hitbox = Hitbox(self.x + def.hitbox_offsetX, self.y + def.hitbox_offsetY, 30, 50)
+    self.hitbox_offsetX = def.hitbox_offsetX
+    self.hitbox_offsetY = def.hitbox_offsetY
+
+
     -- drawing offsets for padded sprites
     self.offsetX = def.offsetX or 0
     self.offsetY = def.offsetY or 0
@@ -50,69 +56,22 @@ end
 --[[
     AABB with some slight shrinkage of the box on the top side for perspective.
 ]]
-function Entity:platform_collision(target)
-    return not (self.y + self.height < target.y)
-end
-
 function Entity:collides(target)
-    return not (self.x + self.width < target.x or self.x > target.x + target.width or
-                self.y + self.height < target.y or self.y > target.y + target.height)
+    return self.hitbox:collides(target)
 end
 
 function Entity:checkLeftCollisions(dt)
-    -- check for left two tiles collision
-    local tileBottomLeft = self.map:pointToTile(self.x + 1, self.y + self.height - 1)
-
-    -- place player outside the X bounds on one of the tiles to reset any overlap
-    if tileBottomLeft and tileBottomLeft:collidable() then
-        self.x = (tileTopLeft.x - 1) * TILE_SIZE + tileTopLeft.width - 1
-    else
-        
-        -- allow us to walk atop solid objects even if we collide with them
-        self.y = self.y - 1
-        local collidedObjects = self:checkObjectCollisions()
-        self.y = self.y + 1
-
-        -- reset X if new collided object
-        if #collidedObjects > 0 then
-            self.x = self.x + self.walkSpeed * dt
-        end
-    end
+    self.hitbox:checkLeftCollisions(dt, self.level)
+    -- update x and y if there is collision
 end
 
 function Entity:checkRightCollisions(dt)
-    -- check for right two tiles collision
-    local tileBottomRight = self.map:pointToTile(self.x + self.width - 1, self.y + self.height - 1)
-
-    -- place player outside the X bounds on one of the tiles to reset any overlap
-    if tileBottomRight and tileBottomRight:collidable() then
-        self.x = (tileTopRight.x - 1) * TILE_SIZE - self.width
-    else
-        
-        -- allow us to walk atop solid objects even if we collide with them
-        self.y = self.y - 1
-        local collidedObjects = self:checkObjectCollisions()
-        self.y = self.y + 1
-
-        -- reset X if new collided object
-        if #collidedObjects > 0 then
-            self.x = self.x - self.walkSpeed * dt
-        end
-    end
+    self.hitbox:checkRightCollisions(dt, self.level)
+    -- update x and y if there is collision
 end
 
 function Entity:checkObjectCollisions()
-    local collidedObjects = {}
-
-    for k, object in pairs(self.level.objects) do
-        if object:collides(self) then
-            if object.solid then
-                table.insert(collidedObjects, object)
-            end
-        end
-    end
-
-    return collidedObjects
+    local collided = self.hitbox:checkObjectCollisions(self.level)
 end
 
 
@@ -147,7 +106,8 @@ function Entity:update(dt)
     end
 
     self.stateMachine:update(dt)
-
+    self.x = self.hitbox.x + self.hitbox_offsetX
+    self.y = self.hitbox.y + self.hitbox_offsetY
     if self.currentAnimation then
         self.currentAnimation:update(dt)
     end
@@ -175,6 +135,6 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
     self.x, self.y = self.x - (adjacentOffsetX or 0), self.y - (adjacentOffsetY or 0)
 
     love.graphics.setColor(0, 1, 1, 1)
-    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    love.graphics.rectangle('line', math.floor(self.x - self.offsetX), math.floor(self.y - self.offsetY), self.width, self.height)
     love.graphics.setColor(1, 1, 1, 1)
 end
