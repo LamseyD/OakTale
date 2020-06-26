@@ -23,6 +23,11 @@ end
 function PlayerJumpState:update(dt)
     self.player.dy = self.player.dy + self.gravity
     self.player.hitbox.y = self.player.hitbox.y + (self.player.dy * dt)
+    if self.player.direction == 'right' then
+        self.player.offsetX = -self.player.width + 12
+    else
+        self.player.offsetX = 0
+    end 
 
     -- go into the falling state when y velocity is positive
     if self.player.dy >= 0 then
@@ -71,17 +76,11 @@ end
 function PlayerJumpState:render()
     local anim = self.player.currentAnimation
     local direction_offset_X = 0
-    local rotation_x = 1
 
-    if self.player.direction == 'right' then
-        self.player.offsetX = -self.player.width + 12
-        rotation_x = -1
-    else
-        self.player.offsetX = -12
-    end 
+    
 
 
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.player.x - self.player.offsetX + direction_offset_X), math.floor(self.player.y - self.player.offsetY), 0, rotation_x, 1)
+        math.floor(self.player.x - self.player.offsetX + direction_offset_X), math.floor(self.player.y - self.player.offsetY), 0, self.player.rotation_x, 1)
 
 end

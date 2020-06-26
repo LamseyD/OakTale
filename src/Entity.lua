@@ -22,6 +22,7 @@ function Entity:init(def)
     -- drawing offsets for padded sprites
     self.offsetX = def.offsetX or 0
     self.offsetY = def.offsetY or 0
+    self.rotation_x = 1
 
     self.walkSpeed = def.walkSpeed
 
@@ -93,6 +94,11 @@ function Entity:changeAnimation(name)
 end
 
 function Entity:update(dt)
+    if self.direction == 'right' then
+        self.rotation_x = -1
+    else 
+        self.rotation_x = 1
+    end
     if self.invulnerable then
         self.flashTimer = self.flashTimer + dt
         self.invulnerableTimer = self.invulnerableTimer + dt

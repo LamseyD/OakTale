@@ -7,7 +7,7 @@ function CharacterSelectState:init()
 
     self.current_char = 1
     self.select_animation = Animation({
-            frames = {13, 14, 15, 12},
+            frames = {13, 14, 15, 16},
             interval = 0.18,
             texture = 'character-1'
         })

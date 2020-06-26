@@ -19,7 +19,12 @@ end
 function PlayerFallingState:update(dt)
     self.player.dy = self.player.dy + self.gravity
     self.player.hitbox.y = self.player.hitbox.y + (self.player.dy * dt)
-    -- self.player.y = self.player.hitbox.y - 20
+
+    if self.player.direction == 'right' then
+        self.player.offsetX = -self.player.width + 12
+    else
+        self.player.offsetX = 0
+    end 
     -- look at two tiles below our feet and check for collisions
     local tileBottomLeft = self.player.level.tileMap:pointToTile(self.player.hitbox.x + 1, self.player.hitbox.y + self.player.hitbox.height)
     local tileBottomRight = self.player.level.tileMap:pointToTile(self.player.hitbox.x + self.player.hitbox.width - 1, self.player.hitbox.y + self.player.hitbox.height)
@@ -36,17 +41,14 @@ function PlayerFallingState:update(dt)
         end
 
         self.player.hitbox.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.hitbox.height -- + 20
-        -- self.player.y = self.player.hitbox.y + 20
         -- -- check side collisions and reset position
     elseif love.keyboard.isDown('left') then
         self.player.direction = 'left'
         self.player.hitbox.x = self.player.hitbox.x - PLAYER_WALK_SPEED * dt
-        -- self.player.x = self.player.hitbox.x - 12
         -- self.player:checkLeftCollisions(dt)
     elseif love.keyboard.isDown('right') then
         self.player.direction = 'right'
         self.player.hitbox.x = self.player.hitbox.x + PLAYER_WALK_SPEED * dt
-        -- self.player.x = self.player.hitbox.x - 12
         -- self.player:checkRightCollisions(dt)
     end
 
@@ -82,17 +84,8 @@ end
 
 function PlayerFallingState:render()
     local anim = self.player.currentAnimation
-    local direction_offset_X = 0
-    local rotation_x = 1
-
-    if self.player.direction == 'right' then
-        self.player.offsetX = -self.player.width + 12
-        rotation_x = -1
-    else
-        self.player.offsetX = -12
-    end 
 
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY), 0, rotation_x, 1)
+        math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY), 0, self.player.rotation_x, 1)
 
 end

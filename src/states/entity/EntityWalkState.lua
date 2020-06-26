@@ -76,7 +76,7 @@ end
 function EntityWalkState:render()
     local anim = self.entity.currentAnimation
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY + 1), 0, self.entity.direction == "right" and -1 or 1, 1)
+        math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY + 1), 0, self.entity.rotation_x, 1)
     
     -- debug code
     -- love.graphics.setColor(255, 0, 255, 255)
