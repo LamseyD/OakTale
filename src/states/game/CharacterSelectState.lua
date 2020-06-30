@@ -66,6 +66,6 @@ function CharacterSelectState:render()
     love.graphics.printf('Select your character',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
 
     --character placeholder
-    love.graphics.draw(gTextures['character-1'], gFrames['character-1'][self.select_animation:getCurrentFrame()], self.select_animation:getCurrentFrame() == 16 and VIRTUAL_WIDTH/2 - 88 or VIRTUAL_WIDTH/2 - 100, VIRTUAL_HEIGHT/2 + 134 - 3)
+    love.graphics.draw(gTextures['character-1'], gFrames['character-1'][self.select_animation:getCurrentFrame()], self.select_animation:getCurrentFrame() == 16 and VIRTUAL_WIDTH/2 - 88 or VIRTUAL_WIDTH/2 - 100, VIRTUAL_HEIGHT/2 + 134 - 2)
 
 end

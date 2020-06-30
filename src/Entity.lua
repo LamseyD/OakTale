@@ -73,6 +73,7 @@ end
 
 function Entity:checkObjectCollisions()
     local collided = self.hitbox:checkObjectCollisions(self.level)
+    return collided
 end
 
 
@@ -140,7 +141,4 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
     love.graphics.setColor(1, 1, 1, 1)
     self.x, self.y = self.x - (adjacentOffsetX or 0), self.y - (adjacentOffsetY or 0)
 
-    love.graphics.setColor(0, 1, 1, 1)
-    love.graphics.rectangle('line', math.floor(self.x - self.offsetX), math.floor(self.y - self.offsetY), self.width, self.height)
-    love.graphics.setColor(1, 1, 1, 1)
 end

@@ -24,6 +24,8 @@ function PlayerWalkState:update(dt)
         self.entity.offsetX = 20
     end
     
+
+
     if love.keyboard.isDown('left') then
         self.entity.direction = 'left'
     elseif love.keyboard.isDown('right') then

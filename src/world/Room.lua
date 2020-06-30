@@ -10,6 +10,9 @@ end
 
 function Room:update(dt)
     self.player:update(dt)
+    for i, item in pairs(self.level.objects) do
+        item:update(dt)
+    end
 end
 
 function Room:render()
@@ -17,8 +20,14 @@ function Room:render()
         VIRTUAL_WIDTH / gTextures['hene-bg']:getWidth(),
         VIRTUAL_HEIGHT / gTextures['hene-bg']:getHeight()
     )
+    
     self.tileMap:render()
+    for i, item in pairs(self.level.objects) do
+        item:render()
+    end
     self.player:render()
+
+    
 end
 
 -- function Room:spawnEnemies()

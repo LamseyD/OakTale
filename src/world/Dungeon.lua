@@ -6,6 +6,11 @@ function Dungeon:init(player)
 
     -- container use to store rooms in a static dungeon
     self.rooms = {}
+
+    -- for i, item in pairs(ROOM_DEFS) do
+    --     table.insert()
+    -- end
+
     -- possible create a function to generate all rooms at the beginning?
 
     -- current room we're operating in
