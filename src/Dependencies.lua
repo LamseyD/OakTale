@@ -44,6 +44,7 @@ require 'src/states/entity/player/PlayerFallingState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerProneState'
 require 'src/states/entity/snail/SnailStandState'
+require 'src/states/entity/snail/SnailWalkState'
 
 --graphics
 require 'graphics/character/character-1/char-1'
@@ -79,7 +80,7 @@ gFrames = {
     ['toppers'] = GenerateQuads(gTextures['toppers'], 16, 16),
     ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
     ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2),
-    ['snail'] = GenerateCharacterQuads(gTextures['snail'], SNAIL, {"die1_","hit1_","move_","stand_"}, 8)
+    ['snail'] = GenerateCharacterQuads(gTextures['snail'], SNAIL, {"die1_","hit1_","move_","stand_"}, 8),
     ['portal'] = GenerateQuads(gTextures['portal'], 250, 470)
 }
 

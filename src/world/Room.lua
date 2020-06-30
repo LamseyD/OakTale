@@ -13,6 +13,9 @@ function Room:update(dt)
     for i, item in pairs(self.level.objects) do
         item:update(dt)
     end
+    for i, item in pairs(self.level.entities) do
+        item:update(dt)
+    end
 end
 
 function Room:render()
@@ -56,16 +59,15 @@ function Room:spawnEnemies()
                             y = (y - 1) * TILE_SIZE - ENTITY_DEFS['snail'].height,
 			                hitbox_offsetX = 0,
 			                hitbox_offsetY = 0
-		    	        }
+                        }
+                        snail.level = self.level
                         snail.stateMachine = StateMachine{
                             ['stand'] = function() return SnailStandState(snail, self.tileMap) end,
-                          --    ['moving'] = function() return EntityWalkState(snail, self.tileMap) end
+                            ['walk'] = function() return SnailWalkState(snail, self.tileMap) end
                           --    ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
                         }
-                        snail:changeState('stand'
-                        --    ,{wait = math.random(5)}
+                        snail:changeState('walk' --,{wait = math.random(5)}
                         )
-
                         table.insert(self.level.entities, snail)
                     end
                 end

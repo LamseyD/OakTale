@@ -6,41 +6,32 @@
     cogden@cs50.harvard.edu
 ]]
 
-PlayerWalkState = Class{__includes = EntityWalkState}
+SnailWalkState = Class{__includes = EntityWalkState}
 
-function PlayerWalkState:init(snail, dungeon)
+function SnailWalkState:init(snail, tileMap)
     self.entity = snail
-    -- self.dungeon = dungeon
+    self.tileMap = tileMap
     self.entity:changeAnimation('walk')
     -- render offset for spaced character sprite; negated in render function of state
     self.entity.offsetY = 0
-    
+    self.entity.direction = math.random(2) == 1 and 'left' or 'right'
+    print(self.entity.direction)
 end
 
-function PlayerWalkState:update(dt)
-    if love.keyboard.isDown('left') then
-        self.entity.direction = 'left'
-    elseif love.keyboard.isDown('right') then
+function SnailWalkState:update(dt)
+    local tileBottomRight = self.tileMap:pointToTile(self.entity.x + self.entity.width - 1, self.entity.y + self.entity.height)
+    local tileBottomLeft = self.tileMap:pointToTile(self.entity.x - 1, self.entity.y + self.entity.height)
+    if (self.entity.direction == 'left' and not tileBottomLeft:collidable()) or not tileBottomLeft then
         self.entity.direction = 'right'
-    else
-        self.entity:changeState('stand')
+    elseif (self.entity.direction == 'right' and not tileBottomRight:collidable()) or not tileBottomRight then
+        self.entity.direction = 'left'
     end
-
-    if love.keyboard.isDown('space') then
-        self.entity:changeState('jump')
-        -- self.entity:changeState('swing-sword')
-        -- self.entity:changeState('pot-lift')
-    end
-
-    if love.keyboard.isDown('down') then
-        self.entity:changeState('prone')
-    end
-    self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width - 10 or 10
+    -- self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width - 10 or 10
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
 end
 
-function PlayerWalkState:render()
+function SnailWalkState:render()
     local anim = self.entity.currentAnimation
     local extra_offset_X = 0
     local direction_offset_X = 0
