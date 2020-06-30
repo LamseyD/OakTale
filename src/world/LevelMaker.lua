@@ -29,6 +29,6 @@ function LevelMaker.generate() -- pass in tileset topperset, pass in room defini
 
     local map = TileMap(MAP_WIDTH, MAP_HEIGHT)
     map.tiles = tiles
-
+    
     return GameLevel(entities, objects, map)
 end

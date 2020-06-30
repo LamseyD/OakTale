@@ -49,8 +49,46 @@ ENTITY_DEFS = {
                 looping = true
             }
         }
-    }
+    },
     -- ['char-2'] = {
         
     -- }
+    ['snail'] = {	
+        walkSpeed = SNAIL_WALK_SPEED,
+	    width = 38,
+	    height = 26,
+        baseHP = 2,
+        baseATK = 0,
+        baseDEF = 0,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3, 4, 5, 6, 7, 8, 9},
+                interval = 0.10,
+                texture = 'snail',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {10},
+                interval = 0.5,
+                texture = 'snail',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {11, 12, 13, 14, 15},
+                interval = 0.10,
+                texture = 'snail',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {16},
+                interval = 0.18,
+                texture = 'snail',
+                looping = false
+            }
+        }
+    }
 }

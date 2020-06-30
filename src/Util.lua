@@ -58,18 +58,17 @@ function GenerateTileSets(quads, setsX, setsY, sizeX, sizeY)
     return tilesets
 end
 
-function GenerateCharacterQuads(atlas, CHAR_DEF)
+function GenerateCharacterQuads(atlas, CHAR_DEF, order, max)
     local spritesheet = {}
     local sheetCounter = 1
-    local order = {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}
+    local order = order
     local counter = 0
     for j,item in pairs(order) do
-        for counter = 0, 3 do
+        for counter = 0, max do
             for i, frame in pairs(CHAR_DEF["frames"]) do
                 if item .. counter .. ".png" == i then
                     spritesheet[sheetCounter] = love.graphics.newQuad(frame["frame"]["x"], frame["frame"]["y"], frame["frame"]["w"], frame["frame"]["h"], atlas:getDimensions())
                     sheetCounter = sheetCounter + 1
-                -- counter = counter + 1
                 end
             end
         end

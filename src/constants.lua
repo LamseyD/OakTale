@@ -56,6 +56,8 @@ GRAVITY_AMOUNT = 16
 
 PIXEL_OFFSET = 12
 
+SNAIL_WALK_SPEED = 50
+
 --
 -- map constants
 --

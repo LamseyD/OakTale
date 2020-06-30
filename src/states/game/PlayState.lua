@@ -20,6 +20,7 @@ function PlayState:init()
         hitbox_offsetX = ENTITY_DEFS['char-1'].hitbox_offsetX,
         hitbox_offsetY = ENTITY_DEFS['char-1'].hitbox_offsetY
     }
+
     self.dungeon = Dungeon(self.player)
     -- self.current_room = Room(self.player)
     self.gravityOn = true
