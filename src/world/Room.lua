@@ -10,6 +10,9 @@ end
 
 function Room:update(dt)
     self.player:update(dt)
+    for i, item in pairs(self.level.objects) do
+        item:update(dt)
+    end
 end
 
 function Room:render()
@@ -19,7 +22,12 @@ function Room:render()
     )
     self.level:render()
     self.tileMap:render()
+    for i, item in pairs(self.level.objects) do
+        item:render()
+    end
     self.player:render()
+
+    
 end
 
 function Room:spawnEnemies()

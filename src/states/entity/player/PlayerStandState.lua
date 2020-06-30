@@ -12,10 +12,11 @@ function PlayerStandState:enter(player, dungeon)--, dungeon)
     
     -- render offset for spaced character sprite (negated in render function of state)
     self.entity.offsetY = 0
-    self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width - 10 or 10
+    self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width or 10
 end
 
 function PlayerStandState:update(dt)
+    -- self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width or 10
     if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
         self.entity:changeState('walk')
     end

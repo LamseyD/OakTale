@@ -20,6 +20,8 @@ require 'src/world/Tile'
 require 'src/world/TileMap'
 require 'src/world/Dungeon'
 require 'src/world/GameLevel'
+require 'src/world/GameObject'
+require 'src/world/Object_defs'
 
 --states
 require 'src/states/BaseState'
@@ -67,7 +69,8 @@ gTextures = {
     ['toppers'] = love.graphics.newImage('graphics/map/tile_tops.png'),
     ['character-1'] = love.graphics.newImage('graphics/character/character-1/char-1.png'),
     ['character-2'] = love.graphics.newImage('graphics/character/character-2/char-2.png'),
-    ['snail'] = love.graphics.newImage('graphics/Mobs/Snail/snail.png')
+    ['snail'] = love.graphics.newImage('graphics/Mobs/Snail/snail.png'),
+    ['portal'] = love.graphics.newImage('graphics/map/portal.png')
 }
 
 gFrames = {
@@ -77,6 +80,7 @@ gFrames = {
     ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
     ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2),
     ['snail'] = GenerateCharacterQuads(gTextures['snail'], SNAIL, {"die1_","hit1_","move_","stand_"}, 8)
+    ['portal'] = GenerateQuads(gTextures['portal'], 250, 470)
 }
 
 gFrames['tilesets'] = GenerateTileSets(gFrames['tiles'], 

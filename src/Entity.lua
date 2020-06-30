@@ -22,6 +22,7 @@ function Entity:init(def)
     -- drawing offsets for padded sprites
     self.offsetX = def.offsetX or 0
     self.offsetY = def.offsetY or 0
+    self.rotation_x = 1
 
     self.walkSpeed = def.walkSpeed
 
@@ -72,6 +73,7 @@ end
 
 function Entity:checkObjectCollisions()
     local collided = self.hitbox:checkObjectCollisions(self.level)
+    return collided
 end
 
 
@@ -93,6 +95,11 @@ function Entity:changeAnimation(name)
 end
 
 function Entity:update(dt)
+    if self.direction == 'right' then
+        self.rotation_x = -1
+    else 
+        self.rotation_x = 1
+    end
     if self.invulnerable then
         self.flashTimer = self.flashTimer + dt
         self.invulnerableTimer = self.invulnerableTimer + dt
@@ -134,7 +141,4 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
     love.graphics.setColor(1, 1, 1, 1)
     self.x, self.y = self.x - (adjacentOffsetX or 0), self.y - (adjacentOffsetY or 0)
 
-    love.graphics.setColor(0, 1, 1, 1)
-    love.graphics.rectangle('line', math.floor(self.x - self.offsetX), math.floor(self.y - self.offsetY), self.width, self.height)
-    love.graphics.setColor(1, 1, 1, 1)
 end

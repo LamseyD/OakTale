@@ -24,9 +24,23 @@ end
 
 function EntityWalkState:update(dt)
     
+    local tileBottomLeft = self.entity.level.tileMap:pointToTile(self.entity.hitbox.x + 1, self.entity.hitbox.y + self.entity.hitbox.height)
+    local tileBottomRight = self.entity.level.tileMap:pointToTile(self.entity.hitbox.x + self.entity.hitbox.width - 1, self.entity.hitbox.y + self.entity.hitbox.height)
+
+    -- temporarily shift entity down a pixel to test for game objects beneath
+    self.entity.y = self.entity.y + 1
+
+    -- local collidedObjects = self.entity:checkObjectCollisions()
+    local collidedObjects = {}
+
+    self.entity.y = self.entity.y - 1
+    if #collidedObjects == 0 and (tileBottomLeft and tileBottomRight) and (not tileBottomLeft:collidable() and not tileBottomRight:collidable()) then
+        self.entity.dy = 0
+        self.entity:changeState('falling')
+    end
+
     -- assume we didn't hit a wall
     self.bumped = false
-
     -- boundary checking on all sides, allowing us to avoid collision detection on tiles
     if self.entity.direction == 'left' then
         self.entity.hitbox.x = self.entity.hitbox.x - self.entity.walkSpeed * dt
@@ -43,8 +57,8 @@ function EntityWalkState:update(dt)
             self.bumped = true
         end
     end
-
-
+    
+    
 end
 
 function EntityWalkState:processAI(params, dt)
@@ -76,7 +90,7 @@ end
 function EntityWalkState:render()
     local anim = self.entity.currentAnimation
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
-        math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY + 1), 0, self.entity.direction == "right" and -1 or 1, 1)
+        math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY + 1), 0, self.entity.rotation_x, 1)
     
     -- debug code
     -- love.graphics.setColor(255, 0, 255, 255)
