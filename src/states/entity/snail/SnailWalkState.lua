@@ -21,12 +21,12 @@ end
 function SnailWalkState:update(dt)
     local tileBottomRight = self.tileMap:pointToTile(self.entity.x + self.entity.width - 1, self.entity.y + self.entity.height)
     local tileBottomLeft = self.tileMap:pointToTile(self.entity.x - 1, self.entity.y + self.entity.height)
-    if (self.entity.direction == 'left' and not tileBottomLeft:collidable()) or not tileBottomLeft then
+    if self.entity.direction == 'left' and (not tileBottomLeft or not tileBottomLeft:collidable()) then
         self.entity.direction = 'right'
-    elseif (self.entity.direction == 'right' and not tileBottomRight:collidable()) or not tileBottomRight then
+    elseif self.entity.direction == 'right' and (not tileBottomRight or not tileBottomRight:collidable()) then
         self.entity.direction = 'left'
     end
-    -- self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width - 10 or 10
+    self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width or 0
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
 end

@@ -48,7 +48,6 @@ function Room:spawnEnemies()
                     if math.random(10) == 1 then                   
                         -- instantiate snail, declaring in advance so we can pass it into state machine
                         local snail
-			            print('hello')
 			            snail = Snail{
 	   		                animations = ENTITY_DEFS['snail'].animations,
 			                walkSpeed = ENTITY_DEFS['snail'].walkSpeed,
