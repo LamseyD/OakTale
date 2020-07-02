@@ -62,6 +62,8 @@ function EntityWalkState:update(dt)
 end
 
 function EntityWalkState:processAI(params, dt)
+    print(params)
+    print(self.moveDuration)
     local room = params.room
     local directions = {'left', 'right'} --jump update later
 

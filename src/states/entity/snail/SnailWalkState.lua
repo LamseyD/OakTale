@@ -9,26 +9,22 @@
 SnailWalkState = Class{__includes = EntityWalkState}
 
 function SnailWalkState:init(snail, tileMap)
-    self.entity = snail
+    EntityWalkState.init(self, snail, tileMap)
     self.tileMap = tileMap
-    self.entity:changeAnimation('walk')
-    -- render offset for spaced character sprite; negated in render function of state
-    self.entity.offsetY = 0
-    self.entity.direction = math.random(2) == 1 and 'left' or 'right'
-    print(self.entity.direction)
 end
 
 function SnailWalkState:update(dt)
-    local tileBottomRight = self.tileMap:pointToTile(self.entity.x + self.entity.width - 1, self.entity.y + self.entity.height)
-    local tileBottomLeft = self.tileMap:pointToTile(self.entity.x - 1, self.entity.y + self.entity.height)
+    local tileBottomRight = self.entity.level.tileMap:pointToTile(self.entity.x + self.entity.width - 1, self.entity.y + self.entity.height)
+    local tileBottomLeft = self.entity.level.tileMap:pointToTile(self.entity.x - 1, self.entity.y + self.entity.height)
     if self.entity.direction == 'left' and (not tileBottomLeft or not tileBottomLeft:collidable()) then
-        self.entity.direction = 'right'
+       self.entity.direction = 'right'
     elseif self.entity.direction == 'right' and (not tileBottomRight or not tileBottomRight:collidable()) then
         self.entity.direction = 'left'
     end
     self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width or 0
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
+    EntityWalkState.processAI(self, {room = tileMap}, dt)
 end
 
 function SnailWalkState:render()
