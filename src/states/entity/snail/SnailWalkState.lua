@@ -29,6 +29,7 @@ function SnailWalkState:update(dt)
     self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width or 0
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
+    EntityWalkState.processAI(self, {room = tileMap}, dt)
 end
 
 function SnailWalkState:render()

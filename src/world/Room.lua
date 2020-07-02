@@ -1,9 +1,16 @@
 Room = Class {}
 
+<<<<<<< HEAD
 function Room:init(player, def)
     self.width = MAP_WIDTH
     self.height = MAP_HEIGHT
     self.level = LevelMaker.generate(def)
+=======
+function Room:init(player)
+    self.width = MAP_WIDTH
+    self.height = MAP_HEIGHT
+    self.level = LevelMaker.generate()
+>>>>>>> e4f9c7af35190bb5f8996f98777faf030e751b3f
     self.tileMap = self.level.tileMap
     self.player = player
 end
