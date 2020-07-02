@@ -1,0 +1,35 @@
+->  Create textures ----- DONE
+-> set up entities -----> ONGOING
+    + players
+        = OVERHAUL COLLISION SYSTEM.
+    + monsters 
+        = AI should have an attack state but only triggers if it's aggro-ed and will chase
+    + npc?
+-> set up state machines ----- USE STATE STACKS INSTEAD
+    + gamestates 
+        = start ----- DONE
+        = character selection ----- DONE
+        = play
+            -> can display items/world
+    + monsters
+        = idle
+        = walk
+        = attack?
+    + player
+        = idle
+        = walk
+        = jump 
+        = ladder?
+        = attack
+-> make a world
+    + rooms
+    + dungeon
+-> set up objects
+    + coins
+    + potions
+    + weapons? 
+        = Bows
+            -> arrows
+        = swords
+
+

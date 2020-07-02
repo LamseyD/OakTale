@@ -1,0 +1,402 @@
+CHAR_1 = {
+	["frames"] = 
+	{
+		["alert_2.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 72,
+				["h"] = 77,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 72,
+				["h"] = 77,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 144,
+				["w"] = 72,
+				["h"] = 77,
+			},
+		},
+		["proneStab_0.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 100,
+				["h"] = 66,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 100,
+				["h"] = 66,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 287,
+				["w"] = 100,
+				["h"] = 66,
+			},
+		},
+		["walk1_2.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 89,
+				["h"] = 78,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 89,
+				["h"] = 78,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 1216,
+				["w"] = 89,
+				["h"] = 78,
+			},
+		},
+		["walk1_3.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 78,
+				["h"] = 92,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 78,
+				["h"] = 92,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 1306,
+				["w"] = 78,
+				["h"] = 92,
+			},
+		},
+		["alert_1.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 72,
+				["h"] = 76,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 72,
+				["h"] = 76,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 72,
+				["w"] = 72,
+				["h"] = 76,
+			},
+		},
+		["alert_0.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 72,
+				["h"] = 75,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 72,
+				["h"] = 75,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 72,
+				["h"] = 75,
+			},
+		},
+		["proneStab_1.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 115,
+				["h"] = 70,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 115,
+				["h"] = 70,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 387,
+				["w"] = 115,
+				["h"] = 70,
+			},
+		},
+		["swingO1_0.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 84,
+				["h"] = 75,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 84,
+				["h"] = 75,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 694,
+				["w"] = 84,
+				["h"] = 75,
+			},
+		},
+		["walk1_1.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 89,
+				["h"] = 77,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 89,
+				["h"] = 77,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 1127,
+				["w"] = 89,
+				["h"] = 77,
+			},
+		},
+		["stand1_0.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 65,
+				["h"] = 95,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 65,
+				["h"] = 95,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 502, --og 502
+				["w"] = 65,
+				["h"] = 95,
+			},
+		},
+		["walk1_0.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 89,
+				["h"] = 78,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 89,
+				["h"] = 78,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 1038,
+				["w"] = 89,
+				["h"] = 78,
+			},
+		},
+		["swingO1_2.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 171,
+				["h"] = 151,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 171,
+				["h"] = 151,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 867,
+				["w"] = 171,
+				["h"] = 151,
+			},
+		},
+		["jump_0.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 71,
+				["h"] = 76,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 71,
+				["h"] = 76,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 216,
+				["w"] = 71,
+				["h"] = 76,
+			},
+		},
+		["stand1_2.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 63,
+				["h"] = 95,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 63,
+				["h"] = 95,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 631,
+				["w"] = 63,
+				["h"] = 95,
+			},
+		},
+		["swingO1_1.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 89,
+				["h"] = 100,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 89,
+				["h"] = 100,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 778,
+				["w"] = 89,
+				["h"] = 100,
+			},
+		},
+		["stand1_1.png"] = 
+		{
+			["trimmed"] = false,
+			["sourceSize"] = 
+			{
+				["w"] = 64,
+				["h"] = 95,
+			},
+			["rotated"] = false,
+			["spriteSourceSize"] = 
+			{
+				["y"] = 0,
+				["x"] = 0,
+				["w"] = 64,
+				["h"] = 95,
+			},
+			["frame"] = 
+			{
+				["y"] = 0,
+				["x"] = 567,
+				["w"] = 64,
+				["h"] = 95,
+			},
+		},
+	},
+	["meta"] = 
+	{
+		["image"] = "spritesheet.png",
+		["version"] = "1.0",
+		["scale"] = "1",
+		["format"] = "RGBA8888",
+		["app"] = "http://www.codeandweb.com/texturepacker",
+		["size"] = 
+		{
+			["w"] = 1383,
+			["h"] = 151,
+		},
+	},
+}
