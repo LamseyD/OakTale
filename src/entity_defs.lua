@@ -2,6 +2,8 @@
 ENTITY_DEFS = {
     ['char-1'] = {
         walkSpeed = PLAYER_WALK_SPEED,
+        width = 30,
+        height = 50,
         baseHP = 50,
         baseATK = 15,
         baseDEF = 10,

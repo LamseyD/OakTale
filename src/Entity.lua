@@ -14,7 +14,7 @@ function Entity:init(def)
     self.height = def.height
 
     --hitbox
-    self.hitbox = Hitbox(self.x + def.hitbox_offsetX, self.y + def.hitbox_offsetY, 30, 50)
+    self.hitbox = Hitbox(self.x + def.hitbox_offsetX, self.y + def.hitbox_offsetY, self.width, self.height)
     self.hitbox_offsetX = def.hitbox_offsetX
     self.hitbox_offsetY = def.hitbox_offsetY
 

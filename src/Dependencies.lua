@@ -101,5 +101,6 @@ gFonts = {
 
 gSounds = {
     -- hold music
-    ['title'] = love.audio.newSource('sounds/title.mp3', 'static')
+    ['title'] = love.audio.newSource('sounds/title.mp3', 'static'),
+    ['henesys'] = love.audio.newSource('sounds/henesys.mp3', 'static')
 }
