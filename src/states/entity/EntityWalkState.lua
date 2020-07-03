@@ -66,7 +66,6 @@ function EntityWalkState:processAI(params, dt)
     print(self.moveDuration)
     local room = params.room
     local directions = {'left', 'right'} --jump update later
-
     if self.moveDuration == 0 or self.bumped then
         
         -- set an initial move duration and direction

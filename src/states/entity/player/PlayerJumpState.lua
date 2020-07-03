@@ -24,11 +24,7 @@ function PlayerJumpState:update(dt)
     self.player.dy = self.player.dy + self.gravity
     self.player.hitbox.y = self.player.hitbox.y + (self.player.dy * dt)
     if self.player.direction == 'right' then
-<<<<<<< HEAD
         self.player.offsetX = -self.player.width - 24
-=======
-        self.player.offsetX = -self.player.width + 12
->>>>>>> e4f9c7af35190bb5f8996f98777faf030e751b3f
     else
         self.player.offsetX = 0
     end 
