@@ -35,11 +35,7 @@ function LevelMaker.generate(def) -- pass in tileset topperset, pass in room def
         end
     end
 
-<<<<<<< HEAD
     for j, item in pairs(def['blocks']) do
-=======
-    for j, item in pairs(ROOM_DEFS['main']['blocks']) do
->>>>>>> e4f9c7af35190bb5f8996f98777faf030e751b3f
         for i = 0, item['width'] - 1 do
            for j = 0, item['height'] - 1 do
                 local tileID = TILE_ID_GROUND
@@ -50,7 +46,6 @@ function LevelMaker.generate(def) -- pass in tileset topperset, pass in room def
     end
 
     -- for j, item in pairs(ROOM_DEFS['main']['portals']) do
-<<<<<<< HEAD
     
     if def['portals'] then
         for j, item in pairs(def['portals']) do
@@ -59,12 +54,6 @@ function LevelMaker.generate(def) -- pass in tileset topperset, pass in room def
     end
     
     
-=======
-    for j, item in pairs(ROOM_DEFS['main']['portals']) do
-        table.insert(objects, GameObject(GAME_OBJECT_DEFS['portal'], item['x'], item['y']))
-    end
-    
->>>>>>> e4f9c7af35190bb5f8996f98777faf030e751b3f
     -- end
 
 
