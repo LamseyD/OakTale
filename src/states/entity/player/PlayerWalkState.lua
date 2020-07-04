@@ -23,8 +23,6 @@ function PlayerWalkState:update(dt)
     else
         self.entity.offsetX = 20
     end
-    
-
 
     if love.keyboard.isDown('left') then
         self.entity.direction = 'left'
@@ -36,8 +34,6 @@ function PlayerWalkState:update(dt)
 
     if love.keyboard.isDown('space') then
         self.entity:changeState('jump')
-        -- self.entity:changeState('swing-sword')
-        -- self.entity:changeState('pot-lift')
     end
 
     if love.keyboard.isDown('down') then
@@ -49,7 +45,6 @@ function PlayerWalkState:update(dt)
 end
 
 function PlayerWalkState:render()
-    local anim = self.entity.currentAnimation
     --move to update if needed to clean up animation. ??????
 
     local anim = self.entity.currentAnimation

@@ -31,7 +31,7 @@ function PlayerFallingState:update(dt)
     local tileBottomRight = self.player.level.tileMap:pointToTile(self.player.hitbox.x + self.player.hitbox.width - 1, self.player.hitbox.y + self.player.hitbox.height)
 
     -- if we get a collision beneath us, go into either walking or idle
-    if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) then
+    if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) and (tileBottomLeft.topper and tileBottomRight.topper) then
         self.player.dy = 0
         
         -- set the player to be walking or idle on landing depending on input
