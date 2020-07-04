@@ -43,8 +43,8 @@ require 'src/states/entity/player/PlayerStandState'
 require 'src/states/entity/player/PlayerFallingState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerProneState'
-require 'src/states/entity/snail/SnailStandState'
-require 'src/states/entity/snail/SnailWalkState'
+require 'src/states/entity/mob/MobStandState'
+require 'src/states/entity/mob/MobWalkState'
 
 --graphics
 require 'graphics/character/character-1/char-1'

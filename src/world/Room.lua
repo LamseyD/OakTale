@@ -57,8 +57,8 @@ function Room:spawnEnemies()
                         }
                         snail.level = self.level
                         snail.stateMachine = StateMachine{
-                            ['stand'] = function() return EntityStandState(snail, self.tileMap) end,
-                            ['walk'] = function() return EntityWalkState(snail, self.tileMap) end
+                            ['stand'] = function() return MobStandState(snail, self.tileMap) end,
+                            ['walk'] = function() return MobWalkState(snail, self.tileMap) end
                           --    ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
                         }
                         snail:changeState('walk' --,{wait = math.random(5)}
