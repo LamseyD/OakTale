@@ -74,6 +74,11 @@ gTextures = {
     ['portal'] = love.graphics.newImage('graphics/map/portal.png')
 }
 
+gBackgrounds = {
+    ['hene-bg'] = love.graphics.newImage('graphics/misc/hene-background.png'),
+    ['maple-island'] = love.graphics.newImage('graphics/map/maple-island.png')
+}
+
 gFrames = {
     -- hold entities frames
     ['tiles'] = GenerateQuads(gTextures['tiles'], 16, 16),

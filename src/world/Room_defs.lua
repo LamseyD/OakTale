@@ -72,7 +72,11 @@ ROOM_DEFS = {
                 ['y'] = 387
             }
         },
-        ['bgm'] = 'henesys'
+        ['bgm'] = 'henesys',
+        ['background'] = 'hene-bg',
+        ['mobs'] = {
+
+        }
     },
     ['road-to-main-1'] = {
         ['blocks'] = {
@@ -125,7 +129,8 @@ ROOM_DEFS = {
                 ['y'] = 385
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'rest-n-peace',
+        ['background'] = 'maple-island',
         ['mobs'] = {
 
         }
@@ -178,7 +183,7 @@ ROOM_DEFS = {
             }
 
         },
-        ['bgm'] = '',
+        ['bgm'] = 'rest-n-peace',
         ['mobs'] = {
             
         }
@@ -248,6 +253,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 2
             }
         },
+        ['background'] = 'maple-island',
         ['bgm'] = '',
         ['mobs'] = {
             
@@ -286,10 +292,34 @@ ROOM_DEFS = {
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,
-                ['y'] = 11,
+                ['y'] = 10,
                 ['width'] = MAP_WIDTH, 
                 ['height'] = 9
             },
+            [2] = {
+                ['x'] = 1,
+                ['y'] = 8,
+                ['width'] = 3,
+                ['height'] = 2
+            },
+            [3] = {
+                ['x'] = 7,
+                ['y'] = 8,
+                ['width'] = 3,
+                ['height'] = 2
+            },
+            [4] = {
+                ['x'] = 13,
+                ['y'] = 8,
+                ['width'] = 3,
+                ['height'] = 2
+            },
+            [5] = {
+                ['x'] = 19,
+                ['y'] = 8,
+                ['width'] = 2,
+                ['height'] = 2
+            }
         },
         ['portals'] = {
 
@@ -307,6 +337,66 @@ ROOM_DEFS = {
                 ['width'] = MAP_WIDTH, 
                 ['height'] = 9
             },
+            [2] = {
+                ['x'] = 4,
+                ['y'] = 9,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [3] = {
+                ['x'] = 8,
+                ['y'] = 9, 
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [4] = {
+                ['x'] = 12,
+                ['y'] = 9,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [5] = {
+                ['x'] = 16,
+                ['y'] = 9,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [6] = {
+                ['x'] = 6,
+                ['y'] = 7,
+                ['width'] = 11,
+                ['height'] = 1
+            },
+            [7] = {
+                ['x'] = 4,
+                ['y'] = 5,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [8] = {
+                ['x'] = 8,
+                ['y'] = 5, 
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [9] = {
+                ['x'] = 12,
+                ['y'] = 5,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [10] = {
+                ['x'] = 16,
+                ['y'] = 5,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [11] = {
+                ['x'] = 6,
+                ['y'] = 3,
+                ['width'] = 11,
+                ['height'] = 1
+            }
         },
         ['portals'] = {
 
@@ -318,7 +408,42 @@ ROOM_DEFS = {
     },
     ['tree-trunk-1'] = {
         ['blocks'] = {
-
+            [1] = {
+                ['x'] = 1,
+                ['y'] = 9,
+                ['width'] = MAP_WIDTH, 
+                ['height'] = 11
+            },
+            [2] = {
+                ['x'] = 3,
+                ['y'] = 7,
+                ['width'] = 4,
+                ['height'] = 1
+            },
+            [3] = {
+                ['x'] = 8,
+                ['y'] = 5,
+                ['width'] = 4,
+                ['height'] = 1
+            },
+            [4] = {
+                ['x'] = 3,
+                ['y'] = 3,
+                ['width'] = 4,
+                ['height'] = 1
+            },
+            [5] = {
+                ['x'] = 18,
+                ['y'] = 5,
+                ['width'] = 3,
+                ['height'] = 4
+            },
+            [6] = {
+                ['x'] = 15,
+                ['y'] = 7,
+                ['width'] = 3,
+                ['height'] = 2
+            }
         },
         ['portals'] = {
 
@@ -330,10 +455,51 @@ ROOM_DEFS = {
     },
     ['tree-trunk-2'] = {
         ['blocks'] = {
-
+            [1] = {
+                ['x'] = 1,
+                ['y'] = 10,
+                ['width'] = MAP_WIDTH,
+                ['height'] = 1
+            },
+            [2] = {
+                ['x'] = 14,
+                ['y'] = 8,
+                ['width'] = 7,
+                ['height'] = 1
+            },
+            [3] = {
+                ['x'] = 11,
+                ['y'] = 7,
+                ['width'] = 2,
+                ['height'] = 1
+            },
+            [4] = {
+                ['x'] = 8,
+                ['y'] = 6,
+                ['width'] = 2,
+                ['height'] = 1
+            },
+            [5] = {
+                ['x'] = 1,
+                ['y'] = 5,
+                ['width'] = 6,
+                ['height'] = 1
+            },
+            [6] = {
+                ['x'] = 8,
+                ['y'] = 4,
+                ['width'] = 2,
+                ['height'] = 1
+            },
+            [7] = {
+                ['x'] = 11,
+                ['y'] = 3,
+                ['width'] = 10,
+                ['height'] = 1
+            }
         },
         ['portals'] = {
-
+            
         },
         ['bgm'] = '',
         ['mobs'] = {
@@ -342,7 +508,54 @@ ROOM_DEFS = {
     },
     ['tree-top'] = {
         ['blocks'] = {
-
+            [1] = {
+                ['x'] = 1,
+                ['y'] = 10,
+                ['width'] = MAP_WIDTH,
+                ['height'] = 1
+            },
+            [2] = {
+                ['x'] = 4, 
+                ['y'] = 8, 
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [3] = {
+                ['x'] = 15,
+                ['y'] = 8,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [4] = {
+                ['x'] = 8,
+                ['y'] = 7,
+                ['width'] = 6,
+                ['height'] = 1
+            },
+            [5] = {
+                ['x'] = 7,
+                ['y'] = 5,
+                ['width'] = 3,
+                ['height'] = 1
+            },
+            [6] = {
+                ['x'] = 12,
+                ['y'] = 5,
+                ['width'] = 3,
+                ['height'] = 1 
+            },
+            [7] = {
+                ['x'] = 1,
+                ['y'] = 3,
+                ['width'] = 7,
+                ['height'] = 1 
+            },
+            [8] = {
+                ['x'] = 14,
+                ['y'] = 3,
+                ['width'] = 7,
+                ['height'] = 1 
+            }
         },
         ['portals'] = {
 
