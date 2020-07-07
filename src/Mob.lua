@@ -6,16 +6,16 @@
     cogden@cs50.harvard.edu
 ]]
 
-Snail = Class{__includes = Entity}
+Mob = Class{__includes = Entity}
 
-function Snail:init(def)
+function Mob:init(def)
     Entity.init(self, def)
     -- self.hitbox = Hitbox(self.x + 24, self.y + 12, self.width, self.height)
     self.dy = 0
     self.dx = 0
 end
 
-function Snail:update(dt)
+function Mob:update(dt)
     Entity.update(self, dt)
     -- self.hitbox:update(self.x + 24, self.y + 12)
 end
@@ -24,7 +24,7 @@ end
 --     self.hitbox:collides(target)
 -- end
 
-function Snail:checkObjectCollisions()
+function Mob:checkObjectCollisions()
     -- local collidedObjects = {}
 
     -- for k, object in pairs(self.level.objects) do
@@ -42,7 +42,7 @@ function Snail:checkObjectCollisions()
     self.hitbox:checkObjectCollisions(self.level)
 end
 
-function Snail:render()
+function Mob:render()
     Entity.render(self)
     self.hitbox:render()
     -- love.graphics.setColor(255, 0, 255, 255)

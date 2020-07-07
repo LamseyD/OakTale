@@ -56,7 +56,7 @@ require 'graphics/Mobs/Pig/pig'
 --entities
 require 'src/Entity'
 require 'src/Player'
-require 'src/Snail'
+require 'src/Mob'
 require 'src/entity_defs'
 require 'src/Hitbox'
 
