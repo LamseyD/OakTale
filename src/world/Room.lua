@@ -41,11 +41,10 @@ function Room:spawnEnemies()
                 if self.tileMap.tiles[y][x].id == TILE_ID_GROUND then
                     groundFound = true
                     -- random chance, 1 in 20
-                    if math.random(10) == 1 then                   
+                    if math.random(5) == 1 then                   
                         -- instantiate snail, declaring in advance so we can pass it into state machine
                         local snail
                         local mob = mobKeys[math.random(#mobKeys)]
-                        print(mob)
 			            snail = Snail{
 	   		                animations = ENTITY_DEFS[mob].animations,
 			                walkSpeed = ENTITY_DEFS[mob].walkSpeed,

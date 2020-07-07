@@ -51,6 +51,7 @@ require 'graphics/character/character-1/char-1'
 require 'graphics/character/character-2/char-2'
 require 'graphics/Mobs/Snail/snail'
 require 'graphics/Mobs/Stump/stump'
+require 'graphics/Mobs/Pig/pig'
 
 --entities
 require 'src/Entity'
@@ -60,8 +61,18 @@ require 'src/entity_defs'
 require 'src/Hitbox'
 
 mobs = {
-    ['snail'] = SNAIL, 
-    ['stump'] = STUMP
+    ['snail'] = {
+        mob = SNAIL, 
+        states = {"die1_","hit1_","move_","stand_"}
+    }, 
+    ['stump'] = {
+        mob = STUMP, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['pig'] = {
+        mob = PIG, 
+        states = {"die1_","hit1_","jump_","move_","stand_"}
+    }
 }
 
 mobKeys = {}
@@ -81,7 +92,6 @@ gTextures = {
     ['toppers'] = love.graphics.newImage('graphics/map/tile_tops.png'),
     ['character-1'] = love.graphics.newImage('graphics/character/character-1/char-1.png'),
     ['character-2'] = love.graphics.newImage('graphics/character/character-2/char-2.png'),
-    ['snail'] = love.graphics.newImage('graphics/Mobs/Snail/snail.png'),
     ['portal'] = love.graphics.newImage('graphics/map/portal.png')
 }
 
@@ -91,13 +101,12 @@ gFrames = {
     ['toppers'] = GenerateQuads(gTextures['toppers'], 16, 16),
     ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
     ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2),
-    ['snail'] = GenerateCharacterQuads(gTextures['snail'], SNAIL, {"die1_","hit1_","move_","stand_"}, 8),
     ['portal'] = GenerateQuads(gTextures['portal'], 250, 470)
 }
 
 for name, mob in pairs(mobs) do
     gTextures[name] = love.graphics.newImage('graphics/Mobs/'..(name:gsub("^%l", string.upper))..'/'..name..'.png')
-    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob, {"die1_","hit1_","move_","stand_"}, 8)
+    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob.mob, mob.states, 8)
 end
 
 gFrames['tilesets'] = GenerateTileSets(gFrames['tiles'], 
