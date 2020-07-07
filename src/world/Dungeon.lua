@@ -14,7 +14,7 @@ function Dungeon:init(player)
     -- possible create a function to generate all rooms at the beginning?
 
     -- current room we're operating in
-    self.currentRoom = Room(self.player, ROOM_DEFS['road-to-main-1'])
+    self.currentRoom = Room(self.player, ROOM_DEFS['tree-top'])
     gSounds['title']:stop()
     gSounds[ROOM_DEFS['main']['bgm']]:play()
     self.currentRoom:spawnEnemies()

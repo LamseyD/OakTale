@@ -65,11 +65,15 @@ ROOM_DEFS = {
             },
             [2] = {
                 ['x'] = 1195,
-                ['y'] = 515
+                ['y'] = 515,
+                ['connected_map'] = 'back-side-1',
+                ['connected_portal'] = 1
             },
             [3] = {
                 ['x'] = VIRTUAL_WIDTH / 2 - 31,
-                ['y'] = 387
+                ['y'] = 387,
+                ['connected_map'] = 'tree-trunk-1',
+                ['connected_portal'] = 1
             }
         },
         ['bgm'] = 'henesys',
@@ -121,16 +125,18 @@ ROOM_DEFS = {
             [1] = {
                 ['x'] = 25,
                 ['y'] = 450,
-                ['connected_map'] = 'test',
+                ['connected_map'] = 'road-to-main-2',
                 ['connected_portal'] = 2
             },
             [2] = {
                 ['x'] = 1195,
-                ['y'] = 385
+                ['y'] = 385,
+                ['connected_map'] = 'main',
+                ['connected_portal'] = 1
             }
         },
         ['bgm'] = 'rest-n-peace',
-        ['background'] = 'maple-island',
+        ['background'] = 'road-to-hene',
         ['mobs'] = {
 
         }
@@ -172,18 +178,19 @@ ROOM_DEFS = {
             [1] = {
                 ['x'] = 20,
                 ['y'] = 130,
-                ['connected_map'] = 'test',
+                ['connected_map'] = 'praire',
                 ['connected_portal'] = 2
             },
             [2] = {
                 ['x'] = 1195,
                 ['y'] = 515,
-                ['connected_map'] = 'test',
-                ['connected_portal'] = 2
+                ['connected_map'] = 'road-to-main-1',
+                ['connected_portal'] = 1
             }
 
         },
         ['bgm'] = 'rest-n-peace',
+        ['background'] = 'road-to-hene',
         ['mobs'] = {
             
         }
@@ -249,8 +256,8 @@ ROOM_DEFS = {
             [1] = {
                 ['x'] = 1195,
                 ['y'] = 450,
-                ['connected_map'] = 'test',
-                ['connected_portal'] = 2
+                ['connected_map'] = 'road-to-main-1',
+                ['connected_portal'] = 1
             }
         },
         ['background'] = 'maple-island',
@@ -278,12 +285,30 @@ ROOM_DEFS = {
                 ['y'] = 7,
                 ['width'] = 4,
                 ['height'] = 3
+            },
+            [4] = {
+                ['x'] = 16,
+                ['y'] = 8,
+                ['width'] = 1,
+                ['height'] = 2
             }
         },
         ['portals'] = {
-
+            [1] = {
+                ['x'] = 20,
+                ['y'] = 325,
+                ['connected_map'] = 'main',
+                ['connected_portal'] = 2
+            },
+            [2] = {
+                ['x'] = 1195,
+                ['y'] = 260,
+                ['connected_map'] = 'back-side-2',
+                ['connected_portal'] = 1
+            }
         },
         ['bgm'] = '',
+        ['background'] = 'back-side-1',
         ['mobs'] = {
             
         }
@@ -322,9 +347,21 @@ ROOM_DEFS = {
             }
         },
         ['portals'] = {
-
+            [1] = {
+                ['x'] = 20,
+                ['y'] = 325,
+                ['connected_map'] = 'back-side-1',
+                ['connected_portal'] = 2
+            },
+            [2] = {
+                ['x'] = 1195,
+                ['y'] = 325,
+                ['connected_map'] = 'hidden-woods',
+                ['connected_portal'] = 1
+            }
         },
         ['bgm'] = '',
+        ['background'] = 'back-side-2',
         ['mobs'] = {
             
         }
@@ -399,9 +436,15 @@ ROOM_DEFS = {
             }
         },
         ['portals'] = {
-
+            [1] = {
+                ['x'] = 20,
+                ['y'] = 515,
+                ['connected_map'] = 'back-side-2',
+                ['connected_portal'] = 2
+            }
         },
         ['bgm'] = '',
+        ['background'] = 'sleepywoods',
         ['mobs'] = {
             
         }
@@ -446,9 +489,21 @@ ROOM_DEFS = {
             }
         },
         ['portals'] = {
-
+            [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 385,
+                ['connected_map'] = 'main',
+                ['connected_portal'] = 3
+            },
+            [2] = {
+                ['x'] = 215,
+                ['y'] = 5,
+                ['connected_map'] = 'tree-trunk-2',
+                ['connected_portal'] = 2
+            }
         },
         ['bgm'] = '',
+        ['background'] = 'tree-trunk',
         ['mobs'] = {
             
         }
@@ -496,12 +551,30 @@ ROOM_DEFS = {
                 ['y'] = 3,
                 ['width'] = 10,
                 ['height'] = 1
+            },
+            [8] = {
+                ['x'] = 3,
+                ['y'] = 3,
+                ['width'] = 3,
+                ['height'] = 1
             }
         },
         ['portals'] = {
-            
+            [1] = {
+                ['x'] = 200,
+                ['y'] = 5,
+                ['connected_map'] = 'tree-top',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 450,
+                ['connected_map'] = 'tree-trunk-1',
+                ['connected_portal'] = 2
+            }
         },
         ['bgm'] = '',
+        ['background'] = 'tree-trunk',
         ['mobs'] = {
             
         }
@@ -510,57 +583,63 @@ ROOM_DEFS = {
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,
-                ['y'] = 10,
+                ['y'] = 11,
                 ['width'] = MAP_WIDTH,
                 ['height'] = 1
             },
             [2] = {
                 ['x'] = 4, 
-                ['y'] = 8, 
+                ['y'] = 9, 
                 ['width'] = 3,
                 ['height'] = 1
             },
             [3] = {
                 ['x'] = 15,
-                ['y'] = 8,
+                ['y'] = 9,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [4] = {
                 ['x'] = 8,
-                ['y'] = 7,
+                ['y'] = 8,
                 ['width'] = 6,
                 ['height'] = 1
             },
             [5] = {
                 ['x'] = 7,
-                ['y'] = 5,
+                ['y'] = 6,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [6] = {
                 ['x'] = 12,
-                ['y'] = 5,
+                ['y'] = 6,
                 ['width'] = 3,
                 ['height'] = 1 
             },
             [7] = {
                 ['x'] = 1,
-                ['y'] = 3,
+                ['y'] = 4,
                 ['width'] = 7,
                 ['height'] = 1 
             },
             [8] = {
                 ['x'] = 14,
-                ['y'] = 3,
+                ['y'] = 4,
                 ['width'] = 7,
                 ['height'] = 1 
             }
         },
         ['portals'] = {
-
+            [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 515,
+                ['connected_map'] = 'tree-trunk-2',
+                ['connected_portal'] = 1
+            }
         },
         ['bgm'] = '',
+        ['background'] = 'tree-top',
         ['mobs'] = {
             
         }

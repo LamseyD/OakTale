@@ -87,7 +87,14 @@ gTextures = {
 
 gBackgrounds = {
     ['hene-bg'] = love.graphics.newImage('graphics/misc/hene-background.png'),
-    ['maple-island'] = love.graphics.newImage('graphics/map/maple-island.png')
+    ['maple-island'] = love.graphics.newImage('graphics/map/maple-island.png'),
+    ['road-to-hene'] = love.graphics.newImage('graphics/map/road-to-hene-bg.png'),
+    ['praire'] = love.graphics.newImage('graphics/map/praire.png'),
+    ['sleepywoods'] = love.graphics.newImage('graphics/map/Sleepywoods.png'),
+    ['back-side-1'] = love.graphics.newImage('graphics/map/back-side-1.png'),
+    ['back-side-2'] = love.graphics.newImage('graphics/map/back-side-2.png'),
+    ['tree-trunk'] = love.graphics.newImage('graphics/map/tree-trunk.png'),
+    ['tree-top'] = love.graphics.newImage('graphics/map/tree-top.png')
 }
 
 gFrames = {
