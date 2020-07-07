@@ -92,5 +92,43 @@ ENTITY_DEFS = {
                 looping = false
             }
         }
+    },
+    ['stump'] = {	
+        walkSpeed = SNAIL_WALK_SPEED,
+	    width = 64,
+	    height = 51,
+        baseHP = 2,
+        baseATK = 0,
+        baseDEF = 0,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3},
+                interval = 0.10,
+                texture = 'stump',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {4},
+                interval = 0.5,
+                texture = 'stump',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {5, 6, 7, 8},
+                interval = 0.10,
+                texture = 'stump',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {9},
+                interval = 0.18,
+                texture = 'stump',
+                looping = false
+            }
+        }
     }
 }

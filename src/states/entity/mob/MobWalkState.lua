@@ -6,19 +6,19 @@
     cogden@cs50.harvard.edu
 ]]
 
-SnailWalkState = Class{__includes = EntityWalkState}
+MobWalkState = Class{__includes = EntityWalkState}
 
-function SnailWalkState:init(snail, tileMap)
-    self.entity = snail
+function MobWalkState:init(snail, tileMap)
+    EntityWalkState.init(self, snail, tileMap)
+    --self.entity = snail
     self.tileMap = tileMap
-    self.entity:changeAnimation('walk')
+    --self.entity:changeAnimation('walk')
     -- render offset for spaced character sprite; negated in render function of state
-    self.entity.offsetY = 0
+    --self.entity.offsetY = 0
     self.entity.direction = math.random(2) == 1 and 'left' or 'right'
-    print(self.entity.direction)
 end
 
-function SnailWalkState:update(dt)
+function MobWalkState:update(dt)
     local tileBottomRight = self.tileMap:pointToTile(self.entity.x + self.entity.width - 1, self.entity.y + self.entity.height)
     local tileBottomLeft = self.tileMap:pointToTile(self.entity.x - 1, self.entity.y + self.entity.height)
     if self.entity.direction == 'left' and (not tileBottomLeft or not tileBottomLeft:collidable()) then
@@ -32,7 +32,7 @@ function SnailWalkState:update(dt)
     EntityWalkState.processAI(self, {room = tileMap}, dt)
 end
 
-function SnailWalkState:render()
+function MobWalkState:render()
     local anim = self.entity.currentAnimation
     local extra_offset_X = 0
     local direction_offset_X = 0

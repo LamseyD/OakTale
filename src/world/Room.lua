@@ -46,21 +46,23 @@ function Room:spawnEnemies()
                     if math.random(10) == 1 then                   
                         -- instantiate snail, declaring in advance so we can pass it into state machine
                         local snail
+                        local mob = mobKeys[math.random(#mobKeys)]
+                        print(mob)
 			            snail = Snail{
-	   		                animations = ENTITY_DEFS['snail'].animations,
-			                walkSpeed = ENTITY_DEFS['snail'].walkSpeed,
-                            texture = 'snail',
-                            width = ENTITY_DEFS['snail'].width,
-                            height = ENTITY_DEFS['snail'].height,
-                            x = x * TILE_SIZE - ENTITY_DEFS['snail'].width,
-                            y = (y - 1) * TILE_SIZE - ENTITY_DEFS['snail'].height,
+	   		                animations = ENTITY_DEFS[mob].animations,
+			                walkSpeed = ENTITY_DEFS[mob].walkSpeed,
+                            texture = mob,
+                            width = ENTITY_DEFS[mob].width,
+                            height = ENTITY_DEFS[mob].height,
+                            x = x * TILE_SIZE - ENTITY_DEFS[mob].width,
+                            y = (y - 1) * TILE_SIZE - ENTITY_DEFS[mob].height,
 			                hitbox_offsetX = 0,
 			                hitbox_offsetY = 0
                         }
                         snail.level = self.level
                         snail.stateMachine = StateMachine{
-                            ['stand'] = function() return EntityStandState(snail, self.tileMap) end,
-                            ['walk'] = function() return EntityWalkState(snail, self.tileMap) end
+                            ['stand'] = function() return MobStandState(snail, self.tileMap) end,
+                            ['walk'] = function() return MobWalkState(snail, self.tileMap) end
                           --    ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
                         }
                         snail:changeState('walk' --,{wait = math.random(5)}

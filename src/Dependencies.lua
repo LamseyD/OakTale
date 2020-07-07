@@ -43,13 +43,14 @@ require 'src/states/entity/player/PlayerStandState'
 require 'src/states/entity/player/PlayerFallingState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerProneState'
-require 'src/states/entity/snail/SnailStandState'
-require 'src/states/entity/snail/SnailWalkState'
+require 'src/states/entity/mob/MobStandState'
+require 'src/states/entity/mob/MobWalkState'
 
 --graphics
 require 'graphics/character/character-1/char-1'
 require 'graphics/character/character-2/char-2'
 require 'graphics/Mobs/Snail/snail'
+require 'graphics/Mobs/Stump/stump'
 
 --entities
 require 'src/Entity'
@@ -57,6 +58,16 @@ require 'src/Player'
 require 'src/Snail'
 require 'src/entity_defs'
 require 'src/Hitbox'
+
+mobs = {
+    ['snail'] = SNAIL, 
+    ['stump'] = STUMP
+}
+
+mobKeys = {}
+for k, v in pairs(mobs) do
+    mobKeys[#mobKeys+1] = k
+end
 
 gTextures = {  
     -- hold texture files
@@ -88,6 +99,11 @@ gFrames = {
     ['snail'] = GenerateCharacterQuads(gTextures['snail'], SNAIL, {"die1_","hit1_","move_","stand_"}, 8),
     ['portal'] = GenerateQuads(gTextures['portal'], 250, 470)
 }
+
+for name, mob in pairs(mobs) do
+    gTextures[name] = love.graphics.newImage('graphics/Mobs/'..(name:gsub("^%l", string.upper))..'/'..name..'.png')
+    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob, {"die1_","hit1_","move_","stand_"}, 8)
+end
 
 gFrames['tilesets'] = GenerateTileSets(gFrames['tiles'], 
     TILE_SETS_WIDE, TILE_SETS_TALL, TILE_SET_WIDTH, TILE_SET_HEIGHT)
