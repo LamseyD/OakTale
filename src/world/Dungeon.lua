@@ -7,14 +7,16 @@ function Dungeon:init(player)
     -- container use to store rooms in a static dungeon
     self.rooms = {}
 
-    -- for i, item in pairs(ROOM_DEFS) do
-    --     table.insert()
-    -- end
+    for i, item in pairs(ROOM_DEFS) do
+        -- local temp_room = Room(self.player, item)
+        -- table.insert(self.rooms, temp_room)
+        self.rooms[i] = Room(self.player, item)
+    end
 
     -- possible create a function to generate all rooms at the beginning?
 
     -- current room we're operating in
-    self.currentRoom = Room(self.player, ROOM_DEFS['tree-top'])
+    self.currentRoom = self.rooms['main']
     gSounds['title']:stop()
     gSounds[ROOM_DEFS['main']['bgm']]:play()
     self.currentRoom:spawnEnemies()
@@ -44,7 +46,37 @@ end
 -- end
 
 function Dungeon:update(dt)
-    
+    for i, item in pairs(self.currentRoom.level.portals) do
+        if self.player:collides(item) and love.keyboard.wasPressed('up') then
+            gStateStack:push(FadeInState({
+                r = 1, g = 1, b = 1
+            }, 1,
+            function()
+                -- gSounds['intro-music']:stop()
+                -- self.tween:remove(   
+
+                local temp_x = self.rooms[item.connected_map].level.portals[item.connected_portal].x
+                local temp_y =  self.rooms[item.connected_map].level.portals[item.connected_portal].y
+                self.currentRoom = self.rooms[item.connected_map]
+                self.player.level = self.currentRoom.level
+                self.player.x = temp_x
+                self.player.hitbox.x = temp_x
+                self.player.y = temp_y + 50
+                self.player.hitbox.y = temp_y + 50
+                self.currentRoom:spawnEnemies()
+                -- self.player.x = self.currentRoom.level.portals[item.connected_portal].x 
+                -- self.player.y = self.currentRoom.level.portals[item.connected_portal].y + 20
+                -- self.player.hitbox.x = self.currentRoom.level.portals[item.connected_portal].x
+                -- self.player.hitbox.y = self.currentRoom.level.portals[item.connected_portal].y + 20
+                self.player:changeState('falling')
+                gStateStack:push(FadeOutState({
+                    r = 1, g = 1, b = 1
+                }, 1,
+                function() end))
+            end))
+        end
+    end
+
     -- pause updating if we're in the middle of shifting
     if not self.shifting then    
         self.currentRoom:update(dt)
@@ -54,24 +86,7 @@ function Dungeon:update(dt)
         self.player.currentAnimation:update(dt)
     end
 
-    for i, item in pairs(self.currentRoom.level.objects) do
-        if self.player:collides(item) and item.type == 'portal' and love.keyboard.wasPressed('up') then
-            gStateStack:push(FadeInState({
-                r = 1, g = 1, b = 1
-            }, 1,
-            function()
-                -- gSounds['intro-music']:stop()
-                -- self.tween:remove(                
-                self.currentRoom = Room(self.player, ROOM_DEFS['test'])
-                self.player.level = self.currentRoom.level
-                self.player:changeState('falling')
-                gStateStack:push(FadeOutState({
-                    r = 1, g = 1, b = 1
-                }, 1,
-                function() end))
-            end))
-        end
-    end
+    
 end
 
 function Dungeon:render()

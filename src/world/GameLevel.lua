@@ -10,10 +10,11 @@
 
 GameLevel = Class{}
 
-function GameLevel:init(entities, objects, tilemap)
+function GameLevel:init(entities, objects, tilemap, portals)
     self.entities = entities
     self.objects = objects
     self.tileMap = tilemap
+    self.portals = portals
 end
 
 --[[
@@ -54,5 +55,13 @@ function GameLevel:render()
 
     for k, entity in pairs(self.entities) do
         entity:render()
+    end
+
+    for k, portal in pairs(self.portals) do
+        portal:render()
+        love.graphics.setColor(1,0,0,1)
+        love.graphics.print(portal.connected_map .. '-'.. portal.connected_portal, portal.x, portal.y-20)
+        love.graphics.print(k, portal.x, portal.y + 20)
+        love.graphics.setColor(1,1,1,1)
     end
 end

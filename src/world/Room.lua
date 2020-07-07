@@ -6,8 +6,20 @@ function Room:init(player, def)
     self.level = LevelMaker.generate(def)
     self.tileMap = self.level.tileMap
     self.player = player
-    -- to be added
+
     self.background = def.background
+end
+
+function Room:enter()
+
+end
+
+function Room:exit()
+
+end
+
+function Room:change()
+
 end
 
 function Room:update(dt)
