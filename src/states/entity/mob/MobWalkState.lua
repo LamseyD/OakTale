@@ -19,8 +19,8 @@ function MobWalkState:init(snail, tileMap)
 end
 
 function MobWalkState:update(dt)
-    local tileBottomRight = self.tileMap:pointToTile(self.entity.x + self.entity.width - 1, self.entity.y + self.entity.height)
-    local tileBottomLeft = self.tileMap:pointToTile(self.entity.x - 1, self.entity.y + self.entity.height)
+    local tileBottomRight = self.tileMap:pointToTile(self.entity.hitbox.x + self.entity.hitbox.width - 1, self.entity.hitbox.y + self.entity.hitbox.height)
+    local tileBottomLeft = self.tileMap:pointToTile(self.entity.hitbox.x - 1, self.entity.hitbox.y + self.entity.hitbox.height)
     if self.entity.direction == 'left' and (not tileBottomLeft or not tileBottomLeft:collidable()) then
         self.entity.direction = 'right'
     elseif self.entity.direction == 'right' and (not tileBottomRight or not tileBottomRight:collidable()) then

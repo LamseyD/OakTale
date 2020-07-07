@@ -53,7 +53,7 @@ function EntityWalkState:update(dt)
         self.entity.hitbox.x = self.entity.hitbox.x + self.entity.walkSpeed * dt
 
         if self.entity.hitbox.x + self.entity.hitbox.width >= VIRTUAL_WIDTH then
-            self.entity.hitbox.x = VIRTUAL_WIDTH
+            self.entity.hitbox.x = VIRTUAL_WIDTH - self.entity.hitbox.width
             self.bumped = true
         end
     end

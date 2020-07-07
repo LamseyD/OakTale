@@ -130,5 +130,49 @@ ENTITY_DEFS = {
                 looping = false
             }
         }
+    },
+    ['pig'] = {	
+        walkSpeed = PIG_WALK_SPEED,
+	    width = 68,
+	    height = 44,
+        baseHP = 2,
+        baseATK = 0,
+        baseDEF = 0,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3},
+                interval = 0.10,
+                texture = 'pig',
+                looping = true
+            },
+            ['hit'] = {
+                frames = {4},
+                interval = 0.5,
+                texture = 'pig',
+                looping = false
+            },
+            ['jump'] = {
+                frames = {5},
+                interval = 0.5,
+                texture = 'pig',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {6, 7, 8},
+                interval = 0.10,
+                texture = 'pig',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {9, 10, 11},
+                interval = 0.18,
+                texture = 'pig',
+                looping = true
+            }
+        }
     }
 }
