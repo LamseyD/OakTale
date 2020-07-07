@@ -85,19 +85,3 @@ function PlayState:render()
 --     love.graphics.setColor(255, 255, 255, 255)
 --     love.graphics.print(tostring(self.player.score), 4, 4)
 end
-
--- function PlayState:updateCamera()
---     -- clamp movement of the camera's X between 0 and the map bounds - virtual width,
---     -- setting it half the screen to the left of the player so they are in the center
---     -- self.camX = math.max(0,
---     --     math.min(TILE_SIZE * self.tileMap.width - VIRTUAL_WIDTH,
---     --     self.player.x - (VIRTUAL_WIDTH / 2 - 8)))
-
---     -- adjust background X to move a third the rate of the camera for parallax
---     self.backgroundX = (self.camX / 3) % 256
---     self.backgroundY = (self.camY / 3) % 256
--- end
-
---[[
-    Adds a series of enemies to the level randomly.
-]]

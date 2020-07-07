@@ -7,14 +7,16 @@ function Dungeon:init(player)
     -- container use to store rooms in a static dungeon
     self.rooms = {}
 
-    -- for i, item in pairs(ROOM_DEFS) do
-    --     table.insert()
-    -- end
+    for i, item in pairs(ROOM_DEFS) do
+        -- local temp_room = Room(self.player, item)
+        -- table.insert(self.rooms, temp_room)
+        self.rooms[i] = Room(self.player, item)
+    end
 
     -- possible create a function to generate all rooms at the beginning?
 
     -- current room we're operating in
-    self.currentRoom = Room(self.player, ROOM_DEFS['tree-top'])
+    self.currentRoom = self.rooms['main']
     gSounds['title']:stop()
     gSounds[ROOM_DEFS['main']['bgm']]:play()
     self.currentRoom:spawnEnemies()

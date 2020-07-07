@@ -10,6 +10,18 @@ function Room:init(player, def)
     self.background = def.background
 end
 
+function Room:enter()
+
+end
+
+function Room:exit()
+
+end
+
+function Room:change()
+
+end
+
 function Room:update(dt)
     self.player:update(dt)
     for i, item in pairs(self.level.objects) do

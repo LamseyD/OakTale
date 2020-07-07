@@ -10,10 +10,11 @@
 
 GameLevel = Class{}
 
-function GameLevel:init(entities, objects, tilemap)
+function GameLevel:init(entities, objects, tilemap, portals)
     self.entities = entities
     self.objects = objects
     self.tileMap = tilemap
+    self.portals = portals
 end
 
 --[[
@@ -54,5 +55,9 @@ function GameLevel:render()
 
     for k, entity in pairs(self.entities) do
         entity:render()
+    end
+
+    for k, portal in pairs(self.portals) do
+        portal:render()
     end
 end
