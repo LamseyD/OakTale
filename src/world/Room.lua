@@ -6,6 +6,8 @@ function Room:init(player, def)
     self.level = LevelMaker.generate(def)
     self.tileMap = self.level.tileMap
     self.player = player
+    -- to be added
+    self.background = def.background
 end
 
 function Room:update(dt)
@@ -19,9 +21,9 @@ function Room:update(dt)
 end
 
 function Room:render()
-    love.graphics.draw(gTextures['hene-bg'], 0,0,0,
-        VIRTUAL_WIDTH / gTextures['hene-bg']:getWidth(),
-        VIRTUAL_HEIGHT / gTextures['hene-bg']:getHeight()
+    love.graphics.draw(gBackgrounds[self.background], 0,0,0,
+        VIRTUAL_WIDTH / gBackgrounds[self.background]:getWidth(),
+        VIRTUAL_HEIGHT / gBackgrounds[self.background]:getHeight()
     )
     self.level:render()
     self.player:render()
