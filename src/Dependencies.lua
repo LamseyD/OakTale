@@ -22,6 +22,7 @@ require 'src/world/Dungeon'
 require 'src/world/GameLevel'
 require 'src/world/GameObject'
 require 'src/world/Object_defs'
+require 'src/world/Portal'
 
 --states
 require 'src/states/BaseState'

@@ -59,5 +59,9 @@ function GameLevel:render()
 
     for k, portal in pairs(self.portals) do
         portal:render()
+        love.graphics.setColor(1,0,0,1)
+        love.graphics.print(portal.connected_map .. '-'.. portal.connected_portal, portal.x, portal.y-20)
+        love.graphics.print(k, portal.x, portal.y + 20)
+        love.graphics.setColor(1,1,1,1)
     end
 end

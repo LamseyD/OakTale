@@ -51,7 +51,7 @@ function LevelMaker.generate(def) -- pass in tileset topperset, pass in room def
     
     if def['portals'] then
         for j, item in pairs(def['portals']) do
-            table.insert(portals, GameObject(GAME_OBJECT_DEFS['portal'], item['x'], item['y']))
+            table.insert(portals, Portal({def = GAME_OBJECT_DEFS['portal'], x = item['x'], y = item['y']}, {map = item['connected_map'], portal = item['connected_portal']}))
         end
     end
     
