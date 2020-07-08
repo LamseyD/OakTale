@@ -106,8 +106,6 @@ function PlayerAttackState:update(dt)
         end
     end
 
-
-
     -- -- check if hitbox collides with any entities in the scene
     for k, entity in pairs(self.dungeon.currentRoom.level.entities) do
         if entity:collides(self.swordHitbox) then

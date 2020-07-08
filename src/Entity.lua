@@ -26,7 +26,7 @@ function Entity:init(def)
 
     self.walkSpeed = def.walkSpeed
 
-    self.health = def.health
+    self.health = def.baseHP
     self.baseATK = def.baseATK
 
     -- flags for flashing the entity when hit

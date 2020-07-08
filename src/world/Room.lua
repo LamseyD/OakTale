@@ -111,8 +111,7 @@ function Room:spawnEnemies()
                         ['walk'] = function() return MobWalkState(mob, self.tileMap) end
                         --    ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
                     }
-                    mob:changeState('walk' --,{wait = math.random(5)}
-                    )
+                    mob:changeState('walk')
                     table.insert(self.level.entities, mob)
                 end
             elseif self.tileMap.tiles[y][x].id == TILE_ID_EMPTY then
