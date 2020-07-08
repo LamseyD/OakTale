@@ -29,4 +29,7 @@ function PlayerStandState:update(dt)
         self.entity:changeState('prone')
     end
 
+    if love.keyboard.wasPressed('c') then
+        self.entity:changeState('attack',{previous = 'stand'})
+    end
 end
