@@ -6,7 +6,8 @@ function Room:init(player, def)
     self.level = LevelMaker.generate(def)
     self.tileMap = self.level.tileMap
     self.player = player
-
+    self.bgm = def.bgm
+    -- gSounds[self.bgm]:setLooping(true)
     self.background = def.background
 end
 

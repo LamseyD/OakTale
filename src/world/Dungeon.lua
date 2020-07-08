@@ -19,6 +19,7 @@ function Dungeon:init(player)
     self.currentRoom = self.rooms['main']
     gSounds['title']:stop()
     gSounds[ROOM_DEFS['main']['bgm']]:play()
+    gSounds[ROOM_DEFS['main']['bgm']]:setLooping(true)
     self.currentRoom:spawnEnemies()
 
     -- room we're moving camera to during a shift; becomes active room afterwards
@@ -64,6 +65,12 @@ function Dungeon:update(dt)
                 self.player.y = temp_y + 50
                 self.player.hitbox.y = temp_y + 50
                 self.currentRoom:spawnEnemies()
+                if not gSounds[self.currentRoom.bgm]:isPlaying() then
+                    love.audio.pause()
+                    gSounds[self.currentRoom.bgm]:seek(0)
+                end
+                gSounds[self.currentRoom.bgm]:play()
+                gSounds[self.currentRoom.bgm]:setLooping(true)
                 -- self.player.x = self.currentRoom.level.portals[item.connected_portal].x 
                 -- self.player.y = self.currentRoom.level.portals[item.connected_portal].y + 20
                 -- self.player.hitbox.x = self.currentRoom.level.portals[item.connected_portal].x

@@ -261,7 +261,7 @@ ROOM_DEFS = {
             }
         },
         ['background'] = 'maple-island',
-        ['bgm'] = '',
+        ['bgm'] = 'lith-harbor',
         ['mobs'] = {
             
         }
@@ -307,7 +307,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'backside-1',
         ['background'] = 'back-side-1',
         ['mobs'] = {
             
@@ -360,7 +360,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'backside-2',
         ['background'] = 'back-side-2',
         ['mobs'] = {
             
@@ -443,7 +443,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'sleepywood',
         ['background'] = 'sleepywoods',
         ['mobs'] = {
             
@@ -502,7 +502,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
             
@@ -573,7 +573,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
             
@@ -638,7 +638,7 @@ ROOM_DEFS = {
                 ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
+        ['bgm'] = 'ellinia',
         ['background'] = 'tree-top',
         ['mobs'] = {
             

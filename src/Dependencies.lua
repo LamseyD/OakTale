@@ -140,5 +140,13 @@ gFonts = {
 gSounds = {
     -- hold music
     ['title'] = love.audio.newSource('sounds/title.mp3', 'static'),
-    ['henesys'] = love.audio.newSource('sounds/henesys.mp3', 'static')
+    ['henesys'] = love.audio.newSource('sounds/henesys.mp3', 'static'),
+    ['backside-1'] = love.audio.newSource('sounds/backside-1.mp3', 'static'),
+    ['backside-2'] = love.audio.newSource('sounds/backside-2.mp3', 'static'),
+    ['lith-harbor'] = love.audio.newSource('sounds/Lith-harbor.mp3', 'static'),
+    ['sleepywood'] = love.audio.newSource('sounds/sleepywood.mp3', 'static'),
+    ['tree-trunk'] = love.audio.newSource('sounds/tree-trunk.mp3', 'static'),
+    ['rest-n-peace'] = love.audio.newSource('sounds/rest-n-peace.mp3', 'static'),
+    ['ellinia'] = love.audio.newSource('sounds/ellinia.mp3', 'static')
+
 }
