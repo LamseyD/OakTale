@@ -39,6 +39,10 @@ function PlayerWalkState:update(dt)
     if love.keyboard.isDown('down') then
         self.entity:changeState('prone')
     end
+
+    if love.keyboard.wasPressed('c') then
+        self.entity:changeState('attack', {previous = 'stand'})
+    end
     
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)

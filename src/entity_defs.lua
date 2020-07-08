@@ -40,7 +40,7 @@ ENTITY_DEFS = {
             },
             ['attack'] = {
                 frames = {10,11,12},
-                interval = 0.10,
+                interval = 0.25,
                 texture = 'character-1',
                 looping = false
             },

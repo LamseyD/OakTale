@@ -13,6 +13,8 @@ function PlayState:init()
         walkSpeed = ENTITY_DEFS['char-1'].walkSpeed,
         x = VIRTUAL_WIDTH/2,
         y = VIRTUAL_HEIGHT/2,
+        health = ENTITY_DEFS['char-1'].baseHP,
+        baseATK = ENTITY_DEFS['char-1'].baseATK,
         width = ENTITY_DEFS['char-1'].width,
         height = ENTITY_DEFS['char-1'].height,
         health = ENTITY_DEFS['char-1'].health,

@@ -15,7 +15,7 @@ function MobWalkState:init(snail, tileMap)
     --self.entity:changeAnimation('walk')
     -- render offset for spaced character sprite; negated in render function of state
     --self.entity.offsetY = 0
-    self.entity.direction = math.random(2) == 1 and 'left' or 'right'
+    -- self.entity.direction = math.random(2) == 1 and 'left' or 'right'
 end
 
 function MobWalkState:update(dt)

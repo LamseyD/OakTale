@@ -28,8 +28,40 @@ function Room:update(dt)
     for i, item in pairs(self.level.objects) do
         item:update(dt)
     end
-    for i, item in pairs(self.level.entities) do
-        item:update(dt)
+
+    for i, entity in pairs(self.level.entities) do
+        -- -- local entity = self.entities[i]
+        -- for x, tmp in pairs(self.objects) do
+        --     if tmp.fired then
+        --         if entity:collides(tmp) then
+        --             entity.health = 0
+        --             tmp.fired = false
+        --             tmp.state = 'broken'
+        --             tmp.solid = true
+        --         end
+        --     end
+        -- end
+        -- remove entity from the table if health is <= 0
+        if entity.health <= 0 then
+            entity.dead = true
+        elseif not entity.dead then
+            entity:update(dt)
+        end
+
+        -- collision between the player and entities in the room
+        if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
+            self.player:damage(1)
+            self.player:goInvulnerable(1.5)
+
+            if self.player.health == 0 then
+                -- gStateMachine:change('start') -- dead state?
+            end
+        end
+    
+        if entity.dead then
+            table.remove(self.level.entities, i)
+        end
+
     end
 end
 
@@ -65,6 +97,7 @@ function Room:spawnEnemies()
                         animations = ENTITY_DEFS[mobName].animations,
                         walkSpeed = ENTITY_DEFS[mobName].walkSpeed,
                         texture = mob,
+                        health = ENTITY_DEFS[mobName].baseHP,
                         width = ENTITY_DEFS[mobName].width,
                         height = ENTITY_DEFS[mobName].height,
                         x = x * TILE_SIZE - ENTITY_DEFS[mobName].width,

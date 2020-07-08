@@ -3,7 +3,7 @@ Entity = Class{}
 function Entity:init(def)
 
     -- in top-down games, there are four directions instead of two
-    self.direction = 'down'
+    self.direction = math.random(2) == 1 and 'left' or 'right'
 
     self.animations = self:createAnimations(def.animations)
 
@@ -27,6 +27,7 @@ function Entity:init(def)
     self.walkSpeed = def.walkSpeed
 
     self.health = def.health
+    self.baseATK = def.baseATK
 
     -- flags for flashing the entity when hit
     self.invulnerable = false

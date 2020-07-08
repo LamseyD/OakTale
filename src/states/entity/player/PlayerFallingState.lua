@@ -17,6 +17,10 @@ function PlayerFallingState:init(player, gravity)
 end
 
 function PlayerFallingState:update(dt)
+    if love.keyboard.wasPressed('c') then
+        self.player:changeState('attack', {previous = 'falling'})
+    end
+
     self.player.dy = self.player.dy + self.gravity
     self.player.hitbox.y = self.player.hitbox.y + (self.player.dy * dt)
 

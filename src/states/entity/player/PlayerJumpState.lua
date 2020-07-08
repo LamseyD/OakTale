@@ -21,6 +21,10 @@ function PlayerJumpState:enter(params)
 end
 
 function PlayerJumpState:update(dt)
+    if love.keyboard.wasPressed('c') then
+        self.player:changeState('attack', {previous = 'jump'})
+    end
+
     self.player.dy = self.player.dy + self.gravity
     self.player.hitbox.y = self.player.hitbox.y + (self.player.dy * dt)
     if self.player.direction == 'right' then
