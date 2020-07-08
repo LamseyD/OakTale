@@ -109,7 +109,14 @@ function PlayerAttackState:update(dt)
     -- -- check if hitbox collides with any entities in the scene
     for k, entity in pairs(self.dungeon.currentRoom.level.entities) do
         if entity:collides(self.swordHitbox) then
-            entity:damage(math.random(self.baseATK - 5, self.baseATK))
+            entity:damage(math.random(self.player.baseATK - entity.baseDEF, self.player.baseATK))
+            entity:goInvulnerable(0.5) -- should be knocked back
+            if entity.direction == 'right' then
+                --go into knocked back state here
+                entity.hitbox.x = math.min(VIRTUAL_WIDTH, entity.hitbox.x + 50)
+            else
+                entity.hitbox.x = math.max(1, entity.hitbox.x - 50)
+            end
             -- gSounds['hit-enemy']:play()
         end
     end
