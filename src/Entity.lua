@@ -28,6 +28,7 @@ function Entity:init(def)
 
     self.health = def.health
     self.baseATK = def.baseATK
+    self.baseDEF = def.baseDEF
 
     -- flags for flashing the entity when hit
     self.invulnerable = false
@@ -36,7 +37,7 @@ function Entity:init(def)
 
     -- timer for turning transparency on and off, flashing
     self.flashTimer = 0
-
+    self.blinking = false
     self.dead = false
 end
 
@@ -110,6 +111,12 @@ function Entity:update(dt)
             self.invulnerableTimer = 0
             self.invulnerableDuration = 0
             self.flashTimer = 0
+            self.blinking = false
+        end
+
+        if self.flashTimer > 0.10 then
+            self.flashTimer = 0
+            self.blinking = not self.blinking
         end
     end
 
@@ -126,11 +133,25 @@ function Entity:processAI(params, dt)
 end
 
 function Entity:render(adjacentOffsetX, adjacentOffsetY)
-    
+    local shader = love.graphics.newShader[[
+        extern float WhiteFactor;
+
+        vec4 effect(vec4 vcolor, Image tex, vec2 texcoord, vec2 pixcoord)
+        {
+            vec4 outputcolor = Texel(tex, texcoord) * vcolor;
+            outputcolor.rgb += vec3(WhiteFactor);
+            return outputcolor;
+        }
+        ]]
+
+    love.graphics.setShader(shader)
     -- draw sprite slightly transparent if invulnerable every 0.04 seconds
-    if self.invulnerable and self.flashTimer > 0.06 then
-        self.flashTimer = 0
+    if self.blinking then
         love.graphics.setColor(1, 1, 1, 64/255)
+        shader:send("WhiteFactor", 1)
+    else
+        love.graphics.setColor(1,1,1,1)
+        shader:send("WhiteFactor", 0)
     end
 
     self.x, self.y = self.x + (adjacentOffsetX or 0), self.y + (adjacentOffsetY or 0)
