@@ -13,6 +13,7 @@ function Mob:init(def)
     -- self.hitbox = Hitbox(self.x + 24, self.y + 12, self.width, self.height)
     self.dy = 0
     self.dx = 0
+    self.visibleHP = false
 end
 
 function Mob:update(dt)
@@ -45,7 +46,12 @@ end
 function Mob:render()
     Entity.render(self)
     self.hitbox:render()
-    -- love.graphics.setColor(255, 0, 255, 255)
-    -- love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
-    -- love.graphics.setColor(255, 255, 255, 255)
+    if self.visibleHP then
+       love.graphics.setColor(255, 255, 255, 50)
+       love.graphics.rectangle('fill', math.floor(self.x - self.offsetX), math.floor(self.y - self.offsetY + 1) - 40, self.width, 10)
+       love.graphics.setColor(255, 0, 0, 255)
+       love.graphics.rectangle('fill', math.floor(self.x - self.offsetX), math.floor(self.y - self.offsetY + 1) - 40, math.max(self.health, 0) * self.width/self.maxHealth, 10)
+       love.graphics.rectangle('line', math.floor(self.x - self.offsetX), math.floor(self.y - self.offsetY + 1) - 40, self.width, 10)
+       love.graphics.setColor(255, 255, 255, 255)
+    end
 end

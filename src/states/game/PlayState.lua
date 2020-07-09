@@ -13,7 +13,7 @@ function PlayState:init()
         walkSpeed = ENTITY_DEFS['char-1'].walkSpeed,
         x = VIRTUAL_WIDTH/2,
         y = VIRTUAL_HEIGHT/2,
-        health = ENTITY_DEFS['char-1'].baseHP,
+        baseHP = ENTITY_DEFS['char-1'].baseHP,
         baseATK = ENTITY_DEFS['char-1'].baseATK,
         baseDEF = ENTITY_DEFS['char-1'].baseDEF,
         width = ENTITY_DEFS['char-1'].width,
@@ -22,7 +22,6 @@ function PlayState:init()
         hitbox_offsetX = ENTITY_DEFS['char-1'].hitbox_offsetX,
         hitbox_offsetY = ENTITY_DEFS['char-1'].hitbox_offsetY
     }
-
     self.dungeon = Dungeon(self.player)
     -- self.current_room = Room(self.player)
     self.gravityOn = true

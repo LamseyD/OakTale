@@ -27,6 +27,7 @@ function Entity:init(def)
     self.walkSpeed = def.walkSpeed
 
     self.health = def.baseHP
+    self.maxHealth = def.baseHP
     self.baseATK = def.baseATK
     self.baseDEF = def.baseDEF
 
@@ -48,8 +49,8 @@ function Entity:createAnimations(animations)
         animationsReturned[k] = Animation {
             texture = animationDef.texture or 'entities',
             frames = animationDef.frames,
-            interval = animationDef.interval
-            -- looping = animationDef.looping
+            interval = animationDef.interval,
+            looping = animationDef.looping
         }
     end
 

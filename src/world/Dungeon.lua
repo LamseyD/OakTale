@@ -17,10 +17,10 @@ function Dungeon:init(player)
 
     -- current room we're operating in
     self.currentRoom = self.rooms['main']
+    self.currentRoom:spawnEnemies()
     gSounds['title']:stop()
     gSounds[ROOM_DEFS['main']['bgm']]:play()
     gSounds[ROOM_DEFS['main']['bgm']]:setLooping(true)
-    self.currentRoom:spawnEnemies()
 
     -- room we're moving camera to during a shift; becomes active room afterwards
     self.nextRoom = nil
