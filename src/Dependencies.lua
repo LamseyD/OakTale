@@ -48,6 +48,8 @@ require 'src/states/entity/player/PlayerAlertState'
 require 'src/states/entity/player/PlayerDeadState'
 require 'src/states/entity/mob/MobStandState'
 require 'src/states/entity/mob/MobWalkState'
+require 'src/states/entity/mob/MobDieState'
+require 'src/states/entity/mob/MobFallingState'
 
 --graphics
 require 'graphics/character/character-1/char-1'
@@ -139,8 +141,6 @@ gFonts = {
     ['title-medium'] = love.graphics.newFont('fonts/OrangeJuice/OrangeJuice.ttf', 64),
     ['title-large']  = love.graphics.newFont('fonts/OrangeJuice/OrangeJuice.ttf', 256)
 }
-
-
 
 gSounds = {
     -- hold music

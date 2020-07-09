@@ -42,25 +42,31 @@ function Room:update(dt)
         --     end
         -- end
         -- remove entity from the table if health is <= 0
-        if entity.health <= 0 then
-            entity.dead = true
-        elseif not entity.dead then
-            entity:update(dt)
-        end
-
-        -- collision between the player and entities in the room
-        if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
+        entity:update(dt)
+            -- collision between the player and entities in the room
+        if self.player:collides(entity) and not self.player.invulnerable and entity.health > 0 then
             self.player:damage(math.random(entity.baseATK))
+<<<<<<< HEAD
             self.player:changeState('alert')
+=======
+            self.player:goInvulnerable(1.5)
+            if self.player.direction == 'right' then 
+            self.player.hitbox.x = math.max(1, self.player.hitbox.x - 50)
+            elseif self.player.direction == 'left' then
+                self.player.hitbox.x = math.min(VIRTUAL_WIDTH, self.player.hitbox.x + 50)
+            end
+            self.player.hitbox.y = self.player.hitbox.y - 15
+            self.player:changeState('falling')
+>>>>>>> b57e45643810cd98d283889a1ab28eb8baa3cf8a
             if self.player.health == 0 then
                 gStateMachine:change('dead') -- dead state?
             end
         end
-    
-        if entity.dead then
+        if entity.dead and not entity.invulnerable then
             table.remove(self.level.entities, i)
+        elseif entity.health <= 0 then
+            entity:changeState('die')
         end
-
     end
 end
 
@@ -96,7 +102,7 @@ function Room:spawnEnemies()
                         animations = ENTITY_DEFS[mobName].animations,
                         walkSpeed = ENTITY_DEFS[mobName].walkSpeed,
                         texture = mob,
-                        health = ENTITY_DEFS[mobName].baseHP,
+                        baseHP = ENTITY_DEFS[mobName].baseHP,
                         baseATK = ENTITY_DEFS[mobName].baseATK,
                         baseDEF = ENTITY_DEFS[mobName].baseDEF,
                         width = ENTITY_DEFS[mobName].width,
@@ -109,11 +115,11 @@ function Room:spawnEnemies()
                     mob.level = self.level
                     mob.stateMachine = StateMachine{
                         ['stand'] = function() return MobStandState(mob, self.tileMap) end,
-                        ['walk'] = function() return MobWalkState(mob, self.tileMap) end
-                        --    ['chasing'] = function() return SnailChasingState(self.tileMap, self.player, snail) end
+                        ['walk'] = function() return MobWalkState(mob, self.tileMap) end,
+                        ['die'] = function() return MobDieState(mob) end,
+                        ['falling'] = function() return MobFallingState(mob, GRAVITY_AMOUNT) end
                     }
-                    mob:changeState('walk' --,{wait = math.random(5)}
-                    )
+                    mob:changeState('walk')
                     table.insert(self.level.entities, mob)
                 end
             elseif self.tileMap.tiles[y][x].id == TILE_ID_EMPTY then
