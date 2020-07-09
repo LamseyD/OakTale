@@ -44,6 +44,8 @@ require 'src/states/entity/player/PlayerStandState'
 require 'src/states/entity/player/PlayerFallingState'
 require 'src/states/entity/player/PlayerJumpState'
 require 'src/states/entity/player/PlayerProneState'
+require 'src/states/entity/player/PlayerAlertState'
+require 'src/states/entity/player/PlayerDeadState'
 require 'src/states/entity/mob/MobStandState'
 require 'src/states/entity/mob/MobWalkState'
 
@@ -93,7 +95,8 @@ gTextures = {
     ['toppers'] = love.graphics.newImage('graphics/map/tile_tops.png'),
     ['character-1'] = love.graphics.newImage('graphics/character/character-1/char-1.png'),
     ['character-2'] = love.graphics.newImage('graphics/character/character-2/char-2.png'),
-    ['portal'] = love.graphics.newImage('graphics/map/portal.png')
+    ['portal'] = love.graphics.newImage('graphics/map/portal.png'),
+    ['tomb'] = love.graphics.newImage('graphics/misc/tombstone.png')
 }
 
 gBackgrounds = {
@@ -107,6 +110,8 @@ gBackgrounds = {
     ['tree-trunk'] = love.graphics.newImage('graphics/map/tree-trunk.png'),
     ['tree-top'] = love.graphics.newImage('graphics/map/tree-top.png')
 }
+
+
 
 gFrames = {
     -- hold entities frames

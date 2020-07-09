@@ -51,16 +51,9 @@ function Room:update(dt)
         -- collision between the player and entities in the room
         if not entity.dead and self.player:collides(entity) and not self.player.invulnerable then
             self.player:damage(math.random(entity.baseATK))
-            self.player:goInvulnerable(1.5)
-            if self.player.direction == 'right' then 
-               self.player.hitbox.x = math.max(1, self.player.hitbox.x - 50)
-            elseif self.player.direction == 'left' then
-                self.player.hitbox.x = math.min(VIRTUAL_WIDTH, self.player.hitbox.x + 50)
-            end
-            self.player.hitbox.y = self.player.hitbox.y - 15
-            self.player:changeState('falling')
+            self.player:changeState('alert')
             if self.player.health == 0 then
-                -- gStateMachine:change('start') -- dead state?
+                gStateMachine:change('dead') -- dead state?
             end
         end
     

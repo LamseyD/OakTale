@@ -34,7 +34,9 @@ function PlayState:init()
         ['attack'] = function() return PlayerAttackState(self.player, self.dungeon) end,
         ['jump'] = function() return PlayerJumpState(self.player, GRAVITY_AMOUNT) end,
         ['falling'] = function() return PlayerFallingState(self.player, GRAVITY_AMOUNT) end,
-        ['prone'] = function() return PlayerProneState(self.player, self.dungeon) end
+        ['prone'] = function() return PlayerProneState(self.player, self.dungeon) end,
+        ['alert'] = function() return PlayerAlertState(self.player,self.dungeon) end,
+        ['dead'] = function() return PlayerDeadState(self.player, self.dungeon) end
     }
 
     self.player:changeState('falling')
