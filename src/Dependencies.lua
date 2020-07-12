@@ -8,7 +8,7 @@ json = require 'lib/json/json'
 require 'src/Animation'
 require 'src/constants'
 require 'src/StateMachine'
-require 'src/util'
+require 'src/Util'
 -- require 'cjson'
 
 
