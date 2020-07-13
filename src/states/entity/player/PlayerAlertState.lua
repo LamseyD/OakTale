@@ -9,6 +9,7 @@ end
 
 function PlayerAlertState:enter(params)
     -- gSounds['jump']:play()
+    gSFX['hit']:play()
     self.player:goInvulnerable(1.5)
 end
 

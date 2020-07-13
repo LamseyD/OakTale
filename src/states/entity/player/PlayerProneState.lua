@@ -51,7 +51,6 @@ function PlayerProneState:update(dt)
             self.player.direction = 'right'
         end
     end
-
 end
 
 function PlayerProneState:render()

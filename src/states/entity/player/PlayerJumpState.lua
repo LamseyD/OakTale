@@ -17,11 +17,13 @@ end
 
 function PlayerJumpState:enter(params)
     -- gSounds['jump']:play()
+    gSFX['jump']:play()
     self.player.dy = PLAYER_JUMP_VELOCITY
 end
 
 function PlayerJumpState:update(dt)
     if love.keyboard.wasPressed('c') then
+        gSFX['attack']:play()
         self.player:changeState('attack', {previous = 'jump'})
     end
 

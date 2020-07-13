@@ -155,3 +155,10 @@ gSounds = {
     ['ellinia'] = love.audio.newSource('sounds/ellinia.mp3', 'stream')
 
 }
+
+gSFX = {
+    ['hit'] = love.audio.newSource('sounds/hit.wav', 'static'),
+    ['jump'] = love.audio.newSource('sounds/jump.wav', 'static'),
+    ['portal'] = love.audio.newSource('sounds/portal.wav', 'static'),
+    ['attack'] = love.audio.newSource('sounds/attack.wav', 'static')
+}

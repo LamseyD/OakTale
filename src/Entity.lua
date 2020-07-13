@@ -157,6 +157,7 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
 
     self.x, self.y = self.x + (adjacentOffsetX or 0), self.y + (adjacentOffsetY or 0)
     self.stateMachine:render()
+    shader:send("WhiteFactor", 0)
     love.graphics.setFont(gFonts['title-small'])
     love.graphics.setColor(0,1,1,1)
     love.graphics.print("x: " .. self.x, self.x, self.y - 30)

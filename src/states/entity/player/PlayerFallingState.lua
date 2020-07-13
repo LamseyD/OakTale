@@ -19,6 +19,7 @@ end
 function PlayerFallingState:update(dt)
     if love.keyboard.wasPressed('c') then
         self.player:changeState('attack', {previous = 'falling'})
+        gSFX['attack']:play()
     end
 
     self.player.dy = self.player.dy + self.gravity

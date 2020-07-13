@@ -69,6 +69,7 @@ function Dungeon:update(dt)
                     love.audio.pause()
                     gSounds[self.currentRoom.bgm]:seek(0)
                 end
+                gSFX['portal']:play()
                 gSounds[self.currentRoom.bgm]:play()
                 gSounds[self.currentRoom.bgm]:setLooping(true)
                 -- self.player.x = self.currentRoom.level.portals[item.connected_portal].x 

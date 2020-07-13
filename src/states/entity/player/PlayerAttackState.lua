@@ -1,11 +1,3 @@
---[[
-    GD50
-    Legend of Zelda
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 PlayerAttackState = Class{__includes = BaseState}
 
 function PlayerAttackState:init(player, dungeon)
@@ -40,11 +32,12 @@ function PlayerAttackState:init(player, dungeon)
 end
 
 function PlayerAttackState:enter(params)
-
-    self.previous = params.previous
-
-    -- restart sword swing animation
     self.player.currentAnimation:refresh()
+    -- gSFX['attack']:play()
+    self.previous = params.previous
+    
+    -- restart sword swing animation
+    
     local direction = self.player.direction
     local hitboxX, hitboxY, hitboxWidth, hitboxHeight
 
@@ -112,6 +105,7 @@ function PlayerAttackState:update(dt)
             entity:damage(math.random(self.player.baseATK - entity.baseDEF, self.player.baseATK))
             entity.visibleHP = true
             entity:goInvulnerable(0.5) -- should be knocked back
+            gSFX['hit']:play()
             if self.player.direction == 'right' then
                 --go into knocked back state here
                 entity.hitbox.x = math.min(VIRTUAL_WIDTH, entity.hitbox.x + 50)
