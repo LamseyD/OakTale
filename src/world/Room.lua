@@ -47,8 +47,8 @@ function Room:update(dt)
         if self.player:collides(entity) and not self.player.invulnerable and entity.health > 0 then
             self.player:damage(math.random(entity.baseATK))
             self.player:changeState('alert')
-            if self.player.health == 0 then
-                gStateMachine:change('dead') -- dead state?
+            if self.player.health <= 0 then
+                self.player:changeState('dead') -- dead state?
             end
         end
         if entity.dead and not entity.invulnerable then

@@ -17,6 +17,9 @@ end
 
 function Player:update(dt)
     Entity.update(self, dt)
+    if love.keyboard.wasPressed('d') then
+        self.health = self.maxHealth
+    end
     -- self.hitbox:update(self.x + 24, self.y + 12)
 end
 
@@ -45,6 +48,29 @@ end
 function Player:render()
     Entity.render(self)
     self.hitbox:render()
+    
+    if self.health / self.maxHealth < 0.15 then
+        love.graphics.setFont(gFonts['title-medium'])
+        love.graphics.setColor(0,0,0,1)
+        love.graphics.printf('Press d to heal', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.printf('Press d to heal',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+    end
+
+    love.graphics.setFont(gFonts['title-small'])
+    love.graphics.setColor(1, 1, 1, 50/255)
+    love.graphics.rectangle('fill', 150, 685, 200, 20)
+    love.graphics.setColor(1, 0, 0, 1)
+    love.graphics.rectangle('fill', 150, 685, math.max(self.health, 0) * 200/self.maxHealth, 20)
+    love.graphics.rectangle('line', 150, 685, 200, 20)
+    
+    love.graphics.setColor(0,0,0,1)
+    love.graphics.print('HP:', 100, 683  )
+    love.graphics.print(self.health .. ' / ' .. self.maxHealth, 215, 683)
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.print('HP:', 100, 680  )
+    love.graphics.print(self.health .. ' / ' .. self.maxHealth, 215, 680)
+    love.graphics.setColor(1, 1, 1, 1)
     -- love.graphics.setColor(255, 0, 255, 255)
     -- love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
     -- love.graphics.setColor(255, 255, 255, 255)

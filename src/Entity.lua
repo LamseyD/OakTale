@@ -147,7 +147,7 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
 
     love.graphics.setShader(shader)
     -- draw sprite slightly transparent if invulnerable every 0.04 seconds
-    if self.blinking then
+    if self.blinking and self.health > 0 then
         love.graphics.setColor(1, 1, 1, 64/255)
         shader:send("WhiteFactor", 1)
     else
