@@ -53,6 +53,16 @@ function Room:update(dt)
         end
         if entity.dead and not entity.invulnerable then
             table.remove(self.level.entities, i)
+            self.player.xp = self.player.xp + 10
+            print(self.player.xp)
+            print(self.player.nextLevel)
+            if self.player.xp >= self.player.nextLevel then 
+                self.player.maxHealth = self.player.maxHealth + 50
+                self.player.health = self.player.maxHealth
+                self.player.baseATK = self.player.baseATK + 10
+                self.player.baseDEF = self.player.baseDEF + 5
+                self.player.nextLevel = math.floor(self.player.nextLevel * 1.5)
+            end
         elseif entity.health <= 0 then
             entity:changeState('die')
         end

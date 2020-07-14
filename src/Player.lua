@@ -13,6 +13,8 @@ function Player:init(def)
     -- self.hitbox = Hitbox(self.x + 24, self.y + 12, self.width, self.height)
     self.dy = 0
     self.dx = 0
+    self.xp = 0
+    self.nextLevel = 50
 end
 
 function Player:update(dt)
