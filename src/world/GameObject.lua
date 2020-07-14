@@ -1,14 +1,7 @@
---[[
-    GD50
-    Legend of Zelda
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
 
 GameObject = Class{}
 
-function GameObject:init(def, x, y)
+function GameObject:init(def, x, y, onConsume)
     
     -- string identifying this object type
     self.type = def.type
@@ -35,16 +28,18 @@ function GameObject:init(def, x, y)
 
     -- default empty collision callback
     self.onCollide = function(player, object) end
-    self.onConsume = function() end
+    self.onConsume = onConsume or nil
 
     -- directions
-    self.directions = def.directions or nil
+    self.direction = def.direction or nil
     self.dx = def.dx or 0
     self.dy = def.dy or 0
 
     --
     self.x_scale = def.x_scl or 1
     self.y_scale = def.y_scl or 1
+    self.hitbox_offsetX = def.hitbox_offsetX
+    self.hitbox_offsetY = def.hitbox_offsetY
 
     self.animations = Animation{texture = self.texture, frames = self.frames, interval = self.interval}
     self.hitbox = Hitbox(self.x + def.hitbox_offsetX, self.y + def.hitbox_offsetY, self.width, self.height)

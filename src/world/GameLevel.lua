@@ -39,6 +39,24 @@ function GameLevel:update(dt)
 
     for k, object in pairs(self.objects) do
         object:update(dt)
+        object.dy = object.dy + self.gravity
+        object.hitbox.y = object.hitbox.y + (object.dy * dt)
+        object.offsetX = object.direction == 'right' and -object.width or 0
+
+    -- look at two tiles below our feet and check for collisions
+        local tileBottomLeft = self.tileMap:pointToTile(object.hitbox.x + 1, object.hitbox.y + object.hitbox.height)
+        local tileBottomRight = self.tileMap:pointToTile(object.hitbox.x + object.hitbox.width - 1, object.hitbox.y + object.hitbox.height)
+
+        -- if we get a collision beneath us, go into either walking or idle
+        if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) and (tileBottomLeft.topper and tileBottomRight.topper) then
+            object.dy = 0
+            object.hitbox.y = (tileBottomLeft.y - 1) * TILE_SIZE - object.hitbox.height -- + 20
+            
+            
+            -- -- check side collisions and reset position
+            -- self.player:checkLeftCollisions(dt)
+            -- self.player:checkRightCollisions(dt)
+        end
     end
 
     for k, entity in pairs(self.entities) do

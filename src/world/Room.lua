@@ -11,37 +11,38 @@ function Room:init(player, def)
     self.background = def.background
 end
 
-function Room:enter()
-
-end
-
-function Room:exit()
-
-end
-
-function Room:change()
-
-end
-
 function Room:update(dt)
     self.player:update(dt)
     for i, item in pairs(self.level.objects) do
-        item:update(dt)
+        if item.falling then
+            item.dy = item.dy + GRAVITY_AMOUNT
+            item.hitbox.y = item.hitbox.y + (item.dy * dt)
+            item.offsetX = item.direction == 'right' and -item.width or 0
+            item.y = item.hitbox.y - item.hitbox_offsetY
+        -- look at two tiles below our feet and check for collisions
+            local tileBottomLeft = self.tileMap:pointToTile(item.hitbox.x + 1, item.hitbox.y + item.hitbox.height)
+            local tileBottomRight = self.tileMap:pointToTile(item.hitbox.x + item.hitbox.width - 1, item.hitbox.y + item.hitbox.height)
+    
+            -- if we get a collision beneath us, go into either walking or idle
+            if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) and (tileBottomLeft.topper and tileBottomRight.topper) then
+                item.dy = 0
+                item.hitbox.y = (tileBottomLeft.y - 1) * TILE_SIZE - item.hitbox.height -- + 20
+                item.falling = false
+                item.top_y = item.hitbox.y - 6
+                item.bot_y = item.hitbox.y - 2
+                
+                -- -- check side collisions and reset position
+                -- self.player:checkLeftCollisions(dt)
+                -- self.player:checkRightCollisions(dt)
+            end
+        else
+            item:update(dt)
+        end
+        
+        
     end
 
     for i, entity in pairs(self.level.entities) do
-        -- -- local entity = self.entities[i]
-        -- for x, tmp in pairs(self.objects) do
-        --     if tmp.fired then
-        --         if entity:collides(tmp) then
-        --             entity.health = 0
-        --             tmp.fired = false
-        --             tmp.state = 'broken'
-        --             tmp.solid = true
-        --         end
-        --     end
-        -- end
-        -- remove entity from the table if health is <= 0
         entity:update(dt)
             -- collision between the player and entities in the room
         if self.player:collides(entity) and not self.player.invulnerable and entity.health > 0 then
@@ -51,22 +52,82 @@ function Room:update(dt)
                 self.player:changeState('dead') -- dead state?
             end
         end
-        if entity.dead and not entity.invulnerable then    
+        if entity.dead and not entity.invulnerable then 
+            --drop items here
+            local rng_generator = math.random(15)
+            local meso_amnt = math.random(entity.meso, math.max(entity.meso - 10,1))
+            if meso_amnt <= 10 then
+                local tmp_coin = Item{def = GAME_OBJECT_DEFS['coin-1'], 
+                                    x = entity.hitbox.x, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup']:play()
+                                        self.player.bank = self.player.bank + meso_amnt
+                                end}
+                table.insert(self.level.objects, tmp_coin)                
+            elseif meso_amnt <= 20 then
+                local tmp_coin = Item{def = GAME_OBJECT_DEFS['coin-2'], 
+                                    x = entity.hitbox.x, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup']:play()
+                                        self.player.bank = self.player.bank + meso_amnt
+                                end}
+                table.insert(self.level.objects, tmp_coin)                
+            else
+                local tmp_coin = Item{def = GAME_OBJECT_DEFS['coin-3'], 
+                                    x = entity.hitbox.x, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup']:play()
+                                        self.player.bank = self.player.bank + meso_amnt
+                                end}
+
+                table.insert(self.level.objects, tmp_coin)
+            end
+
+            if rng_generator == 1 then
+                local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-1'], 
+                                    x = entity.hitbox.x + 30, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup-2']:play()
+                                        self.player.inventory.str = true
+                                    end}
+                table.insert(self.level.objects, tmp_obj)
+            elseif rng_generator == 2 then
+                local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-2'], 
+                                    x = entity.hitbox.x + 30, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup-2']:play()
+                                        self.player.inventory.dex = true
+                                    end}
+                table.insert(self.level.objects, tmp_obj)
+            elseif rng_generator == 3 then
+                local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-3'], 
+                                    x = entity.hitbox.x + 30, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup-2']:play()
+                                    self.player.inventory.int = true
+                end}
+                table.insert(self.level.objects, tmp_obj)
+            elseif rng_generator == 4 then
+                local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-4'], 
+                                    x = entity.hitbox.x + 30, 
+                                    y = entity.hitbox.y - 5, 
+                                    onConsume = function(player)
+                                        gSFX['pickup-2']:play()
+                                    self.player.inventory.luk = true
+                end}
+                table.insert(self.level.objects, tmp_obj)
+            end
             self.player.currentExp = self.player.currentExp + entity.exp
             if self.player.currentExp >= self.player.expToLevel then
                 self.player:levelUp()
             end
             table.remove(self.level.entities, i)
-            self.player.xp = self.player.xp + 10
-            print(self.player.xp)
-            print(self.player.nextLevel)
-            if self.player.xp >= self.player.nextLevel then 
-                self.player.maxHealth = self.player.maxHealth + 50
-                self.player.health = self.player.maxHealth
-                self.player.baseATK = self.player.baseATK + 10
-                self.player.baseDEF = self.player.baseDEF + 5
-                self.player.nextLevel = math.floor(self.player.nextLevel * 1.5)
-            end
         elseif entity.health <= 0 then
             entity.visibleHP = false
             entity:changeState('die')

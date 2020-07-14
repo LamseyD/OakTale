@@ -35,34 +35,6 @@ function MobFallingState:update(dt)
         -- self.player:checkRightCollisions(dt)
     end
 
-    -- -- check if we've collided with any collidable game objects
-    -- for k, object in pairs(self.player.map.objects) do
-    --     if object:collides(self.player) then
-    --         if object.solid then
-    --             self.player.dy = 0
-    --             self.player.y = object.y - self.player.height
-
-    --             if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
-    --                 self.player:changeState('walking')
-    --             else
-    --                 self.player:changeState('idle')
-    --             end
-    --         elseif object.consumable then
-    --             object.onConsume(self.player)
-    --             table.remove(self.player.level.objects, k)
-    --         end
-    --     end
-    -- end
-
-    -- -- check if we've collided with any entities and kill them if so
-    -- for k, entity in pairs(self.player.level.entities) do
-    --     if entity:collides(self.player) then
-    --         gSounds['kill']:play()
-    --         gSounds['kill2']:play()
-    --         self.player.score = self.player.score + 100
-    --         table.remove(self.player.level.entities, k)
-    --     end
-    -- end
 end
 
 function MobFallingState:render()

@@ -23,6 +23,7 @@ require 'src/world/GameLevel'
 require 'src/world/GameObject'
 require 'src/world/Object_defs'
 require 'src/world/Portal'
+require 'src/world/Item'
 
 --states
 require 'src/states/BaseState'
@@ -99,7 +100,15 @@ gTextures = {
     ['character-1'] = love.graphics.newImage('graphics/character/character-1/char-1.png'),
     ['character-2'] = love.graphics.newImage('graphics/character/character-2/char-2.png'),
     ['portal'] = love.graphics.newImage('graphics/map/portal.png'),
-    ['tomb'] = love.graphics.newImage('graphics/misc/tombstone.png')
+    ['tomb'] = love.graphics.newImage('graphics/misc/tombstone.png'),
+    ['coin-1'] = love.graphics.newImage('graphics/misc/coin.png'),
+    ['coin-2'] = love.graphics.newImage('graphics/misc/coin-2.png'),
+    ['coin-3'] = love.graphics.newImage('graphics/misc/coin-3.png'),
+    ['jewel-1'] = love.graphics.newImage('graphics/misc/jewel-1.png'),
+    ['jewel-2'] = love.graphics.newImage('graphics/misc/jewel-2.png'),
+    ['jewel-3'] = love.graphics.newImage('graphics/misc/jewel-3.png'),
+    ['jewel-4'] = love.graphics.newImage('graphics/misc/jewel-4.png'),
+    ['maple'] = love.graphics.newImage('graphics/misc/maple.png')
 }
 
 gBackgrounds = {
@@ -162,5 +171,7 @@ gSFX = {
     ['jump'] = love.audio.newSource('sounds/jump.wav', 'static'),
     ['portal'] = love.audio.newSource('sounds/portal.wav', 'static'),
     ['attack'] = love.audio.newSource('sounds/attack.wav', 'static'),
-    ['level-up'] = love.audio.newSource('sounds/levelup.wav', 'static')
+    ['level-up'] = love.audio.newSource('sounds/levelup.wav', 'static'),
+    ['pickup'] = love.audio.newSource('sounds/pickup.wav', 'static'),
+    ['pickup-2'] = love.audio.newSource('sounds/pickup-2.wav', 'static'),
 }

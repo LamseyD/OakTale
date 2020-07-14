@@ -54,7 +54,14 @@ function LevelMaker.generate(def) -- pass in tileset topperset, pass in room def
             table.insert(portals, Portal({def = GAME_OBJECT_DEFS['portal'], x = item['x'], y = item['y']}, {map = item['connected_map'], portal = item['connected_portal']}))
         end
     end
-    
+    -- local test = 1
+    -- for j, item in pairs(GAME_OBJECT_DEFS) do
+    --     if j ~= 'portal' then
+    --         test = test + 1
+    --         local tmp_coin = Item{def = item, x = test * 64, y = 300}
+    --         table.insert(objects, tmp_coin)
+    --     end
+    -- end
     
     -- end
 

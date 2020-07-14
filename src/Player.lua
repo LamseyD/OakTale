@@ -18,6 +18,13 @@ function Player:init(def)
     self.currentExp = 0
     self.expToLevel = math.ceil(self.lvl * self.lvl * 15)
 
+    self.bank = 0
+    self.inventory = {
+        str = false,
+        dex = false,
+        int = false,
+        luk = false
+    }
 end
 
 function Player:statsLevelUp()
@@ -54,8 +61,18 @@ end
 
 function Player:update(dt)
     Entity.update(self, dt)
-    if love.keyboard.wasPressed('d') then
+    if love.keyboard.wasPressed('d') and self.bank >= 50 then
         self.health = self.maxHealth
+        self.bank = self.bank - 50
+    end
+
+    for k, object in pairs(self.level.objects) do
+        if object:collides(self) then
+            if object.consumable and love.keyboard.wasPressed('z') then
+                object.onConsume()
+                table.remove(self.level.objects, k)
+            end
+        end
     end
     -- self.hitbox:update(self.x + 24, self.y + 12)
 end
@@ -102,16 +119,16 @@ function Player:render()
     if self.health / self.maxHealth < 0.15 then
         love.graphics.setFont(gFonts['title-medium'])
         love.graphics.setColor(0,0,0,1)
-        love.graphics.printf('Press d to heal', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+        love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
         love.graphics.setColor(1,1,1,1)
-        love.graphics.printf('Press d to heal',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+        love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
     end
 
     love.graphics.setFont(gFonts['title-medium'])
     love.graphics.setColor(0,0,0,1)
     love.graphics.print('Level ' .. self.lvl, 50, 665)
     love.graphics.setColor(1,1,1,1)
-    love.graphics.print('Level ' .. self.lvl, 50, 660)
+    love.graphics.print('Level ' .. self.lvl, 45, 660)
 
     love.graphics.setFont(gFonts['title-small'])
     love.graphics.setColor(1, 1, 1, 50/255)
@@ -125,8 +142,8 @@ function Player:render()
     love.graphics.print('HP:', 250, 683  )
     love.graphics.print(self.health .. ' / ' .. self.maxHealth, 365, 683)
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print('HP:', 250, 680  )
-    love.graphics.print(self.health .. ' / ' .. self.maxHealth, 365, 680)
+    love.graphics.print('HP:', 247, 680  )
+    love.graphics.print(self.health .. ' / ' .. self.maxHealth, 362, 680)
     love.graphics.setColor(1, 1, 1, 1)
 
     love.graphics.setColor(1, 1, 1, 50/255)
@@ -140,9 +157,15 @@ function Player:render()
     love.graphics.print('EXP:', 515, 683  )
     love.graphics.print(self.currentExp .. ' / ' .. self.expToLevel, 630, 683)
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print('EXP:', 515, 680  )
-    love.graphics.print(self.currentExp .. ' / ' .. self.expToLevel, 630, 680)
+    love.graphics.print('EXP:', 512, 680  )
+    love.graphics.print(self.currentExp .. ' / ' .. self.expToLevel, 627, 680)
+    -- love.graphics.setColor(1, 1, 1, 1)
+
+    love.graphics.draw(gTextures['maple'], 780, 680, 0, 0.25, 0.25)
+    love.graphics.setColor(0,0,0,1)
+    love.graphics.print(': '.. self.bank, 825, 683  )
     love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.print(': '.. self.bank, 822, 680  )
     -- love.graphics.setColor(255, 0, 255, 255)
     -- love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
     -- love.graphics.setColor(255, 255, 255, 255)
