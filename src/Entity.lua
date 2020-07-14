@@ -35,11 +35,19 @@ function Entity:init(def)
     self.invulnerable = false
     self.invulnerableDuration = 0
     self.invulnerableTimer = 0
-
+    
+    self.lvl = def.lvl or 1
     -- timer for turning transparency on and off, flashing
     self.flashTimer = 0
     self.blinking = false
     self.dead = false
+
+    --dmg box thingy
+    self.dmg = nil
+    self.hit = false
+    self.init_x = self.hitbox.x
+    self.disp_y = self.hitbox.y - 30
+    self.disp_opacity = 1
 end
 
 function Entity:createAnimations(animations)
@@ -82,7 +90,19 @@ end
 
 function Entity:damage(dmg)
     self.health = self.health - dmg
+    self.dmg = dmg
+    self.hit = true
+    self.init_x = self.hitbox.x
+    self.disp_y = self.hitbox.y - 40
+    self.disp_opacity = 1
+    Timer.tween(0.75,{
+        [self] = {disp_y = self.disp_y - 50, disp_opacity = 0}
+    }):finish(function() 
+        self.hit = false
+        self.dmg = nil 
+    end)
 end
+
 
 function Entity:goInvulnerable(duration)
     self.invulnerable = true
@@ -97,7 +117,10 @@ function Entity:changeAnimation(name)
     self.currentAnimation = self.animations[name]
 end
 
+
 function Entity:update(dt)
+    
+
     if self.direction == 'right' then
         self.rotation_x = -1
     else 
@@ -144,7 +167,7 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
             return outputcolor;
         }
         ]]
-
+    
     love.graphics.setShader(shader)
     -- draw sprite slightly transparent if invulnerable every 0.04 seconds
     if self.blinking and self.health > 0 then
@@ -153,6 +176,16 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
     else
         love.graphics.setColor(1,1,1,1)
         shader:send("WhiteFactor", 0)
+    end
+
+    if self.hit and self.dmg then
+        love.graphics.setFont(gFonts['title-medium'])
+        love.graphics.setColor(0,0,0,self.disp_opacity)
+        love.graphics.print(self.dmg, self.init_x + 5, self.disp_y + 5)
+        love.graphics.setColor(252/255,177/255,3/255, self.disp_opacity)
+        love.graphics.print(self.dmg, self.init_x, self.disp_y)
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.setFont(gFonts['title-small'])
     end
 
     self.x, self.y = self.x + (adjacentOffsetX or 0), self.y + (adjacentOffsetY or 0)

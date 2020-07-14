@@ -93,13 +93,13 @@ ROOM_DEFS = {
             [2] = {
                 ['x'] = 15,
                 ['y'] = 10,
-                ['width'] = MAP_WIDTH - 15,
+                ['width'] = MAP_WIDTH - 14,
                 ['height'] = 1
             },
             [3] = {
                 ['x'] = 17,
                 ['y'] = 9,
-                ['width'] = MAP_WIDTH - 17,
+                ['width'] = MAP_WIDTH - 16,
                 ['height'] = 1
             },
             [4] = {

@@ -16,6 +16,7 @@ function PlayState:init()
         baseHP = ENTITY_DEFS['char-1'].baseHP,
         baseATK = ENTITY_DEFS['char-1'].baseATK,
         baseDEF = ENTITY_DEFS['char-1'].baseDEF,
+        lvl = 1,
         width = ENTITY_DEFS['char-1'].width,
         height = ENTITY_DEFS['char-1'].height,
         offsetY = ENTITY_DEFS['char-1'].offsetY, -- Possibly implement offsets for different frames in the ENTITY DEFS table

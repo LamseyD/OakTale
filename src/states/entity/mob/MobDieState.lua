@@ -22,7 +22,7 @@ function MobDieState:enter()
     self.entity.hitbox.height = 0
 end
 
-function MobDieState:update()
+function MobDieState:update(dt)
     if not self.entity.dead and self.entity.currentAnimation.timesPlayed == 1 then
         self.entity:goInvulnerable(2)
         self.entity.dead = true

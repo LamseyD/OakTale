@@ -25,7 +25,7 @@ function PlayerProneState:enter(params)
 end
 
 function PlayerProneState:update(dt)
-    self.player.offsetX = self.player.direction == 'right' and -self.player.width + 36 or 30
+    self.player.offsetX = self.player.direction == 'right' and -self.player.hitbox.width - 55 or 30
     if not love.keyboard.isDown("down") then
         
         local temp = self.player.hitbox.width

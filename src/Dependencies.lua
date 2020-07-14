@@ -57,6 +57,7 @@ require 'graphics/character/character-2/char-2'
 require 'graphics/Mobs/Snail/snail'
 require 'graphics/Mobs/Stump/stump'
 require 'graphics/Mobs/Pig/pig'
+require 'src/GUI'
 
 --entities
 require 'src/Entity'
@@ -160,5 +161,6 @@ gSFX = {
     ['hit'] = love.audio.newSource('sounds/hit.wav', 'static'),
     ['jump'] = love.audio.newSource('sounds/jump.wav', 'static'),
     ['portal'] = love.audio.newSource('sounds/portal.wav', 'static'),
-    ['attack'] = love.audio.newSource('sounds/attack.wav', 'static')
+    ['attack'] = love.audio.newSource('sounds/attack.wav', 'static'),
+    ['level-up'] = love.audio.newSource('sounds/levelup.wav', 'static')
 }

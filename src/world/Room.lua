@@ -51,9 +51,14 @@ function Room:update(dt)
                 self.player:changeState('dead') -- dead state?
             end
         end
-        if entity.dead and not entity.invulnerable then
+        if entity.dead and not entity.invulnerable then    
+            self.player.currentExp = self.player.currentExp + entity.exp
+            if self.player.currentExp >= self.player.expToLevel then
+                self.player:levelUp()
+            end
             table.remove(self.level.entities, i)
         elseif entity.health <= 0 then
+            entity.visibleHP = false
             entity:changeState('die')
         end
     end
@@ -94,6 +99,9 @@ function Room:spawnEnemies()
                         baseHP = ENTITY_DEFS[mobName].baseHP,
                         baseATK = ENTITY_DEFS[mobName].baseATK,
                         baseDEF = ENTITY_DEFS[mobName].baseDEF,
+                        exp = ENTITY_DEFS[mobName].exp_value,
+                        meso_value = ENTITY_DEFS[mobName].meso_value,
+                        lvl = ENTITY_DEFS[mobName].level,
                         width = ENTITY_DEFS[mobName].width,
                         height = ENTITY_DEFS[mobName].height,
                         x = x * TILE_SIZE - ENTITY_DEFS[mobName].width,
