@@ -117,9 +117,9 @@ function PlayerAttackState:update(dt)
             local knockback = entity.knockback and entity.knockback or 50
             if self.player.direction == 'right' then
                 --go into knocked back state here
-                entity.hitbox.x = math.min(VIRTUAL_WIDTH, entity.hitbox.x + knockback)
+                entity.hitbox.x = math.min(VIRTUAL_WIDTH - entity.width, entity.hitbox.x + knockback)
             else
-                entity.hitbox.x = math.max(1, entity.hitbox.x - knockback)
+                entity.hitbox.x = math.max(0, entity.hitbox.x - knockback)
             end
             -- gSounds['hit-enemy']:play()
         end

@@ -79,7 +79,8 @@ ROOM_DEFS = {
         ['bgm'] = 'henesys',
         ['background'] = 'hene-bg',
         ['mobs'] = {
-
+            'snail',
+            'stump'
         }
     },
     ['road-to-main-1'] = {
@@ -138,7 +139,8 @@ ROOM_DEFS = {
         ['bgm'] = 'rest-n-peace',
         ['background'] = 'road-to-hene',
         ['mobs'] = {
-
+            'pig',
+            'stump'
         }
     },
     ['road-to-main-2'] = {
@@ -192,7 +194,8 @@ ROOM_DEFS = {
         ['bgm'] = 'rest-n-peace',
         ['background'] = 'road-to-hene',
         ['mobs'] = {
-            
+            'snail',
+            'pig'
         }
     },
     ['praire'] = {
@@ -263,7 +266,7 @@ ROOM_DEFS = {
         ['background'] = 'maple-island',
         ['bgm'] = 'lith-harbor',
         ['mobs'] = {
-            
+            'pig'
         }
     },
     ['back-side-1'] = {
@@ -310,7 +313,7 @@ ROOM_DEFS = {
         ['bgm'] = 'backside-1',
         ['background'] = 'back-side-1',
         ['mobs'] = {
-            
+            'snail'
         }
     },
     ['back-side-2'] = {
@@ -363,7 +366,7 @@ ROOM_DEFS = {
         ['bgm'] = 'backside-2',
         ['background'] = 'back-side-2',
         ['mobs'] = {
-            
+            'stump'
         }
     },
     ['hidden-woods'] = {
@@ -446,7 +449,9 @@ ROOM_DEFS = {
         ['bgm'] = 'sleepywood',
         ['background'] = 'sleepywoods',
         ['mobs'] = {
-            
+            'snail',
+            'pig',
+            'stump'
         }
     },
     ['tree-trunk-1'] = {
@@ -581,7 +586,8 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            
+            'stump',
+            'snail'
         }
     },
     ['tree-top'] = {
@@ -646,7 +652,8 @@ ROOM_DEFS = {
         ['bgm'] = 'ellinia',
         ['background'] = 'tree-top',
         ['mobs'] = {
-            
+            'snail',
+            'pig'
         }
     },
     ['test'] = {

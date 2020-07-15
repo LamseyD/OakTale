@@ -10,6 +10,7 @@ function Room:init(player, def)
     -- gSounds[self.bgm]:setLooping(true)
     self.background = def.background
     self.boss = def.boss
+    self.mobs = def.mobs
 end
 
 function Room:update(dt)
@@ -129,6 +130,9 @@ function Room:update(dt)
                 self.player:levelUp()
             end
             table.remove(self.level.entities, i)
+            if #self.level.entities <= math.random(2, 4) then
+                Room.spawnEnemies(self)
+            end
         elseif entity.health <= 0 then
             entity.visibleHP = false
             entity:changeState('die')
@@ -163,7 +167,7 @@ function Room:spawnEnemies()
                 if not prevGroundFound and math.random(10) == 1 then              
                     -- instantiate snail, declaring in advance so we can pass it into state machine
                     local mob
-                    local mobName = mobKeys[math.random(#mobKeys)]
+                    local mobName = self.mobs[math.random(#self.mobs)]
                     mob = Mob{
                         animations = ENTITY_DEFS[mobName].animations,
                         walkSpeed = ENTITY_DEFS[mobName].walkSpeed,
@@ -188,8 +192,11 @@ function Room:spawnEnemies()
                         ['die'] = function() return MobDieState(mob) end,
                         ['falling'] = function() return MobFallingState(mob, GRAVITY_AMOUNT) end
                     }
-                    mob:changeState('walk')
+                    mob:changeState('stand')
                     table.insert(self.level.entities, mob)
+                end
+                if #self.level.entities == 8 then
+                    return
                 end
             elseif self.tileMap.tiles[y][x].id == TILE_ID_EMPTY then
                 groundFound = false
