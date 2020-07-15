@@ -52,8 +52,16 @@ function PlayerWalkState:render()
     --move to update if needed to clean up animation. ??????
 
     local anim = self.entity.currentAnimation
+    local offset_flag = true
+    if anim.texture == 'character-2' then
+        if self.entity.direction == 'right' then
+            self.entity.offsetX = -self.entity.width - 30
+        else
+            self.entity.offsetX = 5
+        end
+    end
     self.extra_offset_X = 0
-    if anim:getCurrentFrame() == 16 then
+    if anim:getCurrentFrame() == 16 and anim.texture ~= 'character-2' then
         self.extra_offset_X = 12
         if self.entity.direction == 'right' then
             self.extra_offset_X = -12

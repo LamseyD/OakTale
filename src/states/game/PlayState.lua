@@ -1,6 +1,6 @@
 PlayState = Class{__includes = BaseState}
 
-function PlayState:init()
+function PlayState:init(current_char)
     -- self.camX = 0
     -- self.camY = 0
     -- self.level = LevelMaker.generate()
@@ -8,20 +8,21 @@ function PlayState:init()
     -- self.background = math.random(3)
     -- self.backgroundX = 0
     -- self.backgroundY = 0
+    self.current_char = 'char-' .. current_char-- current_char -- possible additional character update here
     self.player = Player{
-        animations = ENTITY_DEFS['char-1'].animations,
-        walkSpeed = ENTITY_DEFS['char-1'].walkSpeed,
-        x = VIRTUAL_WIDTH/2,
+        animations = ENTITY_DEFS[self.current_char].animations,
+        walkSpeed = ENTITY_DEFS[self.current_char].walkSpeed,
+        x = VIRTUAL_WIDTH/2 - 15,
         y = VIRTUAL_HEIGHT/2,
-        baseHP = ENTITY_DEFS['char-1'].baseHP,
-        baseATK = ENTITY_DEFS['char-1'].baseATK,
-        baseDEF = ENTITY_DEFS['char-1'].baseDEF,
+        baseHP = ENTITY_DEFS[self.current_char].baseHP,
+        baseATK = ENTITY_DEFS[self.current_char].baseATK,
+        baseDEF = ENTITY_DEFS[self.current_char].baseDEF,
         lvl = 1,
-        width = ENTITY_DEFS['char-1'].width,
-        height = ENTITY_DEFS['char-1'].height,
-        offsetY = ENTITY_DEFS['char-1'].offsetY, -- Possibly implement offsets for different frames in the ENTITY DEFS table
-        hitbox_offsetX = ENTITY_DEFS['char-1'].hitbox_offsetX,
-        hitbox_offsetY = ENTITY_DEFS['char-1'].hitbox_offsetY
+        width = ENTITY_DEFS[self.current_char].width,
+        height = ENTITY_DEFS[self.current_char].height,
+        offsetY = ENTITY_DEFS[self.current_char].offsetY, -- Possibly implement offsets for different frames in the ENTITY DEFS table
+        hitbox_offsetX = ENTITY_DEFS[self.current_char].hitbox_offsetX,
+        hitbox_offsetY = ENTITY_DEFS[self.current_char].hitbox_offsetY
     }
     self.dungeon = Dungeon(self.player)
     -- self.current_room = Room(self.player)
@@ -109,13 +110,6 @@ function PlayState:render()
 
     end
 
-    if self.player.health / self.player.maxHealth < 0.15 then
-        love.graphics.setFont(gFonts['title-medium'])
-        love.graphics.setColor(0,0,0,1)
-        love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-    end
 
     love.graphics.setFont(gFonts['title-medium'])
     love.graphics.setColor(0,0,0,1)

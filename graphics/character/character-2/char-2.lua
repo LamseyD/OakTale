@@ -1,8 +1,6 @@
 CHAR_2 = {
-	["frames"] = 
-	{
-		[1] = 
-		{
+	["frames"] = {
+		[1] = {
 			["filename"] = "alert_0.png",
 			["sourceSize"] = 
 			{

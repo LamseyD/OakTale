@@ -35,6 +35,7 @@ require 'src/states/game/BossState'
 require 'src/states/game/FadeInState'
 require 'src/states/game/FadeOutState'
 require 'src/states/game/VictoryState'
+require 'src/states/game/StoryState'
 
 --entity state
 require 'src/states/entity/EntityJumpState'
@@ -125,7 +126,15 @@ gTextures = {
     ['jewel-2'] = love.graphics.newImage('graphics/misc/jewel-2.png'),
     ['jewel-3'] = love.graphics.newImage('graphics/misc/jewel-3.png'),
     ['jewel-4'] = love.graphics.newImage('graphics/misc/jewel-4.png'),
-    ['maple'] = love.graphics.newImage('graphics/misc/maple.png')
+    ['maple'] = love.graphics.newImage('graphics/misc/maple.png'),
+    ['key-up'] = love.graphics.newImage('graphics/misc/key-up.png'),
+    ['key-down'] = love.graphics.newImage('graphics/misc/key-down.png'),
+    ['key-left'] = love.graphics.newImage('graphics/misc/key-left.png'),
+    ['key-right'] = love.graphics.newImage('graphics/misc/key-right.png'),
+    ['key-space'] = love.graphics.newImage('graphics/misc/key-space.png'),
+    ['key-z'] = love.graphics.newImage('graphics/misc/key-z.png'),
+    ['key-c'] = love.graphics.newImage('graphics/misc/key-c.png'),
+    ['key-d'] = love.graphics.newImage('graphics/misc/key-d.png'),
 }
 
 gBackgrounds = {
@@ -154,7 +163,7 @@ gFrames = {
     ['tiles'] = GenerateQuads(gTextures['tiles'], 16, 16),
     ['toppers'] = GenerateQuads(gTextures['toppers'], 16, 16),
     ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
-    ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2),
+    ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
     ['portal'] = GenerateQuads(gTextures['portal'], 250, 470)
 }
 

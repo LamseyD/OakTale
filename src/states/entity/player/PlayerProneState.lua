@@ -55,6 +55,13 @@ end
 
 function PlayerProneState:render()
     local anim = self.player.currentAnimation
+    if anim.texture == 'character-2' then
+        if self.player.direction == 'right' then
+            self.player.offsetX = -self.player.hitbox.width - 82 
+        else
+            self.player.offsetX = 55
+        end
+    end
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
         math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY), 0, self.player.rotation_x, 1)
         

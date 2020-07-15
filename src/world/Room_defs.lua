@@ -144,7 +144,7 @@ ROOM_DEFS = {
                 ['x'] = 1195,
                 ['y'] = 385,
                 ['connected_map'] = 'main',
-                ['connected_portal'] = 1
+                ['connected_portal'] = 4
             }
         },
         ['bgm'] = 'rest-n-peace',
@@ -313,7 +313,7 @@ ROOM_DEFS = {
                 ['x'] = 20,
                 ['y'] = 325,
                 ['connected_map'] = 'main',
-                ['connected_portal'] = 2
+                ['connected_portal'] = 1 
             },
             [2] = {
                 ['x'] = 1195,
@@ -801,7 +801,7 @@ ROOM_DEFS = {
                 ['x'] = VIRTUAL_WIDTH / 2 - 31,
                 ['y'] = 515,
                 ['connected_map'] = 'main',
-                ['connected_portal'] = 1
+                ['connected_portal'] = 5
             },
             [2] = {
                 ['x'] = 330,
@@ -1517,7 +1517,7 @@ ROOM_DEFS = {
             ['name'] = 'tiguru', -- tiv
             ['x'] = 5,
             ['y'] = 9   
-        },g
+        },
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,

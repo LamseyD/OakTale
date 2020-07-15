@@ -62,7 +62,7 @@ end
 function Player:update(dt)
     Entity.update(self, dt)
     if love.keyboard.wasPressed('d') and self.bank >= 50 then
-        self.health = self.maxHealth
+        self.health = math.min(self.maxHealth, self.maxHealth + 50)
         self.bank = self.bank - 50
     end
 
