@@ -33,6 +33,7 @@ require 'src/states/game/CharacterSelectState'
 require 'src/states/game/PlayState'
 require 'src/states/game/FadeInState'
 require 'src/states/game/FadeOutState'
+require 'src/states/game/VictoryState'
 
 --entity state
 require 'src/states/entity/EntityJumpState'
