@@ -32,7 +32,7 @@ function PlayerWalkState:update(dt)
         self.entity:changeState('stand')
     end
 
-    if love.keyboard.isDown('space') then
+    if love.keyboard.wasPressed('space') then
         self.entity:changeState('jump')
     end
 

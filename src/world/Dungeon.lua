@@ -67,9 +67,11 @@ function Dungeon:update(dt)
                 self.player.hitbox.x = temp_x
                 self.player.y = temp_y + 50
                 self.player.hitbox.y = temp_y + 50
+
                 if not self.currentRoom.boss then
                     self.currentRoom:spawnEnemies()
                 end
+                
                 if not gSounds[self.currentRoom.bgm]:isPlaying() then
                     love.audio.pause()
                     gSounds[self.currentRoom.bgm]:seek(0)

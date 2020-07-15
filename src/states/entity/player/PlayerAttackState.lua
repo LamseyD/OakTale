@@ -101,7 +101,8 @@ function PlayerAttackState:update(dt)
 
     -- -- check if hitbox collides with any entities in the scene
     for k, entity in pairs(self.dungeon.currentRoom.level.entities) do
-        if entity:collides(self.swordHitbox) then
+        if entity:collides(self.swordHitbox) and not entity.invulnerable then
+            entity:goInvulnerable(1.5)
             local def_amount = 0
             if entity.lvl > self.player.lvl then
                 def_amount = entity.baseDEF * math.abs(self.player.lvl - entity.lvl) * 0.5
@@ -112,7 +113,7 @@ function PlayerAttackState:update(dt)
             entity:damage(dmg_amount)
             entity.visibleHP = true
             GUI:displayDmg(math.abs(self.player.hitbox.x - entity.hitbox.x)/2, entity.hitbox.y - 30, dmg_amount)
-            entity:goInvulnerable(1.5) -- should be knocked back
+             -- should be knocked back
             gSFX['hit']:play()
             local knockback = entity.knockback and entity.knockback or 50
             if self.player.direction == 'right' then

@@ -24,6 +24,8 @@ function love.load()
     -- }
     -- gStateMachine:change('start')
     love.keyboard.keysPressed = {}
+    g_clock = 0
+    timestep = (1.0 / 144)
     -- g_muted = false
 end
 
@@ -43,11 +45,17 @@ function love.keyboard.wasPressed(key)
 end
 
 function love.update(dt)
-    Timer.update(dt)
-    gStateStack:update(dt)
+    
+    -- g_clock = g_clock + dt
+    -- while g_clock >= timestep do
+        g_clock = g_clock - timestep
+        Timer.update(dt)
+        gStateStack:update(dt)
     -- gStateMachine:update(dt)
     -- muteMusic()
-    love.keyboard.keysPressed = {}
+        love.keyboard.keysPressed = {}
+    -- end
+    
 end
 
 function love.draw()
