@@ -150,7 +150,7 @@ ROOM_DEFS = {
         ['bgm'] = 'rest-n-peace',
         ['background'] = 'road-to-hene',
         ['mobs'] = {
-            ['blue-snail'] = 10
+            ['blue-snail'] = 7
         }
     },
     ['road-to-main-2'] = {
@@ -204,8 +204,8 @@ ROOM_DEFS = {
         ['bgm'] = 'rest-n-peace',
         ['background'] = 'road-to-hene',
         ['mobs'] = {
-            ['red-snail'] = 7,
-            ['blue-snail'] = 8
+            ['red-snail'] = 3,
+            ['blue-snail'] = 4
         }
     },
     ['praire'] = {
@@ -276,9 +276,9 @@ ROOM_DEFS = {
         ['background'] = 'maple-island',
         ['bgm'] = 'lith-harbor',
         ['mobs'] = {
-            ['red-snail'] = 5,
-            ['blue-snail'] = 5,
-            ['snail'] = 5
+            ['red-snail'] = 3,
+            ['blue-snail'] = 2,
+            ['snail'] = 2
         }
     },
     ['back-side-1'] = {
@@ -325,8 +325,8 @@ ROOM_DEFS = {
         ['bgm'] = 'backside-1',
         ['background'] = 'back-side-1',
         ['mobs'] = {
-            ['pig'] = 10,
-            ['stump'] = 5
+            ['pig'] = 5,
+            ['stump'] = 2
         }
     },
     ['back-side-2'] = {
@@ -379,8 +379,8 @@ ROOM_DEFS = {
         ['bgm'] = 'backside-2',
         ['background'] = 'back-side-2',
         ['mobs'] = {
-            ['spore'] = 10,
-            ['green-mushroom'] = 5
+            ['spore'] = 5,
+            ['green-mushroom'] = 2
         }
     },
     ['hidden-woods'] = {
@@ -468,8 +468,8 @@ ROOM_DEFS = {
         ['bgm'] = 'sleepywood',
         ['background'] = 'sleepywoods',
         ['mobs'] = {
-            ['green-mushroom'] = 10,
-            ['orange-mushroom'] = 5
+            ['green-mushroom'] = 5,
+            ['orange-mushroom'] = 2
         }
     },
     ['tree-trunk-1'] = {
@@ -528,7 +528,7 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            ['slime'] = 10
+            ['slime'] = 7
         }
     },
     ['tree-trunk-2'] = {
@@ -599,8 +599,8 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            ['stump'] = 5,
-            ['slime'] = 5
+            ['stump'] = 3,
+            ['slime'] = 4
         }
     },
     ['tree-trunk-3'] = {
@@ -671,8 +671,8 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            ['stump'] = 5,
-            ['slime'] = 5
+            ['stump'] = 3,
+            ['slime'] = 4
         }
     },
     ['tree-top'] = {
@@ -742,7 +742,7 @@ ROOM_DEFS = {
         ['bgm'] = 'ellinia',
         ['background'] = 'tree-top',
         ['mobs'] = {
-            ['stump'] = 10
+            ['stump'] = 7
         }
     },
     ['eos-1'] = {
@@ -813,7 +813,7 @@ ROOM_DEFS = {
         ['bgm'] = 'helios-tower',
         ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['slime'] = 7
         }
     },
     ['eos-2'] = {
@@ -872,7 +872,7 @@ ROOM_DEFS = {
         ['bgm'] = 'helios-tower',
         ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['blue-snail'] = 7
         }
     },
     ['eos-3'] = {
@@ -985,7 +985,7 @@ ROOM_DEFS = {
         ['bgm'] = 'high-enough',
         ['background'] = 'helios-tower',
         ['mobs'] = {
-            ['stump'] = 10
+            ['red-snail'] = 7
         }
     },
     ['eos-4'] = {
@@ -1050,7 +1050,7 @@ ROOM_DEFS = {
         ['bgm'] = 'high-enough',
         ['background'] = 'helios-tower',
         ['mobs'] = {
-            ['stump'] = 10
+            ['orange-mushroom'] = 7
         }
     },
     ['eos-5'] = {
@@ -1109,7 +1109,7 @@ ROOM_DEFS = {
         ['bgm'] = 'helios-tower',
         ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['green-mushroom'] = 7
         }
     },
     ['eos-6'] = {
@@ -1174,10 +1174,15 @@ ROOM_DEFS = {
         ['bgm'] = 'helios-tower',
         ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['pig'] = 7
         }
     },
     ['eos-top'] = {
+        ['boss'] = {
+            ['name'] = 'tiguru',
+            ['x'] = 5,
+            ['y'] = 9   
+        },
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,
@@ -1233,7 +1238,7 @@ ROOM_DEFS = {
         ['bgm'] = 'ludi',
         ['background'] = 'ludi',
         ['mobs'] = {
-            ['stump'] = 10
+            ['stump'] = 7
         }
     },
     ['orbis-1'] = {
@@ -1262,7 +1267,7 @@ ROOM_DEFS = {
         ['bgm'] = 'orbis-tower',
         ['background'] = 'orbis-tower-bottom',
         ['mobs'] = {
-            ['stump'] = 10
+            ['spore'] = 5
         }
     },
     ['orbis-2'] = {
@@ -1328,7 +1333,7 @@ ROOM_DEFS = {
         ['bgm'] = 'orbis-tower',
         ['background'] = 'orbis-tower-mid',
         ['mobs'] = {
-            ['stump'] = 10
+            ['orange-mushroom'] = 7
         }
     },
     ['orbis-3'] = {
@@ -1376,7 +1381,8 @@ ROOM_DEFS = {
         ['bgm'] = 'orbis-tower',
         ['background'] = 'orbis-tower-mid',
         ['mobs'] = {
-            ['stump'] = 10
+            ['slime'] = 4,
+            ['red-snail'] = 3
         }
     },
     ['orbis-4'] = {
@@ -1429,7 +1435,8 @@ ROOM_DEFS = {
         ['bgm'] = 'orbis-tower',
         ['background'] = 'orbis-tower-mid',
         ['mobs'] = {
-            ['stump'] = 10
+            ['slime'] = 4,
+            ['orange-mushroom'] = 3
         }
     },
     ['orbis-5'] = {
@@ -1500,10 +1507,17 @@ ROOM_DEFS = {
         ['bgm'] = 'orbis-tower',
         ['background'] = 'orbis-tower',
         ['mobs'] = {
-            ['stump'] = 10
+            ['spore'] = 3,
+            ['green-mushroom'] = 2,
+            ['orange-mushroom'] = 2
         }
     },
     ['orbis-top'] = {
+        ['boss'] = {
+            ['name'] = 'tiguru',
+            ['x'] = 5,
+            ['y'] = 9   
+        },
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,
@@ -1529,7 +1543,7 @@ ROOM_DEFS = {
         ['bgm'] = 'orbis',
         ['background'] = 'orbis',
         ['mobs'] = {
-            ['stump'] = 10
+            ['pig'] = 10
         }
     },
     ['test'] = {
