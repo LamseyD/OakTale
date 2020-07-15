@@ -137,7 +137,14 @@ gBackgrounds = {
     ['back-side-1'] = love.graphics.newImage('graphics/map/back-side-1.png'),
     ['back-side-2'] = love.graphics.newImage('graphics/map/back-side-2.png'),
     ['tree-trunk'] = love.graphics.newImage('graphics/map/tree-trunk.png'),
-    ['tree-top'] = love.graphics.newImage('graphics/map/tree-top.png')
+    ['tree-top'] = love.graphics.newImage('graphics/map/tree-top.png'),
+    ['helios-tower'] = love.graphics.newImage('graphics/map/helios-tower.png'),
+    ['ludi'] = love.graphics.newImage('graphics/map/ludi.png'),
+    ['orbis'] = love.graphics.newImage('graphics/map/orbis.png'),
+    ['orbis-tower'] = love.graphics.newImage('graphics/map/orbis-tower.png'),
+    ['orbis-tower-bottom'] = love.graphics.newImage('graphics/map/orbis-tower-bottom.png'),
+    ['orbis-tower-mid'] = love.graphics.newImage('graphics/map/orbis-tower-mid.png'),
+    ['helios-tower-2'] = love.graphics.newImage('graphics/map/helio-tower-2.png')
 }
 
 
@@ -180,8 +187,12 @@ gSounds = {
     ['tree-trunk'] = love.audio.newSource('sounds/tree-trunk.mp3', 'stream'),
     ['rest-n-peace'] = love.audio.newSource('sounds/rest-n-peace.mp3', 'stream'),
     ['ellinia'] = love.audio.newSource('sounds/ellinia.mp3', 'stream'),
-    ['queens-garden'] = love.audio.newSource('sounds/queens-garden.mp3', 'stream')
-
+    ['queens-garden'] = love.audio.newSource('sounds/queens-garden.mp3', 'stream'),
+    ['helios-tower'] = love.audio.newSource('sounds/helios-tower.mp3', 'stream'),
+    ['high-enough'] = love.audio.newSource('sounds/high-enough.mp3', 'stream'),
+    ['ludi'] = love.audio.newSource('sounds/ludi.mp3', 'stream'),
+    ['orbis'] = love.audio.newSource('sounds/orbis.mp3', 'stream'),
+    ['orbis-tower'] = love.audio.newSource('sounds/orbis-tower.mp3', 'stream'),
 }
 
 gSFX = {

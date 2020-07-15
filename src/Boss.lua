@@ -16,10 +16,6 @@ function Boss:init(def)
     self.exp = def.exp
     self.meso = def.meso_value
     self.phase = 1
-<<<<<<< HEAD
-    self.health = self.maxHealth
-=======
->>>>>>> e02fbb5a3c3fe659e04213182ecd58ffe0a86e80
 end
 
 function Boss:update(dt)

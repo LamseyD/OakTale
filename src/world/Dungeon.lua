@@ -16,11 +16,11 @@ function Dungeon:init(player)
     -- possible create a function to generate all rooms at the beginning?
 
     -- current room we're operating in
-    self.currentRoom = self.rooms['main']
+    self.currentRoom = self.rooms['orbis-top']
     self.currentRoom:spawnEnemies()
     love.audio.pause()
-    gSounds[ROOM_DEFS['main']['bgm']]:play()
-    gSounds[ROOM_DEFS['main']['bgm']]:setLooping(true)
+    gSounds[self.currentRoom.bgm]:play()
+    gSounds[self.currentRoom.bgm]:setLooping(true)
 
     -- room we're moving camera to during a shift; becomes active room afterwards
     self.nextRoom = nil
