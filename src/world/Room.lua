@@ -158,49 +158,61 @@ function Room:spawnEnemies()
     -- flag for whether there's ground on this column of the level
         local groundFound = false
         local prevGroundFound = false
-
+        local mobCount = {}
+        local spawnPoints = {{['x'] = 4, ['y'] = 5}}
         for y = 1, self.tileMap.height do
             prevGroundFound = groundFound
             if self.tileMap.tiles[y][x].id == TILE_ID_GROUND then
                 groundFound = true
-                    -- random chance, 1 in 10
-                if not prevGroundFound and math.random(10) == 1 then              
-                    -- instantiate snail, declaring in advance so we can pass it into state machine
-                    local mob
-                    local mobName = self.mobs[math.random(#self.mobs)]
-                    mob = Mob{
-                        animations = ENTITY_DEFS[mobName].animations,
-                        walkSpeed = ENTITY_DEFS[mobName].walkSpeed,
-                        texture = mob,
-                        baseHP = ENTITY_DEFS[mobName].baseHP,
-                        baseATK = ENTITY_DEFS[mobName].baseATK,
-                        baseDEF = ENTITY_DEFS[mobName].baseDEF,
-                        exp = ENTITY_DEFS[mobName].exp_value,
-                        meso_value = ENTITY_DEFS[mobName].meso_value,
-                        lvl = ENTITY_DEFS[mobName].level,
-                        width = ENTITY_DEFS[mobName].width,
-                        height = ENTITY_DEFS[mobName].height,
-                        x = x * TILE_SIZE - ENTITY_DEFS[mobName].width,
-                        y = (y - 1) * TILE_SIZE - ENTITY_DEFS[mobName].height,
-                        hitbox_offsetX = 0,
-                        hitbox_offsetY = 0
-                    }
-                    mob.level = self.level
-                    mob.stateMachine = StateMachine{
-                        ['stand'] = function() return MobStandState(mob, self.tileMap) end,
-                        ['walk'] = function() return MobWalkState(mob, self.tileMap) end,
-                        ['die'] = function() return MobDieState(mob) end,
-                        ['falling'] = function() return MobFallingState(mob, GRAVITY_AMOUNT) end
-                    }
-                    mob:changeState('stand')
-                    table.insert(self.level.entities, mob)
-                end
-                if #self.level.entities == 8 then
-                    return
+                if not prevGroundFound then
+                    --table.insert(spawnPoints, {'x' = x, 'y' = y})
                 end
             elseif self.tileMap.tiles[y][x].id == TILE_ID_EMPTY then
                 groundFound = false
             end
         end
+    end
+    for k, v in pairs(spawnPoints) do
+        print(k)
+        print(v)
+    end
+end
+
+function test()
+    if not prevGroundFound and math.random(10) == 1 then              
+        -- instantiate snail, declaring in advance so we can pass it into state machine
+        local mob
+        local mobName = self.mobs[math.random(#self.mobs)]
+        mob = Mob{
+            animations = ENTITY_DEFS[mobName].animations,
+            walkSpeed = ENTITY_DEFS[mobName].walkSpeed,
+            texture = mob,
+            baseHP = ENTITY_DEFS[mobName].baseHP,
+            baseATK = ENTITY_DEFS[mobName].baseATK,
+            baseDEF = ENTITY_DEFS[mobName].baseDEF,
+            exp = ENTITY_DEFS[mobName].exp_value,
+            meso_value = ENTITY_DEFS[mobName].meso_value,
+            lvl = ENTITY_DEFS[mobName].level,
+            width = ENTITY_DEFS[mobName].width,
+            height = ENTITY_DEFS[mobName].height,
+            x = x * TILE_SIZE - ENTITY_DEFS[mobName].width,
+            y = (y - 1) * TILE_SIZE - ENTITY_DEFS[mobName].height,
+            hitbox_offsetX = 0,
+            hitbox_offsetY = 0
+        }
+        mob.level = self.level
+        mob.stateMachine = StateMachine{
+            ['stand'] = function() return MobStandState(mob, self.tileMap) end,
+            ['walk'] = function() return MobWalkState(mob, self.tileMap) end,
+            ['die'] = function() return MobDieState(mob) end,
+            ['falling'] = function() return MobFallingState(mob, GRAVITY_AMOUNT) end
+        }
+        mob:changeState('stand')
+        table.insert(self.level.entities, mob)
+    end
+    if #self.level.entities == 8 then
+        return
+    elseif self.tileMap.tiles[y][x].id == TILE_ID_EMPTY then
+        groundFound = false
     end
 end

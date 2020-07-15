@@ -183,6 +183,7 @@ function BossState:render()
         love.graphics.setColor(1,1,1,1)
     end
     love.graphics.draw(gTextures['jewel-4'], 1150, 680, 0, 0.25, 0.25)
+
     love.graphics.setColor(1, 1, 1, 50/255)
     love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
     love.graphics.setColor(1, 0, 0, 1)
