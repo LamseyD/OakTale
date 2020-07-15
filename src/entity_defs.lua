@@ -184,5 +184,47 @@ ENTITY_DEFS = {
                 looping = true
             }
         }
+    },
+    ['tiguru'] = {	
+        walkSpeed = TIGURU_WALK_SPEED,
+	    width = 60 * 3,
+	    height = 80 * 3,
+        baseHP = 1000,
+        baseATK = 20,
+        baseDEF = 20,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        level = 5,
+        exp_value = 500,
+        meso_value = 100,
+        scale = 3,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12},
+                interval = 0.5,
+                texture = 'tiguru',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {13},
+                interval = 0.5,
+                texture = 'pig',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {14, 15, 16, 17, 18, 19},
+                interval = 0.10,
+                texture = 'tiguru',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {20, 21, 22, 23, 24, 25},
+                interval = 0.15,
+                texture = 'tiguru',
+                looping = true
+            }
+        }
     }
 }

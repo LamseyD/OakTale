@@ -57,8 +57,6 @@ function EntityWalkState:update(dt)
             self.bumped = true
         end
     end
-    
-    
 end
 
 function EntityWalkState:processAI(params, dt)

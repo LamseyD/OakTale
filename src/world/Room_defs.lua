@@ -450,6 +450,11 @@ ROOM_DEFS = {
         }
     },
     ['tree-trunk-1'] = {
+        ['boss'] = {
+            ['name'] = 'tiguru',
+            ['x'] = 5,
+            ['y'] = 9   
+        },
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,

@@ -31,6 +31,7 @@ require 'src/states/StateStack'
 require 'src/states/game/StartState'
 require 'src/states/game/CharacterSelectState'
 require 'src/states/game/PlayState'
+require 'src/states/game/BossState'
 require 'src/states/game/FadeInState'
 require 'src/states/game/FadeOutState'
 require 'src/states/game/VictoryState'
@@ -52,6 +53,9 @@ require 'src/states/entity/mob/MobStandState'
 require 'src/states/entity/mob/MobWalkState'
 require 'src/states/entity/mob/MobDieState'
 require 'src/states/entity/mob/MobFallingState'
+require 'src/states/entity/boss/BossStandState'
+require 'src/states/entity/boss/BossWalkState'
+require 'src/states/entity/boss/BossDieState'
 
 --graphics
 require 'graphics/character/character-1/char-1'
@@ -59,12 +63,14 @@ require 'graphics/character/character-2/char-2'
 require 'graphics/Mobs/Snail/snail'
 require 'graphics/Mobs/Stump/stump'
 require 'graphics/Mobs/Pig/pig'
+require 'graphics/Mobs/Tiguru/tiguru'
 require 'src/GUI'
 
 --entities
 require 'src/Entity'
 require 'src/Player'
 require 'src/Mob'
+require 'src/Boss'
 require 'src/entity_defs'
 require 'src/Hitbox'
 
@@ -80,12 +86,22 @@ mobs = {
     ['pig'] = {
         mob = PIG, 
         states = {"die1_","hit1_","jump_","move_","stand_"}
+    },
+    ['tiguru'] = {
+        boss = true,
+        mob = TIGURU, 
+        states = {"die1_","hit1_","move_","stand_"}
     }
 }
 
 mobKeys = {}
+bossKeys = {}
 for k, v in pairs(mobs) do
-    mobKeys[#mobKeys+1] = k
+    if not v.boss then
+        mobKeys[#mobKeys+1] = k
+    else
+        bossKeys[#bossKeys+1] = k
+    end
 end
 
 gTextures = {  
@@ -137,7 +153,7 @@ gFrames = {
 
 for name, mob in pairs(mobs) do
     gTextures[name] = love.graphics.newImage('graphics/Mobs/'..(name:gsub("^%l", string.upper))..'/'..name..'.png')
-    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob.mob, mob.states, 8)
+    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob.mob, mob.states, 12)
 end
 
 gFrames['tilesets'] = GenerateTileSets(gFrames['tiles'], 

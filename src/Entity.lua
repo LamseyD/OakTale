@@ -12,6 +12,7 @@ function Entity:init(def)
     self.y = def.y
     self.width = def.width
     self.height = def.height
+    self.maxWaitDuration = 5
 
     --hitbox
     self.hitbox = Hitbox(self.x + def.hitbox_offsetX, self.y + def.hitbox_offsetY, self.width, self.height)
@@ -23,6 +24,7 @@ function Entity:init(def)
     self.offsetX = def.offsetX or 0
     self.offsetY = def.offsetY or 0
     self.rotation_x = 1
+    self.scale = def.scale
 
     self.walkSpeed = def.walkSpeed
 

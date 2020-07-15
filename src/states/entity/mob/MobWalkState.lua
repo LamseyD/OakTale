@@ -8,8 +8,8 @@
 
 MobWalkState = Class{__includes = EntityWalkState}
 
-function MobWalkState:init(snail, tileMap)
-    EntityWalkState.init(self, snail, tileMap)
+function MobWalkState:init(mob, tileMap)
+    EntityWalkState.init(self, mob, tileMap)
     --self.entity = snail
     self.tileMap = tileMap
     --self.entity:changeAnimation('walk')

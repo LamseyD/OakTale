@@ -49,6 +49,9 @@ end
 function Dungeon:update(dt)
     for i, item in pairs(self.currentRoom.level.portals) do
         if self.player:collides(item) and love.keyboard.wasPressed('up') then
+            if self.currentRoom.boss then
+                gStateStack:pop()
+            end
             gStateStack:push(FadeInState({
                 r = 1, g = 1, b = 1
             }, 1,
@@ -64,7 +67,9 @@ function Dungeon:update(dt)
                 self.player.hitbox.x = temp_x
                 self.player.y = temp_y + 50
                 self.player.hitbox.y = temp_y + 50
-                self.currentRoom:spawnEnemies()
+                if not self.currentRoom.boss then
+                    self.currentRoom:spawnEnemies()
+                end
                 if not gSounds[self.currentRoom.bgm]:isPlaying() then
                     love.audio.pause()
                     gSounds[self.currentRoom.bgm]:seek(0)

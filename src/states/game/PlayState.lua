@@ -46,6 +46,11 @@ end
 function PlayState:update(dt)
     -- Timer.update(dt)
     self.dungeon:update(dt)
+    if self.dungeon.currentRoom.boss then
+        gStateStack:push(BossState(
+            self.player, 
+            self.dungeon))
+    end
     -- self.current_room:update(dt)
 
     -- -- remove any nils from pickups, etc.

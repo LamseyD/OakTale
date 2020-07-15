@@ -9,6 +9,7 @@ function Room:init(player, def)
     self.bgm = def.bgm
     -- gSounds[self.bgm]:setLooping(true)
     self.background = def.background
+    self.boss = def.boss
 end
 
 function Room:update(dt)

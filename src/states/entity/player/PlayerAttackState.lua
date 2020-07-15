@@ -114,11 +114,12 @@ function PlayerAttackState:update(dt)
             GUI:displayDmg(math.abs(self.player.hitbox.x - entity.hitbox.x)/2, entity.hitbox.y - 30, dmg_amount)
             entity:goInvulnerable(1.5) -- should be knocked back
             gSFX['hit']:play()
+            local knockback = entity.knockback and entity.knockback or 50
             if self.player.direction == 'right' then
                 --go into knocked back state here
-                entity.hitbox.x = math.min(VIRTUAL_WIDTH, entity.hitbox.x + 50)
+                entity.hitbox.x = math.min(VIRTUAL_WIDTH, entity.hitbox.x + knockback)
             else
-                entity.hitbox.x = math.max(1, entity.hitbox.x - 50)
+                entity.hitbox.x = math.max(1, entity.hitbox.x - knockback)
             end
             -- gSounds['hit-enemy']:play()
         end

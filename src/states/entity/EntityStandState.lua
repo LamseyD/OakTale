@@ -28,7 +28,7 @@ end
 ]]
 function EntityStandState:processAI(params, dt)
     if self.waitDuration == 0 then
-        self.waitDuration = math.random(5)
+        self.waitDuration = math.random(self.entity.maxWaitDuration)
     else
         self.waitTimer = self.waitTimer + dt
 
