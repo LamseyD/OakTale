@@ -53,9 +53,59 @@ ENTITY_DEFS = {
             }
         }
     },
-    -- ['char-2'] = {
-        
-    -- }
+    ['char-2'] = {
+        walkSpeed = PLAYER_WALK_SPEED,
+        width = 30,
+        height = 50,
+        baseHP = 50,
+        baseATK = 10,
+        baseDEF = 10,
+        offsetY = 0,
+        offsetX = 0,
+        level = 1,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -31,
+        animations = {
+            ['alert'] = {
+                frames = {1, 2, 3},
+                interval = 0.18,
+                texture = 'character-2',
+                looping = true
+            },
+            ['jump'] = {
+                frames = {4},
+                texture = 'character-2'
+            },
+            ['prone'] = {
+                frames = {5},
+                texture = 'character-2'
+            },
+            ['prone-attack'] = {
+                frames = {6},
+                interval = 0.10,
+                texture = 'character-2',
+                looping = false
+            },
+            ['stand'] = {
+                frames = {7,8,9},
+                interval = 0.5,
+                texture = 'character-2',
+                looping = true
+            },
+            ['attack'] = {
+                frames = {10,11,12},
+                interval = 0.25,
+                texture = 'character-2',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {13,14,15,16},
+                interval = 0.18,
+                texture = 'character-2',
+                looping = true
+            }
+        }
+    },
     ['snail'] = {	
         walkSpeed = SNAIL_WALK_SPEED,
 	    width = 38,

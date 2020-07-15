@@ -24,7 +24,7 @@ function StartState:update(dt)
             -- self.tween:remove()
             gStateStack:pop()
             
-            gStateStack:push(CharacterSelectState())
+            gStateStack:push(StoryState())
             gStateStack:push(FadeOutState({
                 r = 1, g = 1, b = 1
             }, 1,

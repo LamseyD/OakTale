@@ -74,6 +74,18 @@ ROOM_DEFS = {
                 ['y'] = 387,
                 ['connected_map'] = 'tree-trunk-1',
                 ['connected_portal'] = 2
+            },
+            [4] = {
+                ['x'] = 60,
+                ['y'] = 125,
+                ['connected_map'] = 'eos-1',
+                ['connected_portal'] = 2
+            },
+            [5] = {
+                ['x'] = 1150,
+                ['y'] = 125,
+                ['connected_map'] = 'orbis-1',
+                ['connected_portal'] = 1
             }
         },
         ['bgm'] = 'henesys',
@@ -132,13 +144,13 @@ ROOM_DEFS = {
                 ['x'] = 1195,
                 ['y'] = 385,
                 ['connected_map'] = 'main',
-                ['connected_portal'] = 1
+                ['connected_portal'] = 4
             }
         },
         ['bgm'] = 'rest-n-peace',
         ['background'] = 'road-to-hene',
         ['mobs'] = {
-            ['blue-snail'] = 10
+            ['blue-snail'] = 7
         }
     },
     ['road-to-main-2'] = {
@@ -192,8 +204,8 @@ ROOM_DEFS = {
         ['bgm'] = 'rest-n-peace',
         ['background'] = 'road-to-hene',
         ['mobs'] = {
-            ['red-snail'] = 7,
-            ['blue-snail'] = 8
+            ['red-snail'] = 3,
+            ['blue-snail'] = 4
         }
     },
     ['praire'] = {
@@ -264,9 +276,9 @@ ROOM_DEFS = {
         ['background'] = 'maple-island',
         ['bgm'] = 'lith-harbor',
         ['mobs'] = {
-            ['red-snail'] = 5,
-            ['blue-snail'] = 5,
-            ['snail'] = 5
+            ['red-snail'] = 3,
+            ['blue-snail'] = 2,
+            ['snail'] = 2
         }
     },
     ['back-side-1'] = {
@@ -301,7 +313,7 @@ ROOM_DEFS = {
                 ['x'] = 20,
                 ['y'] = 325,
                 ['connected_map'] = 'main',
-                ['connected_portal'] = 2
+                ['connected_portal'] = 1 
             },
             [2] = {
                 ['x'] = 1195,
@@ -313,8 +325,8 @@ ROOM_DEFS = {
         ['bgm'] = 'backside-1',
         ['background'] = 'back-side-1',
         ['mobs'] = {
-            ['pig'] = 10,
-            ['stump'] = 5
+            ['pig'] = 5,
+            ['stump'] = 2
         }
     },
     ['back-side-2'] = {
@@ -367,8 +379,8 @@ ROOM_DEFS = {
         ['bgm'] = 'backside-2',
         ['background'] = 'back-side-2',
         ['mobs'] = {
-            ['spore'] = 10,
-            ['green-mushroom'] = 5
+            ['spore'] = 5,
+            ['green-mushroom'] = 2
         }
     },
     ['hidden-woods'] = {
@@ -456,8 +468,8 @@ ROOM_DEFS = {
         ['bgm'] = 'sleepywood',
         ['background'] = 'sleepywoods',
         ['mobs'] = {
-            ['green-mushroom'] = 10,
-            ['orange-mushroom'] = 5
+            ['green-mushroom'] = 5,
+            ['orange-mushroom'] = 2
         }
     },
     ['tree-trunk-1'] = {
@@ -516,7 +528,7 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            ['slime'] = 10
+            ['slime'] = 7
         }
     },
     ['tree-trunk-2'] = {
@@ -587,8 +599,8 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            ['stump'] = 5,
-            ['slime'] = 5
+            ['stump'] = 3,
+            ['slime'] = 4
         }
     },
     ['tree-trunk-3'] = {
@@ -659,13 +671,13 @@ ROOM_DEFS = {
         ['bgm'] = 'tree-trunk',
         ['background'] = 'tree-trunk',
         ['mobs'] = {
-            ['stump'] = 5,
-            ['slime'] = 5
+            ['stump'] = 3,
+            ['slime'] = 4
         }
     },
     ['tree-top'] = {
         ['boss'] = {
-            ['name'] = 'tiguru',
+            ['name'] = 'tiguru', -- Timu
             ['x'] = 1,
             ['y'] = 11   
         },
@@ -730,7 +742,7 @@ ROOM_DEFS = {
         ['bgm'] = 'ellinia',
         ['background'] = 'tree-top',
         ['mobs'] = {
-            ['stump'] = 10
+            ['stump'] = 7
         }
     },
     ['eos-1'] = {
@@ -742,7 +754,7 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
+                ['x'] = 3, 
                 ['y'] = 9, 
                 ['width'] = 3,
                 ['height'] = 1
@@ -754,9 +766,9 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
+                ['x'] = 7,
                 ['y'] = 8,
-                ['width'] = 6,
+                ['width'] = 7,
                 ['height'] = 1
             },
             [5] = {
@@ -772,26 +784,36 @@ ROOM_DEFS = {
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 6,
                 ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 3,
                 ['height'] = 1 
             },
             [8] = {
-                ['x'] = 14,
+                ['x'] = 12,
                 ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 3,
                 ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 515,
+                ['connected_map'] = 'main',
+                ['connected_portal'] = 5
+            },
+            [2] = {
+                ['x'] = 330,
+                ['y'] = 70,
+                ['connected_map'] = 'eos-2',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'helios-tower',
+        ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['slime'] = 7
         }
     },
     ['eos-2'] = {
@@ -803,56 +825,54 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
-                ['y'] = 9, 
-                ['width'] = 3,
+                ['x'] = 3, 
+                ['y'] = 10, 
+                ['width'] = 5,
                 ['height'] = 1
             },
             [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
+                ['x'] = 7,
+                ['y'] = 8,
+                ['width'] = 7,
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
-                ['height'] = 1
-            },
-            [5] = {
-                ['x'] = 7,
+                ['x'] = 9,
                 ['y'] = 6,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
+                ['x'] = 6,
+                ['y'] = 4,
                 ['width'] = 3,
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 12,
                 ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 3,
                 ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 515,
+                ['connected_map'] = 'eos-1',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = 330,
+                ['y'] = 70,
+                ['connected_map'] = 'eos-3',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'helios-tower',
+        ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['blue-snail'] = 7
         }
     },
     ['eos-3'] = {
@@ -864,56 +884,108 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
-                ['y'] = 9, 
-                ['width'] = 3,
+                ['x'] = 10, 
+                ['y'] = 10, 
+                ['width'] = 2,
                 ['height'] = 1
             },
             [3] = {
-                ['x'] = 15,
+                ['x'] = 12,
                 ['y'] = 9,
-                ['width'] = 3,
+                ['width'] = 2,
                 ['height'] = 1
             },
             [4] = {
                 ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
+                ['y'] = 9,
+                ['width'] = 2,
                 ['height'] = 1
             },
             [5] = {
-                ['x'] = 7,
-                ['y'] = 6,
-                ['width'] = 3,
+                ['x'] = 6,
+                ['y'] = 8,
+                ['width'] = 2,
                 ['height'] = 1
             },
             [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
-                ['width'] = 3,
+                ['x'] = 14,
+                ['y'] = 8,
+                ['width'] = 2,
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
-                ['y'] = 4,
-                ['width'] = 7,
+                ['x'] = 5,
+                ['y'] = 7,
+                ['width'] = 2,
                 ['height'] = 1 
             },
             [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
+                ['x'] = 15,
+                ['y'] = 7,
+                ['width'] = 2,
                 ['height'] = 1 
+            },
+            [9] = {
+                ['x'] = 4,
+                ['y'] = 6,
+                ['width'] = 2,
+                ['height'] = 1
+            },
+            [10] = {
+                ['x'] = 16,
+                ['y'] = 6,
+                ['width'] = 2,
+                ['height'] = 1 
+            },
+            [11] = {
+                ['x'] = 5,
+                ['y'] = 5,
+                ['width'] = 2,
+                ['height'] = 1,
+            },
+            [12] = {
+                ['x'] = 15,
+                ['y'] = 5,
+                ['width'] = 2,
+                ['height'] = 1
+            },
+            [13] = {
+                ['x'] = 6,
+                ['y'] = 4,
+                ['width'] = 4,
+                ['height'] = 1
+            },
+            [14] = {
+                ['x'] = 12,
+                ['y'] = 4,
+                ['width'] = 4,
+                ['height'] = 1
+            },
+            [15] = {
+                ['x'] = 10,
+                ['y'] = 5,
+                ['width'] = 2,
+                ['height'] = 1
             }
         },
         ['portals'] = {
             [1] = {
-            }
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 450,
+                ['connected_map'] = 'eos-2',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 125,
+                ['connected_map'] = 'eos-4',
+                ['connected_portal'] = 2
+            },
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'high-enough',
+        ['background'] = 'helios-tower',
         ['mobs'] = {
-            ['stump'] = 10
+            ['red-snail'] = 7
         }
     },
     ['eos-4'] = {
@@ -926,55 +998,59 @@ ROOM_DEFS = {
             },
             [2] = {
                 ['x'] = 4, 
-                ['y'] = 9, 
+                ['y'] = 8, 
                 ['width'] = 3,
                 ['height'] = 1
             },
             [3] = {
                 ['x'] = 15,
-                ['y'] = 9,
+                ['y'] = 8,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
+                ['x'] = 7,
+                ['y'] = 10,
+                ['width'] = 8,
                 ['height'] = 1
             },
             [5] = {
                 ['x'] = 7,
                 ['y'] = 6,
-                ['width'] = 3,
+                ['width'] = 8,
                 ['height'] = 1
             },
             [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
-                ['width'] = 3,
+                ['x'] = 2,
+                ['y'] = 4,
+                ['width'] = 6,
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 13,
                 ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 6,
                 ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 55,
+                ['y'] = 450,
+                ['connected_map'] = 'eos-3',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = 250,
+                ['y'] = 60,
+                ['connected_map'] = 'eos-5',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'high-enough',
+        ['background'] = 'helios-tower',
         ['mobs'] = {
-            ['stump'] = 10
+            ['orange-mushroom'] = 7
         }
     },
     ['eos-5'] = {
@@ -986,59 +1062,57 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
-                ['y'] = 9, 
-                ['width'] = 3,
+                ['x'] = 10, 
+                ['y'] = 10, 
+                ['width'] = 5,
                 ['height'] = 1
             },
             [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
+                ['x'] = 7,
+                ['y'] = 8,
+                ['width'] = 7,
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
-                ['height'] = 1
-            },
-            [5] = {
-                ['x'] = 7,
+                ['x'] = 9,
                 ['y'] = 6,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
+                ['x'] = 6,
+                ['y'] = 4,
                 ['width'] = 3,
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 12,
                 ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 3,
                 ['height'] = 1 
             },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 300,
+                ['y'] = 515,
+                ['connected_map'] = 'eos-4',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = VIRTUAL_WIDTH / 2 + 125,
+                ['y'] = 60,
+                ['connected_map'] = 'eos-6',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'helios-tower',
+        ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['green-mushroom'] = 7
         }
     },
-    ['eos-top'] = {
+    ['eos-6'] = {
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,
@@ -1047,7 +1121,7 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
+                ['x'] = 3, 
                 ['y'] = 9, 
                 ['width'] = 3,
                 ['height'] = 1
@@ -1059,13 +1133,13 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
+                ['x'] = 7,
                 ['y'] = 8,
-                ['width'] = 6,
+                ['width'] = 7,
                 ['height'] = 1
             },
             [5] = {
-                ['x'] = 7,
+                ['x'] = 6,
                 ['y'] = 6,
                 ['width'] = 3,
                 ['height'] = 1
@@ -1077,26 +1151,94 @@ ROOM_DEFS = {
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 6,
                 ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 9,
                 ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 + 125,
+                ['y'] = 515,
+                ['connected_map'] = 'eos-5',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 175 ,
+                ['y'] = 60,
+                ['connected_map'] = 'eos-top',
+                ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'helios-tower',
+        ['background'] = 'helios-tower-2',
         ['mobs'] = {
-            ['stump'] = 10
+            ['pig'] = 7
+        }
+    },
+    ['eos-top'] = {
+        ['boss'] = {
+            ['name'] = 'tiguru', --Tiru
+            ['x'] = 5,
+            ['y'] = 9   
+        },
+        ['blocks'] = {
+            [1] = {
+                ['x'] = 1,
+                ['y'] = 10,
+                ['width'] = MAP_WIDTH,
+                ['height'] = 9
+            },
+            [2] = {
+                ['x'] = 1, 
+                ['y'] = 8, 
+                ['width'] = 4,
+                ['height'] = 2
+            },
+            [3] = {
+                ['x'] = 17,
+                ['y'] = 8,
+                ['width'] = 4,
+                ['height'] = 2
+            },
+            [4] = {
+                ['x'] = 8,
+                ['y'] = 8,
+                ['width'] = 6,
+                ['height'] = 1
+            },
+            [5] = {
+                ['x'] = 6,
+                ['y'] = 6,
+                ['width'] = 13,
+                ['height'] = 1
+            },
+            [6] = {
+                ['x'] = 12,
+                ['y'] = 6,
+                ['width'] = 3,
+                ['height'] = 1 
+            },
+            [7] = {
+                ['x'] = 1,
+                ['y'] = 4,
+                ['width'] = 5,
+                ['height'] = 1 
+            }
+        },
+        ['portals'] = {
+            [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 460,
+                ['connected_map'] = 'eos-6',
+                ['connected_portal'] = 1
+            }
+        },
+        ['bgm'] = 'ludi',
+        ['background'] = 'ludi',
+        ['mobs'] = {
+            ['stump'] = 7
         }
     },
     ['orbis-1'] = {
@@ -1105,59 +1247,27 @@ ROOM_DEFS = {
                 ['x'] = 1,
                 ['y'] = 11,
                 ['width'] = MAP_WIDTH,
-                ['height'] = 1
-            },
-            [2] = {
-                ['x'] = 4, 
-                ['y'] = 9, 
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
-                ['height'] = 1
-            },
-            [5] = {
-                ['x'] = 7,
-                ['y'] = 6,
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
-                ['width'] = 3,
-                ['height'] = 1 
-            },
-            [7] = {
-                ['x'] = 1,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
+                ['height'] = 9
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 + 250,
+                ['y'] = 515,
+                ['connected_map'] = 'orbis-2',
+                ['connected_portal'] = 2
+            },
+            [2] = {
+                ['x'] = 150,
+                ['y'] = 515,
+                ['connected_map'] = 'main',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'orbis-tower',
+        ['background'] = 'orbis-tower-bottom',
         ['mobs'] = {
-            ['stump'] = 10
+            ['spore'] = 5
         }
     },
     ['orbis-2'] = {
@@ -1166,59 +1276,64 @@ ROOM_DEFS = {
                 ['x'] = 1,
                 ['y'] = 11,
                 ['width'] = MAP_WIDTH,
-                ['height'] = 1
+                ['height'] = 9
             },
             [2] = {
-                ['x'] = 4, 
-                ['y'] = 9, 
-                ['width'] = 3,
-                ['height'] = 1
+                ['x'] = 1, 
+                ['y'] = 8, 
+                ['width'] = 4,
+                ['height'] = 3
             },
             [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
-                ['height'] = 1
+                ['x'] = 17,
+                ['y'] = 8,
+                ['width'] = 4,
+                ['height'] = 3
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
+                ['x'] = 6,
+                ['y'] = 9,
+                ['width'] = 10,
                 ['height'] = 1
             },
             [5] = {
-                ['x'] = 7,
+                ['x'] = 6,
                 ['y'] = 6,
-                ['width'] = 3,
+                ['width'] = 5,
                 ['height'] = 1
             },
             [6] = {
                 ['x'] = 12,
-                ['y'] = 6,
+                ['y'] = 7,
                 ['width'] = 3,
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 12,
                 ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 4,
                 ['height'] = 1 
             },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            }
+            
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 515,
+                ['connected_map'] = 'orbis-1',
+                ['connected_portal'] = 2
+            },
+            [2] = {
+                ['x'] = VIRTUAL_WIDTH / 2 + 100,
+                ['y'] = 65,
+                ['connected_map'] = 'orbis-3',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'orbis-tower',
+        ['background'] = 'orbis-tower-mid',
         ['mobs'] = {
-            ['stump'] = 10
+            ['orange-mushroom'] = 7
         }
     },
     ['orbis-3'] = {
@@ -1230,56 +1345,44 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
+                ['x'] = 6, 
                 ['y'] = 9, 
-                ['width'] = 3,
-                ['height'] = 1
+                ['width'] = 10,
+                ['height'] = 2
             },
             [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
+                ['x'] = 6,
+                ['y'] = 6,
+                ['width'] = 5,
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
-                ['height'] = 1
-            },
-            [5] = {
-                ['x'] = 7,
-                ['y'] = 6,
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [6] = {
                 ['x'] = 12,
-                ['y'] = 6,
+                ['y'] = 7,
                 ['width'] = 3,
                 ['height'] = 1 
             },
-            [7] = {
-                ['x'] = 1,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            }
+            
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 + 151,
+                ['y'] = 515,
+                ['connected_map'] = 'orbis-2',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = 370,
+                ['y'] = 180,
+                ['connected_map'] = 'orbis-4',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'orbis-tower',
+        ['background'] = 'orbis-tower-mid',
         ['mobs'] = {
-            ['stump'] = 10
+            ['slime'] = 4,
+            ['red-snail'] = 3
         }
     },
     ['orbis-4'] = {
@@ -1291,56 +1394,49 @@ ROOM_DEFS = {
                 ['height'] = 1
             },
             [2] = {
-                ['x'] = 4, 
+                ['x'] = 6, 
                 ['y'] = 9, 
-                ['width'] = 3,
+                ['width'] = 10,
                 ['height'] = 1
             },
             [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
+                ['x'] = 6,
+                ['y'] = 6,
+                ['width'] = 5,
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
-                ['height'] = 1
+                ['x'] = 12,
+                ['y'] = 7,
+                ['width'] = 3,
+                ['height'] = 1 
             },
             [5] = {
-                ['x'] = 7,
-                ['y'] = 6,
-                ['width'] = 3,
+                ['x'] = 8,
+                ['y'] = 4,
+                ['width'] = 4,
                 ['height'] = 1
-            },
-            [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
-                ['width'] = 3,
-                ['height'] = 1 
-            },
-            [7] = {
-                ['x'] = 1,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 200,
+                ['y'] = 515,
+                ['connected_map'] = 'orbis-3',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = VIRTUAL_WIDTH / 2,
+                ['y'] = 65,
+                ['connected_map'] = 'orbis-5',
+                ['connected_portal'] = 2
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'orbis-tower',
+        ['background'] = 'orbis-tower-mid',
         ['mobs'] = {
-            ['stump'] = 10
+            ['slime'] = 4,
+            ['orange-mushroom'] = 3
         }
     },
     ['orbis-5'] = {
@@ -1349,120 +1445,105 @@ ROOM_DEFS = {
                 ['x'] = 1,
                 ['y'] = 11,
                 ['width'] = MAP_WIDTH,
-                ['height'] = 1
+                ['height'] = 9
             },
             [2] = {
                 ['x'] = 4, 
-                ['y'] = 9, 
+                ['y'] = 10, 
                 ['width'] = 3,
                 ['height'] = 1
             },
             [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
+                ['x'] = 16,
+                ['y'] = 10,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
-                ['width'] = 6,
+                ['x'] = 9,
+                ['y'] = 10,
+                ['width'] = 5,
                 ['height'] = 1
             },
             [5] = {
-                ['x'] = 7,
-                ['y'] = 6,
+                ['x'] = 10,
+                ['y'] = 9,
                 ['width'] = 3,
                 ['height'] = 1
             },
             [6] = {
-                ['x'] = 12,
+                ['x'] = 5,
                 ['y'] = 6,
-                ['width'] = 3,
+                ['width'] = 2,
                 ['height'] = 1 
             },
             [7] = {
-                ['x'] = 1,
+                ['x'] = 5,
                 ['y'] = 4,
-                ['width'] = 7,
+                ['width'] = 4,
                 ['height'] = 1 
             },
             [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
+                ['x'] = 8,
+                ['y'] = 7,
+                ['width'] = 2,
                 ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = VIRTUAL_WIDTH / 2 - 31,
+                ['y'] = 515,
+                ['connected_map'] = 'orbis-4',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = 350,
+                ['y'] = 64,
+                ['connected_map'] = 'orbis-top',
+                ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'orbis-tower',
+        ['background'] = 'orbis-tower',
         ['mobs'] = {
-            ['stump'] = 10
+            ['spore'] = 3,
+            ['green-mushroom'] = 2,
+            ['orange-mushroom'] = 2
         }
     },
     ['orbis-top'] = {
+        ['boss'] = {
+            ['name'] = 'tiguru', -- tiv
+            ['x'] = 5,
+            ['y'] = 9   
+        },
         ['blocks'] = {
             [1] = {
                 ['x'] = 1,
                 ['y'] = 11,
                 ['width'] = MAP_WIDTH,
-                ['height'] = 1
+                ['height'] = 9 
             },
             [2] = {
-                ['x'] = 4, 
-                ['y'] = 9, 
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [3] = {
-                ['x'] = 15,
-                ['y'] = 9,
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [4] = {
-                ['x'] = 8,
-                ['y'] = 8,
+                ['x'] = 14,
+                ['y'] = 10,
                 ['width'] = 6,
                 ['height'] = 1
-            },
-            [5] = {
-                ['x'] = 7,
-                ['y'] = 6,
-                ['width'] = 3,
-                ['height'] = 1
-            },
-            [6] = {
-                ['x'] = 12,
-                ['y'] = 6,
-                ['width'] = 3,
-                ['height'] = 1 
-            },
-            [7] = {
-                ['x'] = 1,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
-            },
-            [8] = {
-                ['x'] = 14,
-                ['y'] = 4,
-                ['width'] = 7,
-                ['height'] = 1 
             }
         },
         ['portals'] = {
             [1] = {
+                ['x'] = 100,
+                ['y'] = 515,
+                ['connected_map'] = 'orbis-5',
+                ['connected_portal'] = 1
             }
         },
-        ['bgm'] = '',
-        ['background'] = '',
+        ['bgm'] = 'orbis',
+        ['background'] = 'orbis',
         ['mobs'] = {
-            ['stump'] = 10
+            ['pig'] = 10
         }
     },
     ['test'] = {

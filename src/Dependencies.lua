@@ -35,6 +35,7 @@ require 'src/states/game/BossState'
 require 'src/states/game/FadeInState'
 require 'src/states/game/FadeOutState'
 require 'src/states/game/VictoryState'
+require 'src/states/game/StoryState'
 
 --entity state
 require 'src/states/entity/EntityJumpState'
@@ -125,7 +126,15 @@ gTextures = {
     ['jewel-2'] = love.graphics.newImage('graphics/misc/jewel-2.png'),
     ['jewel-3'] = love.graphics.newImage('graphics/misc/jewel-3.png'),
     ['jewel-4'] = love.graphics.newImage('graphics/misc/jewel-4.png'),
-    ['maple'] = love.graphics.newImage('graphics/misc/maple.png')
+    ['maple'] = love.graphics.newImage('graphics/misc/maple.png'),
+    ['key-up'] = love.graphics.newImage('graphics/misc/key-up.png'),
+    ['key-down'] = love.graphics.newImage('graphics/misc/key-down.png'),
+    ['key-left'] = love.graphics.newImage('graphics/misc/key-left.png'),
+    ['key-right'] = love.graphics.newImage('graphics/misc/key-right.png'),
+    ['key-space'] = love.graphics.newImage('graphics/misc/key-space.png'),
+    ['key-z'] = love.graphics.newImage('graphics/misc/key-z.png'),
+    ['key-c'] = love.graphics.newImage('graphics/misc/key-c.png'),
+    ['key-d'] = love.graphics.newImage('graphics/misc/key-d.png'),
 }
 
 gBackgrounds = {
@@ -137,7 +146,14 @@ gBackgrounds = {
     ['back-side-1'] = love.graphics.newImage('graphics/map/back-side-1.png'),
     ['back-side-2'] = love.graphics.newImage('graphics/map/back-side-2.png'),
     ['tree-trunk'] = love.graphics.newImage('graphics/map/tree-trunk.png'),
-    ['tree-top'] = love.graphics.newImage('graphics/map/tree-top.png')
+    ['tree-top'] = love.graphics.newImage('graphics/map/tree-top.png'),
+    ['helios-tower'] = love.graphics.newImage('graphics/map/helios-tower.png'),
+    ['ludi'] = love.graphics.newImage('graphics/map/ludi.png'),
+    ['orbis'] = love.graphics.newImage('graphics/map/orbis.png'),
+    ['orbis-tower'] = love.graphics.newImage('graphics/map/orbis-tower.png'),
+    ['orbis-tower-bottom'] = love.graphics.newImage('graphics/map/orbis-tower-bottom.png'),
+    ['orbis-tower-mid'] = love.graphics.newImage('graphics/map/orbis-tower-mid.png'),
+    ['helios-tower-2'] = love.graphics.newImage('graphics/map/helio-tower-2.png')
 }
 
 
@@ -147,7 +163,7 @@ gFrames = {
     ['tiles'] = GenerateQuads(gTextures['tiles'], 16, 16),
     ['toppers'] = GenerateQuads(gTextures['toppers'], 16, 16),
     ['character-1'] = GenerateCharacterQuads(gTextures['character-1'], CHAR_1, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
-    ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2),
+    ['character-2'] = GenerateCharacterQuads_2(gTextures['character-2'], CHAR_2, {"alert_","jump_","proneStab_","stand1_","swingO1_","walk1_"}, 3),
     ['portal'] = GenerateQuads(gTextures['portal'], 250, 470)
 }
 
@@ -180,8 +196,12 @@ gSounds = {
     ['tree-trunk'] = love.audio.newSource('sounds/tree-trunk.mp3', 'stream'),
     ['rest-n-peace'] = love.audio.newSource('sounds/rest-n-peace.mp3', 'stream'),
     ['ellinia'] = love.audio.newSource('sounds/ellinia.mp3', 'stream'),
-    ['queens-garden'] = love.audio.newSource('sounds/queens-garden.mp3', 'stream')
-
+    ['queens-garden'] = love.audio.newSource('sounds/queens-garden.mp3', 'stream'),
+    ['helios-tower'] = love.audio.newSource('sounds/helios-tower.mp3', 'stream'),
+    ['high-enough'] = love.audio.newSource('sounds/high-enough.mp3', 'stream'),
+    ['ludi'] = love.audio.newSource('sounds/ludi.mp3', 'stream'),
+    ['orbis'] = love.audio.newSource('sounds/orbis.mp3', 'stream'),
+    ['orbis-tower'] = love.audio.newSource('sounds/orbis-tower.mp3', 'stream'),
 }
 
 gSFX = {

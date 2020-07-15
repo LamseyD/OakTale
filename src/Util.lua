@@ -82,14 +82,20 @@ function GenerateCharacterQuads(atlas, CHAR_DEF, order, max)
     return spritesheet
 end
 
-function GenerateCharacterQuads_2(atlas, CHAR_DEF)
+function GenerateCharacterQuads_2(atlas, CHAR_DEF, order, max)
     local spritesheet = {}
     local sheetCounter = 1
-    local counter = 1
-    for j, item in pairs(CHAR_DEF["frames"]) do
-        spritesheet[sheetCounter] = love.graphics.newQuad(item["frame"]["x"], item["frame"]["y"], item["frame"]["w"], item["frame"]["h"], atlas:getDimensions())
-        sheetCounter = sheetCounter + 1
-        counter = counter + 1
+    local order = order
+    local counter = 0
+    for j,item in pairs(order) do
+        for counter = 0, max do
+            for i, frame in pairs(CHAR_DEF["frames"]) do
+                if item .. counter .. ".png" == frame["filename"] then
+                    spritesheet[sheetCounter] = love.graphics.newQuad(frame["frame"]["x"], frame["frame"]["y"], frame["frame"]["w"], frame["frame"]["h"], atlas:getDimensions())
+                    sheetCounter = sheetCounter + 1
+                end
+            end
+        end
     end
     return spritesheet
 end

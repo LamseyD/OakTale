@@ -19,8 +19,8 @@ function Dungeon:init(player)
     self.currentRoom = self.rooms['main']
     self.currentRoom:spawnEnemies()
     love.audio.pause()
-    gSounds[ROOM_DEFS['main']['bgm']]:play()
-    gSounds[ROOM_DEFS['main']['bgm']]:setLooping(true)
+    gSounds[self.currentRoom.bgm]:play()
+    gSounds[self.currentRoom.bgm]:setLooping(true)
 
     -- room we're moving camera to during a shift; becomes active room afterwards
     self.nextRoom = nil
@@ -61,6 +61,11 @@ function Dungeon:update(dt)
 
                 local temp_x = self.rooms[item.connected_map].level.portals[item.connected_portal].x
                 local temp_y =  self.rooms[item.connected_map].level.portals[item.connected_portal].y
+                
+                for i, entity in pairs(self.currentRoom.level.entities) do
+                    table.remove(self.currentRoom.level.entities,i)
+                end
+                
                 self.currentRoom = self.rooms[item.connected_map]
                 self.player.level = self.currentRoom.level
                 self.player.x = temp_x

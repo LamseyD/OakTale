@@ -11,6 +11,16 @@ function PlayerAlertState:enter(params)
     -- gSounds['jump']:play()
     gSFX['hit']:play()
     self.player:goInvulnerable(1.5)
+    if self.player.hitbox.width ~= ENTITY_DEFS['char-1'].width or self.player.hitbox.width ~= ENTITY_DEFS['char-2'].width then
+        local temp = self.player.hitbox.width
+        self.player.hitbox.width = self.player.hitbox.height
+        self.player.hitbox.height = temp
+        self.player.hitbox.y = self.player.hitbox.y - 20
+        if self.player.direction == 'right' then
+            self.player.hitbox.x = self.player.hitbox.x + 20
+        end
+    end
+    
 end
 
 function PlayerAlertState:update(dt)

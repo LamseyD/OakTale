@@ -40,6 +40,13 @@ end
 
 function EntityStandState:render()
     local anim = self.entity.currentAnimation
+    if anim.texture == 'character-2' then
+        if self.entity.direction == 'right' then
+            self.entity.offsetX = -self.entity.width - 30
+        else
+            self.entity.offsetX = 5
+        end
+    end
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
         math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY + 1), 0, self.entity.rotation_x, 1)
     
