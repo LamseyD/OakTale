@@ -17,6 +17,7 @@ function Mob:init(def)
     self.meso = def.meso_value
     -- self.level = def.level
     self.visibleHP = false
+    self.name = def.name
 end
 
 function Mob:update(dt)
@@ -24,25 +25,7 @@ function Mob:update(dt)
     -- self.hitbox:update(self.x + 24, self.y + 12)
 end
 
--- function Player:collides(target)
---     self.hitbox:collides(target)
--- end
-
 function Mob:checkObjectCollisions()
-    -- local collidedObjects = {}
-
-    -- for k, object in pairs(self.level.objects) do
-    --     if object:collides(self) then
-    --         if object.solid then
-    --             table.insert(collidedObjects, object)
-    --         elseif object.consumable then
-    --             object.onConsume(self)
-    --             table.remove(self.level.objects, k)
-    --         end
-    --     end
-    -- end
-
-    -- return collidedObjects
     self.hitbox:checkObjectCollisions(self.level)
 end
 
