@@ -40,7 +40,7 @@ function StoryState:update(dt)
                 end))
             end
             Timer.tween(2, {
-                [self] = {opacity = 1}
+                [self] = {opacity = self.iterator > 4 and 0 or 1}
             }):finish(function()
                 self.canInput = true
             end)
@@ -59,22 +59,22 @@ function StoryState:render()
     love.graphics.setFont(gFonts['title-medium'])
     love.graphics.setColor(1,1,1,self.opacity)
     if self.iterator == 1 then
-        love.graphics.setColor(0,0,0,1)
+        love.graphics.setColor(0,0,0,self.opacity)
         love.graphics.printf('A long time ago in the Oak World, The Rainbow Mage stole away the mythical gemstones from the Empress of Time and used them to summon the 4 Geese of the Apocalypse', 22, VIRTUAL_HEIGHT/2 - 98, VIRTUAL_WIDTH - 50, 'center')
-        love.graphics.setColor(1,1,1,1)
+        love.graphics.setColor(1,1,1,self.opacity)
         love.graphics.printf('A long time ago in the Oak World, The Rainbow Mage stole away the mythical gemstones from the Empress of Time and used them to summon the 4 Geese of the Apocalypse', 20, VIRTUAL_HEIGHT/2 - 100, VIRTUAL_WIDTH - 50, 'center')
     elseif self.iterator == 2 then
-        love.graphics.setColor(0,0,0,1)
+        love.graphics.setColor(0,0,0,self.opacity)
         love.graphics.printf('The stones were then fallen into the hands of the horrific monsters who used them to cause chaos and to hurt the villagers', 22, VIRTUAL_HEIGHT/2 - 98, VIRTUAL_WIDTH - 50, 'center')
-        love.graphics.setColor(1,1,1,1)
+        love.graphics.setColor(1,1,1,self.opacity)
         love.graphics.printf('The stones were then fallen into the hands of the horrific monsters who used them to cause chaos and to hurt the villagers', 20, VIRTUAL_HEIGHT/2 - 100, VIRTUAL_WIDTH - 50, 'center')
     elseif self.iterator == 3 then
-        love.graphics.setColor(0,0,0,1)
-        love.graphics.printf('This is the story of the hero who retrieved the stones and sealed away The Rainbow Mage...', 22, VIRTUAL_HEIGHT/2 - 98, VIRTUAL_WIDTH - 50, 'center')
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.printf('This is the story of the hero who retrieved the stones and sealed away The Rainbow Mage...', 20, VIRTUAL_HEIGHT/2 - 100, VIRTUAL_WIDTH - 50, 'center')
+        love.graphics.setColor(0,0,0,self.opacity)
+        love.graphics.printf('This is the tale of the hero who retrieved the stones and sealed away The Rainbow Mage...', 22, VIRTUAL_HEIGHT/2 - 98, VIRTUAL_WIDTH - 50, 'center')
+        love.graphics.setColor(1,1,1,self.opacity)
+        love.graphics.printf('This is the tale of the hero who retrieved the stones and sealed away The Rainbow Mage...', 20, VIRTUAL_HEIGHT/2 - 100, VIRTUAL_WIDTH - 50, 'center')
     else
-        love.graphics.setColor(0,0,0,1)
+        love.graphics.setColor(0,0,0,self.opacity)
         love.graphics.print('Enter portals', 502, 102)
         love.graphics.print('Duck', 502, 177)
         love.graphics.print('Go Left/Right', 502, 252)
@@ -83,7 +83,7 @@ function StoryState:render()
         love.graphics.print('Attack', 502, 477)
         love.graphics.print('Use 50 Meso to heal for 50 health', 502, 552)
 
-        love.graphics.setColor(1,1,1,1)
+        love.graphics.setColor(1,1,1,self.opacity)
         love.graphics.draw(gTextures['key-up'], 50, 100, 0, 0.10)
         love.graphics.print('Enter portals', 500, 100)
         love.graphics.draw(gTextures['key-down'], 50, 175, 0, 0.10)

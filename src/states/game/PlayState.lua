@@ -1,13 +1,6 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init(current_char)
-    -- self.camX = 0
-    -- self.camY = 0
-    -- self.level = LevelMaker.generate()
-    -- self.tileMap = self.level.tileMap
-    -- self.background = math.random(3)
-    -- self.backgroundX = 0
-    -- self.backgroundY = 0
     self.current_char = 'char-' .. current_char-- current_char -- possible additional character update here
     self.player = Player{
         animations = ENTITY_DEFS[self.current_char].animations,
@@ -182,26 +175,4 @@ function PlayState:render()
     -- self.current_room:render()
     love.graphics.pop()
 
---     love.graphics.push()
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX), 0)
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX),
---         gTextures['backgrounds']:getHeight() / 3 * 2, 0, 1, -1)
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX + 256), 0)
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX + 256),
---         gTextures['backgrounds']:getHeight() / 3 * 2, 0, 1, -1)
-    
---     -- translate the entire view of the scene to emulate a camera
---     love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
-    
---     self.level:render()
-
---     self.player:render()
---     love.graphics.pop()
-    
---     -- render score
---     love.graphics.setFont(gFonts['medium'])
---     love.graphics.setColor(0, 0, 0, 255)
---     love.graphics.print(tostring(self.player.score), 5, 5)
---     love.graphics.setColor(255, 255, 255, 255)
---     love.graphics.print(tostring(self.player.score), 4, 4)
 end
