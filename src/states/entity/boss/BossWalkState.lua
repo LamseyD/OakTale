@@ -15,7 +15,7 @@ end
 
 function BossWalkState:update(dt)
     EntityWalkState.update(self, dt)
-    if self.bumped then
+    if self.bumped and self.entity.phase == 3 then
         self.entity.direction = self.entity.direction == 'left' and 'right' or 'left'
         self.entity:changeState('stand')
     end
