@@ -163,7 +163,8 @@ gSounds = {
     ['sleepywood'] = love.audio.newSource('sounds/sleepywood.mp3', 'stream'),
     ['tree-trunk'] = love.audio.newSource('sounds/tree-trunk.mp3', 'stream'),
     ['rest-n-peace'] = love.audio.newSource('sounds/rest-n-peace.mp3', 'stream'),
-    ['ellinia'] = love.audio.newSource('sounds/ellinia.mp3', 'stream')
+    ['ellinia'] = love.audio.newSource('sounds/ellinia.mp3', 'stream'),
+    ['queens-garden'] = love.audio.newSource('sounds/queens-garden.mp3', 'stream')
 
 }
 

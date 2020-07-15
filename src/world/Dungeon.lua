@@ -18,7 +18,7 @@ function Dungeon:init(player)
     -- current room we're operating in
     self.currentRoom = self.rooms['main']
     self.currentRoom:spawnEnemies()
-    gSounds['title']:stop()
+    love.audio.pause()
     gSounds[ROOM_DEFS['main']['bgm']]:play()
     gSounds[ROOM_DEFS['main']['bgm']]:setLooping(true)
 

@@ -57,7 +57,7 @@ function PlayState:update(dt)
     elseif self.player.hitbox.x + self.player.hitbox.width > VIRTUAL_WIDTH then
         self.player.hitbox.x = VIRTUAL_WIDTH - self.player.hitbox.width
     end
-    
+
     local streak = true
     for j, item in pairs(self.player.inventory) do
         if not item then
@@ -73,7 +73,7 @@ function PlayState:update(dt)
             -- gSounds['intro-music']:stop()
             -- self.tween:remove()
             gStateStack:pop()
-            
+            love.audio.pause()
             gStateStack:push(VictoryState())
             gStateStack:push(FadeOutState({
                 r = 1, g = 1, b = 1
