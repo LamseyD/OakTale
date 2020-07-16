@@ -12,13 +12,13 @@ function MobStandState:init(entity, dungeon)
     EntityStandState.init(self, entity, dungeon)
 end
 
-function MobStandState:enter(player, dungeon)--, dungeon)
-    
+function MobStandState:enter(params)
+    self.params = params and params or {}
     -- render offset for spaced character sprite (negated in render function of state)
     self.entity.offsetY = 0
     self.entity.offsetX = self.entity.direction == 'right' and -self.entity.width or 0
 end
 
 function MobStandState:update(dt)
-    EntityStandState.processAI(self, {}, dt)
+    EntityStandState.processAI(self, self.params, dt)
 end

@@ -107,7 +107,7 @@ ENTITY_DEFS = {
         }
     },
     ['snail'] = {	
-        walkSpeed = SNAIL_WALK_SPEED,
+        walkSpeed = SLOW_WALK_SPEED,
 	    width = 38,
 	    height = 26,
         baseHP = 15,
@@ -148,7 +148,7 @@ ENTITY_DEFS = {
         }
     },
     ['stump'] = {	
-        walkSpeed = SNAIL_WALK_SPEED,
+        walkSpeed = SLOW_WALK_SPEED,
 	    width = 64,
 	    height = 51,
         baseHP = 20,
@@ -189,7 +189,7 @@ ENTITY_DEFS = {
         }
     },
     ['pig'] = {	
-        walkSpeed = PIG_WALK_SPEED,
+        walkSpeed = FAST_WALK_SPEED,
 	    width = 68,
 	    height = 44,
         baseHP = 20,
@@ -235,8 +235,178 @@ ENTITY_DEFS = {
             }
         }
     },
+    ['blue-snail'] = {	
+        walkSpeed = SLOW_WALK_SPEED,
+	    width = 38,
+	    height = 35,
+        baseHP = 20,
+        baseATK = 1,
+        baseDEF = 10,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        level = 5,
+        exp_value = 15,
+        meso_value = 5,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3},
+                interval = 0.5,
+                texture = 'blue-snail',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {4},
+                interval = 0.5,
+                texture = 'blue-snail',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {5, 6, 7, 8},
+                interval = 0.10,
+                texture = 'blue-snail',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {9},
+                interval = 0.18,
+                texture = 'blue-snail',
+                looping = true
+            }
+        }
+    },
+    ['red-snail'] = {	
+        walkSpeed = SLOW_WALK_SPEED,
+	    width = 38,
+	    height = 38,
+        baseHP = 20,
+        baseATK = 1,
+        baseDEF = 10,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        level = 5,
+        exp_value = 15,
+        meso_value = 5,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3},
+                interval = 0.5,
+                texture = 'red-snail',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {4},
+                interval = 0.5,
+                texture = 'red-snail',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {5, 6, 7, 8},
+                interval = 0.10,
+                texture = 'red-snail',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {9},
+                interval = 0.18,
+                texture = 'red-snail',
+                looping = true
+            }
+        }
+    },
+    ['green-mushroom'] = {	
+        walkSpeed = MEDIUM_WALK_SPEED,
+	    width = 56,
+	    height = 54,
+        baseHP = 50,
+        baseATK = 5,
+        baseDEF = 5,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        level = 5,
+        exp_value = 20,
+        meso_value = 10,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3, 4},
+                interval = 0.5,
+                texture = 'green-mushroom',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {5},
+                interval = 0.5,
+                texture = 'green-mushroom',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {6, 7, 8, 9},
+                interval = 0.10,
+                texture = 'green-mushroom',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {10, 11, 12},
+                interval = 0.18,
+                texture = 'green-mushroom',
+                looping = true
+            }
+        }
+    },
+    ['orange-mushroom'] = {	
+        walkSpeed = MEDIUM_WALK_SPEED,
+	    width = 65,
+	    height = 65,
+        baseHP = 50,
+        baseATK = 5,
+        baseDEF = 5,
+        offsetY = 0,
+        offsetX = 0,
+        hitbox_offsetX = -12,
+        hitbox_offsetY = -26,
+        level = 5,
+        exp_value = 20,
+        meso_value = 10,
+        animations = {
+            ['die'] = {
+                frames = {1, 2, 3},
+                interval = 0.5,
+                texture = 'orange-mushroom',
+                looping = false
+            },
+            ['hit'] = {
+                frames = {4},
+                interval = 0.5,
+                texture = 'orange-mushroom',
+                looping = false
+            },
+            ['jump'] = {
+                frames = {5},
+                interval = 0.5,
+                texture = 'orange-mushroom',
+                looping = false
+            },
+            ['walk'] = {
+                frames = {6, 7, 8},
+                interval = 0.10,
+                texture = 'orange-mushroom',
+                looping = true
+            },
+            ['stand'] = {
+                frames = {9, 10},
+                interval = 0.18,
+                texture = 'orange-mushroom',
+                looping = true
+            }
+        }
+    },
     ['tiguru'] = {	
-        walkSpeed = TIGURU_WALK_SPEED,
+        walkSpeed = BOSS_WALK_SPEED,
 	    width = 60 * 3,
 	    height = 80 * 3,
         baseHP = 1000,

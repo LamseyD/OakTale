@@ -44,9 +44,11 @@ function Player:statsLevelUp()
 end
 
 function Player:levelUp()
-    self.currentExp = 0
-    self.lvl = self.lvl + 1
-    self.expToLevel = math.floor(self.lvl * self.lvl * 15)
+    while self.currentExp >= self.expToLevel do
+        self.lvl = self.lvl + 1
+        self.currentExp = self.currentExp - self.expToLevel
+        self.expToLevel = math.floor(self.lvl * self.lvl * 15)
+    end
     gSFX['level-up']:play()
     Timer.every(0.25, function()
         self.displayLevelUp = not self.displayLevelUp

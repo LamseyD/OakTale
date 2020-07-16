@@ -39,9 +39,7 @@ function Room:update(dt)
             end
         else
             item:update(dt)
-        end
-        
-        
+        end  
     end
 
     for i, entity in pairs(self.level.entities) do
@@ -205,7 +203,7 @@ function Room:spawnEnemies()
                 ['die'] = function() return MobDieState(mob) end,
                 ['falling'] = function() return MobFallingState(mob, GRAVITY_AMOUNT) end
             }
-            mob:changeState('stand')
+            mob:changeState('stand', {waitDuration = 1})
             table.insert(self.level.entities, mob)
             table.remove(spawnPoints, spawnIndex)
         end

@@ -27,11 +27,11 @@ end
     we can use this same state in our Player class and have it not take action.
 ]]
 function EntityStandState:processAI(params, dt)
+    self.waitDuration = params.waitDuration and params.waitDuration or self.waitDuration
     if self.waitDuration == 0 then
         self.waitDuration = math.random(self.entity.maxWaitDuration)
     else
         self.waitTimer = self.waitTimer + dt
-
         if self.waitTimer > self.waitDuration then
             self.entity:changeState('walk')
         end

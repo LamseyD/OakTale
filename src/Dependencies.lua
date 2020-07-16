@@ -62,6 +62,10 @@ require 'src/states/entity/boss/BossDieState'
 require 'graphics/character/character-1/char-1'
 require 'graphics/character/character-2/char-2'
 require 'graphics/Mobs/Snail/snail'
+require 'graphics/Mobs/Blue-snail/blue-snail'
+require 'graphics/Mobs/Red-snail/red-snail'
+require 'graphics/Mobs/Green-mushroom/green-mushroom'
+require 'graphics/Mobs/Orange-mushroom/orange-mushroom'
 require 'graphics/Mobs/Stump/stump'
 require 'graphics/Mobs/Pig/pig'
 require 'graphics/Mobs/Tiguru/tiguru'
@@ -79,7 +83,23 @@ mobs = {
     ['snail'] = {
         mob = SNAIL, 
         states = {"die1_","hit1_","move_","stand_"}
-    }, 
+    },
+    ['blue-snail'] = {
+        mob = BLUESNAIL, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['red-snail'] = {
+        mob = REDSNAIL, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['green-mushroom'] = {
+        mob = GREENMUSHROOM, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['orange-mushroom'] = {
+        mob = ORANGEMUSHROOM, 
+        states = {"die1_","hit1_","jump_","move_","stand_"}
+    },
     ['stump'] = {
         mob = STUMP, 
         states = {"die1_","hit1_","move_","stand_"}
