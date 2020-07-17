@@ -1,4 +1,4 @@
- Hitbox = Class{}
+Hitbox = Class{}
 
 function Hitbox:init(x, y, width, height)
     self.x = x
@@ -83,7 +83,7 @@ function Hitbox:checkObjectCollisions(level)
 end
 
 function Hitbox:render()
-    love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
-    love.graphics.setColor(1, 1, 1, 1)
+    --love.graphics.setColor(1, 0, 0, 1)
+    --love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
+    --love.graphics.setColor(1, 1, 1, 1)
 end

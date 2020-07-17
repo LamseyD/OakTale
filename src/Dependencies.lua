@@ -66,9 +66,14 @@ require 'graphics/Mobs/Blue-snail/blue-snail'
 require 'graphics/Mobs/Red-snail/red-snail'
 require 'graphics/Mobs/Green-mushroom/green-mushroom'
 require 'graphics/Mobs/Orange-mushroom/orange-mushroom'
+require 'graphics/Mobs/Slime/slime'
+require 'graphics/Mobs/Spore/spore'
 require 'graphics/Mobs/Stump/stump'
 require 'graphics/Mobs/Pig/pig'
 require 'graphics/Mobs/Tiguru/tiguru'
+require 'graphics/Mobs/Timu/timu'
+require 'graphics/Mobs/Tiru/tiru'
+require 'graphics/Mobs/Tiv/tiv'
 require 'src/GUI'
 
 --entities
@@ -100,6 +105,14 @@ mobs = {
         mob = ORANGEMUSHROOM, 
         states = {"die1_","hit1_","jump_","move_","stand_"}
     },
+    ['slime'] = {
+        mob = SLIME, 
+        states = {"die1_","hit1_","jump_","move_","stand_"}
+    },
+    ['spore'] = {
+        mob = SPORE, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
     ['stump'] = {
         mob = STUMP, 
         states = {"die1_","hit1_","move_","stand_"}
@@ -111,6 +124,21 @@ mobs = {
     ['tiguru'] = {
         boss = true,
         mob = TIGURU, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['timu'] = {
+        boss = true,
+        mob = TIMU, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['tiru'] = {
+        boss = true,
+        mob = TIRU, 
+        states = {"die1_","hit1_","move_","stand_"}
+    },
+    ['tiv'] = {
+        boss = true,
+        mob = TIV, 
         states = {"die1_","hit1_","move_","stand_"}
     }
 }
@@ -189,7 +217,7 @@ gFrames = {
 
 for name, mob in pairs(mobs) do
     gTextures[name] = love.graphics.newImage('graphics/Mobs/'..(name:gsub("^%l", string.upper))..'/'..name..'.png')
-    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob.mob, mob.states, 12)
+    gFrames[name] = GenerateCharacterQuads(gTextures[name], mob.mob, mob.states, 20)
 end
 
 gFrames['tilesets'] = GenerateTileSets(gFrames['tiles'], 

@@ -18,14 +18,6 @@ function EntityStandState:init(entity, dungeon)
     self.waitTimer = 0
 end
 
--- function EntityStandState:enter(params)
-
--- end
-
---[[
-    We can call this function if we want to use this state on an agent in our game; otherwise,
-    we can use this same state in our Player class and have it not take action.
-]]
 function EntityStandState:processAI(params, dt)
     self.waitDuration = params.waitDuration and params.waitDuration or self.waitDuration
     if self.waitDuration == 0 then

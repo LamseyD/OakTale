@@ -190,29 +190,6 @@ function BossState:render()
     love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, math.max(self.boss.health, 0) * (MAP_WIDTH - 10) * TILE_SIZE/self.boss.maxHealth, TILE_SIZE / 2, 8, 8)
     love.graphics.rectangle('line', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print('TIGURU', 600, 100)
+    love.graphics.print(string.upper(self.currentRoom.boss.name), 600, 100)
     love.graphics.pop()
-
---     love.graphics.push()
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX), 0)
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX),
---         gTextures['backgrounds']:getHeight() / 3 * 2, 0, 1, -1)
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX + 256), 0)
---     love.graphics.draw(gTextures['backgrounds'], gFrames['backgrounds'][self.background], math.floor(-self.backgroundX + 256),
---         gTextures['backgrounds']:getHeight() / 3 * 2, 0, 1, -1)
-    
---     -- translate the entire view of the scene to emulate a camera
---     love.graphics.translate(-math.floor(self.camX), -math.floor(self.camY))
-    
---     self.level:render()
-
---     self.player:render()
---     love.graphics.pop()
-    
---     -- render score
---     love.graphics.setFont(gFonts['medium'])
---     love.graphics.setColor(0, 0, 0, 255)
---     love.graphics.print(tostring(self.player.score), 5, 5)
---     love.graphics.setColor(255, 255, 255, 255)
---     love.graphics.print(tostring(self.player.score), 4, 4)
 end

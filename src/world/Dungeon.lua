@@ -110,7 +110,6 @@ function Dungeon:update(dt)
 end
 
 function Dungeon:render()
-
     self.currentRoom:render()
     
     -- if self.nextRoom then

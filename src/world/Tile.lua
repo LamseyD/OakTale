@@ -45,7 +45,7 @@ function Tile:render()
         love.graphics.draw(gTextures['toppers'], gFrames['toppersets'][self.topperset][self.id],
             (self.x - 1) * TILE_SIZE, (self.y - 1) * TILE_SIZE, 0, 4, 4)
     end
-    love.graphics.setColor(1,0,1,1)
-    love.graphics.rectangle('line', (self.x - 1) * TILE_SIZE, (self.y - 1) * TILE_SIZE, self.width, self.height)
+    --love.graphics.setColor(1,0,1,1)
+    --love.graphics.rectangle('line', (self.x - 1) * TILE_SIZE, (self.y - 1) * TILE_SIZE, self.width, self.height)
     love.graphics.setColor(1,1,1,1)
 end

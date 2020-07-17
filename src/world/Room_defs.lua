@@ -387,7 +387,7 @@ ROOM_DEFS = {
         ['boss'] = {
             ['name'] = 'tiguru',
             ['x'] = 5,
-            ['y'] = 9   
+            ['y'] = 11   
         },
         ['blocks'] = {
             [1] = {
@@ -677,7 +677,7 @@ ROOM_DEFS = {
     },
     ['tree-top'] = {
         ['boss'] = {
-            ['name'] = 'tiguru', -- Timu
+            ['name'] = 'timu', -- Timu
             ['x'] = 1,
             ['y'] = 11   
         },
@@ -1179,9 +1179,9 @@ ROOM_DEFS = {
     },
     ['eos-top'] = {
         ['boss'] = {
-            ['name'] = 'tiguru', --Tiru
+            ['name'] = 'tiru', --Tiru
             ['x'] = 5,
-            ['y'] = 9   
+            ['y'] = 10   
         },
         ['blocks'] = {
             [1] = {
@@ -1514,9 +1514,9 @@ ROOM_DEFS = {
     },
     ['orbis-top'] = {
         ['boss'] = {
-            ['name'] = 'tiguru', -- tiv
+            ['name'] = 'tiv', -- tiv
             ['x'] = 5,
-            ['y'] = 9   
+            ['y'] = 11   
         },
         ['blocks'] = {
             [1] = {

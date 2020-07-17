@@ -84,26 +84,10 @@ end
 -- end
 
 function Player:checkObjectCollisions()
-    -- local collidedObjects = {}
-
-    -- for k, object in pairs(self.lvl.objects) do
-    --     if object:collides(self) then
-    --         if object.solid then
-    --             table.insert(collidedObjects, object)
-    --         elseif object.consumable then
-    --             object.onConsume(self)
-    --             table.remove(self.lvl.objects, k)
-    --         end
-    --     end
-    -- end
-
-    -- return collidedObjects
     self.hitbox:checkObjectCollisions(self.lvl)
 end
 
 function Player:render()
-    
-
     Entity.render(self)
     self.hitbox:render()
 

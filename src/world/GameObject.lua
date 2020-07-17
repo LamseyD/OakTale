@@ -60,7 +60,7 @@ end
 function GameObject:render(adjacentOffsetX, adjacentOffsetY)
     local anim = self.animations
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()], self.x, self.y, 0, self.x_scale, self.y_scale)
-    love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.rectangle('line', self.hitbox.x, self.hitbox.y, self.width, self.height)
+    --love.graphics.setColor(1, 0, 0, 1)
+    --love.graphics.rectangle('line', self.hitbox.x, self.hitbox.y, self.width, self.height)
     love.graphics.setColor(1, 1, 1, 1)
 end

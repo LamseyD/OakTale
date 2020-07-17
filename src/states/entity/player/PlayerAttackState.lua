@@ -172,8 +172,8 @@ function PlayerAttackState:render()
     -- debug for player and hurtbox collision rects VV
     --
 
-    love.graphics.setColor(1,0,0,1)
-    love.graphics.rectangle('line', self.swordHitbox.x, self.swordHitbox.y, self.swordHitbox.width, self.swordHitbox.height)
+    --love.graphics.setColor(1,0,0,1)
+    --love.graphics.rectangle('line', self.swordHitbox.x, self.swordHitbox.y, self.swordHitbox.width, self.swordHitbox.height)
     love.graphics.setColor(1,1,1,1)
 
     -- love.graphics.setColor(255, 0, 255, 255)
