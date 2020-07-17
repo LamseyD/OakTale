@@ -25,6 +25,12 @@ function Player:init(def)
         int = false,
         luk = false
     }
+    self.quest = {
+        tiv = false,
+        tiguru = false,
+        timu = false,
+        tiru = false
+    }
 end
 
 function Player:statsLevelUp()

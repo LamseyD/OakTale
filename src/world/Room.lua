@@ -54,6 +54,15 @@ function Room:update(dt)
         end
         if entity.dead and not entity.invulnerable then 
             --drop items here
+            if entity.texture == "tiv" then
+                self.player.quest.tiv = true
+            elseif entity.texture == "tiguru" then
+                self.player.quest.tiguru = true
+            elseif entity.texture == "timu" then
+                self.player.quest.timu = true
+            elseif entity.texture == "tiru" then
+                self.player.tiru = true
+            end
             local rng_generator = math.random(15)
             local meso_amnt = math.random(entity.meso, math.max(entity.meso - 10,1))
             if meso_amnt <= 10 then
