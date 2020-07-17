@@ -52,7 +52,7 @@ function PlayState:update(dt)
 
     -- constrain player X no matter which state
     if self.player.hitbox.x <= 0 then
-        self.player.hitbox.x = 0
+        self.player.hitbox.x = 1
     elseif self.player.hitbox.x + self.player.hitbox.width > VIRTUAL_WIDTH then
         self.player.hitbox.x = VIRTUAL_WIDTH - self.player.hitbox.width
     end
@@ -60,6 +60,12 @@ function PlayState:update(dt)
     local streak = true
     for j, item in pairs(self.player.inventory) do
         if not item then
+            streak = false
+        end
+    end
+
+    for j, boss in pairs(self.player.quest) do
+        if not boss then
             streak = false
         end
     end
@@ -87,10 +93,25 @@ function PlayState:render()
     -- render dungeon and all entities separate from hearts GUI
     love.graphics.push()
     self.dungeon:render()
-    love.graphics.setColor(0,0,0,1)
-    love.graphics.print('Collect all the mythical gemstones by defeating monsters! :)', 700, 30)
-    love.graphics.setColor(1,1,1,1)
-    love.graphics.print('Collect all the mythical gemstones by defeating monsters! :)', 698, 28)
+
+    local streak = true
+    for j, item in pairs(self.player.inventory) do
+        if not item then
+            streak = false
+        end
+    end
+
+    if not streak then
+        love.graphics.setColor(0,0,0,1)
+        love.graphics.print('Collect all the mythical gemstones by defeating monsters! :)', 700, 30)
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.print('Collect all the mythical gemstones by defeating monsters! :)', 698, 28)
+    else
+        love.graphics.setColor(0,0,0,1)
+        love.graphics.print('Now go find and defeat the 4 Geese of the Apocalypse!', 700, 30)
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.print('Now go find and defeat the 4 Geese of the Apocalypse!', 698, 28)
+    end
 
     if self.player.displayLevelUp then
         love.graphics.setFont(gFonts['title-large'])

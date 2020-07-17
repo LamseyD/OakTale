@@ -69,6 +69,12 @@ function BossState:update(dt)
         end
     end
 
+    for j, boss in pairs(self.player.quest) do
+        if not boss then
+            streak = false
+        end
+    end
+
     if streak then
         gStateStack:push(FadeInState({
             r = 1, g = 1, b = 1
@@ -108,13 +114,13 @@ function BossState:render()
 
     end
 
-    if self.player.health / self.player.maxHealth < 0.15 then
-        love.graphics.setFont(gFonts['title-medium'])
-        love.graphics.setColor(0,0,0,1)
-        love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-    end
+    -- if self.player.health / self.player.maxHealth < 0.15 then
+    --     love.graphics.setFont(gFonts['title-medium'])
+    --     love.graphics.setColor(0,0,0,1)
+    --     love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+    --     love.graphics.setColor(1,1,1,1)
+    --     love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+    -- end
 
     love.graphics.setFont(gFonts['title-medium'])
     love.graphics.setColor(0,0,0,1)
