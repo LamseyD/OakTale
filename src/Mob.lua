@@ -33,7 +33,6 @@ function Mob:render()
     Entity.render(self)
     self.hitbox:render()
 
-
     if self.visibleHP then
        love.graphics.setColor(1, 1, 1, 50/255)
        love.graphics.rectangle('fill', math.floor(self.x), math.floor(self.hitbox.y - self.offsetY + 1) - 40, self.width, 10)

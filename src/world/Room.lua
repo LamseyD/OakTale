@@ -199,7 +199,7 @@ function Room:spawnEnemies()
             mob.level = self.level
             mob.stateMachine = StateMachine{
                 ['stand'] = function() return MobStandState(mob, self.tileMap) end,
-                ['walk'] = function() return MobWalkState(mob, self.tileMap) end,
+                ['walk'] = function() return MobWalkState(mob) end,
                 ['die'] = function() return MobDieState(mob) end,
                 ['falling'] = function() return MobFallingState(mob, GRAVITY_AMOUNT) end
             }

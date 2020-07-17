@@ -67,8 +67,6 @@ function PlayerWalkState:render()
             self.extra_offset_X = -12
         end
     end
-
-
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
         math.floor(self.entity.x - self.entity.offsetX + self.extra_offset_X), math.floor(self.entity.y - self.entity.offsetY + 1), 0, self.entity.rotation_x, 1)
     

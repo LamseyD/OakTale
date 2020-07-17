@@ -7,12 +7,10 @@
 ]]
 
 EntityWalkState = Class{__includes = BaseState}
--- entity, dungeon
-function EntityWalkState:init(entity, dungeon)
+
+function EntityWalkState:init(entity)
     self.entity = entity
     self.entity:changeAnimation('walk')
--- self.dungeon = dungeon
-    self.dungeon = dungeon
 
     -- used for AI control
     self.moveDuration = 0

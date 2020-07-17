@@ -61,7 +61,17 @@ MEDIUM_WALK_SPEED = 100
 FAST_WALK_SPEED = 250
 BOSS_WALK_SPEED = 150
 
---
+-- shader initialization
+SHADER = love.graphics.newShader[[
+        extern float WhiteFactor;
+
+        vec4 effect(vec4 vcolor, Image tex, vec2 texcoord, vec2 pixcoord)
+        {
+            vec4 outputcolor = Texel(tex, texcoord) * vcolor;
+            outputcolor.rgb += vec3(WhiteFactor);
+            return outputcolor;
+        }
+        ]]
 -- map constants
 --
 -- MAP_WIDTH = VIRTUAL_WIDTH / TILE_SIZE - 2

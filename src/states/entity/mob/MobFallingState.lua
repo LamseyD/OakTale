@@ -29,10 +29,7 @@ function MobFallingState:update(dt)
     if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) and (tileBottomLeft.topper and tileBottomRight.topper) then
         self.mob.dy = 0
         self.mob:changeState('walk')
-        self.mob.hitbox.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.mob.hitbox.height -- + 20
-        -- -- check side collisions and reset position
-        -- self.player:checkLeftCollisions(dt)
-        -- self.player:checkRightCollisions(dt)
+        self.mob.hitbox.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.mob.hitbox.height
     end
 
 end

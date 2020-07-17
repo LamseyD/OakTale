@@ -159,25 +159,14 @@ function Entity:processAI(params, dt)
 end
 
 function Entity:render(adjacentOffsetX, adjacentOffsetY)
-    local shader = love.graphics.newShader[[
-        extern float WhiteFactor;
-
-        vec4 effect(vec4 vcolor, Image tex, vec2 texcoord, vec2 pixcoord)
-        {
-            vec4 outputcolor = Texel(tex, texcoord) * vcolor;
-            outputcolor.rgb += vec3(WhiteFactor);
-            return outputcolor;
-        }
-        ]]
-    
-    love.graphics.setShader(shader)
+    love.graphics.setShader(SHADER)
     -- draw sprite slightly transparent if invulnerable every 0.04 seconds
     if self.blinking and self.health > 0 then
         love.graphics.setColor(1, 1, 1, 64/255)
-        shader:send("WhiteFactor", 1)
+        SHADER:send("WhiteFactor", 1)
     else
         love.graphics.setColor(1,1,1,1)
-        shader:send("WhiteFactor", 0)
+        SHADER:send("WhiteFactor", 0)
     end
 
     if self.hit and self.dmg then
@@ -192,7 +181,7 @@ function Entity:render(adjacentOffsetX, adjacentOffsetY)
 
     self.x, self.y = self.x + (adjacentOffsetX or 0), self.y + (adjacentOffsetY or 0)
     self.stateMachine:render()
-    shader:send("WhiteFactor", 0)
+    SHADER:send("WhiteFactor", 0)
     love.graphics.setFont(gFonts['title-small'])
     --love.graphics.setColor(0,1,1,1)
     --love.graphics.print("x: " .. self.x, self.x, self.y - 30)
