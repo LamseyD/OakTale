@@ -102,7 +102,7 @@ function PlayerAttackState:update(dt)
     -- -- check if hitbox collides with any entities in the scene
     for k, entity in pairs(self.dungeon.currentRoom.level.entities) do
         if entity:collides(self.swordHitbox) and not entity.invulnerable then
-            entity:goInvulnerable(1.5)
+            entity:goInvulnerable(1)
             local def_amount = 0
             if entity.lvl > self.player.lvl then
                 def_amount = entity.baseDEF * math.abs(self.player.lvl - entity.lvl) * 0.5

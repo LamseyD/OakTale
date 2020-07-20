@@ -24,7 +24,7 @@ function Dungeon:init(player)
 
     -- room we're moving camera to during a shift; becomes active room afterwards
     self.nextRoom = nil
-    self.shifting = false
+    -- self.shifting = false
 end
 
 -- --[[
@@ -98,13 +98,13 @@ function Dungeon:update(dt)
     end
 
     -- pause updating if we're in the middle of shifting
-    if not self.shifting then    
-        self.currentRoom:update(dt)
-    else
+    --if not self.shifting then    
+    self.currentRoom:update(dt)
+    --else
         
         -- still update the player animation if we're shifting rooms
-        self.player.currentAnimation:update(dt)
-    end
+    self.player.currentAnimation:update(dt)
+    --end
 
     
 end

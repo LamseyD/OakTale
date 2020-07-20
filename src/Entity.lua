@@ -121,8 +121,6 @@ end
 
 
 function Entity:update(dt)
-    
-
     if self.direction == 'right' then
         self.rotation_x = -1
     else 

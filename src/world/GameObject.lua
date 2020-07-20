@@ -46,8 +46,8 @@ function GameObject:init(def, x, y, onConsume)
 end
 
 function GameObject:collides(target)
-    return not (target.x > self.x + self.width or self.x > target.x + target.width or
-            target.y > self.y + self.height or self.y > target.y + target.height)
+    return not (target.hitbox.x > self.hitbox.x + self.width or self.hitbox.x > target.hitbox.x + target.width or
+    target.hitbox.y > self.hitbox.y + self.height or self.hitbox.y > target.hitbox.y + target.height)
 end
 
 function GameObject:update(dt)
@@ -62,5 +62,5 @@ function GameObject:render(adjacentOffsetX, adjacentOffsetY)
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()], self.x, self.y, 0, self.x_scale, self.y_scale)
     --love.graphics.setColor(1, 0, 0, 1)
     --love.graphics.rectangle('line', self.hitbox.x, self.hitbox.y, self.width, self.height)
-    love.graphics.setColor(1, 1, 1, 1)
+    --love.graphics.setColor(1, 1, 1, 1)
 end

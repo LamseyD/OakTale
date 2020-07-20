@@ -49,7 +49,7 @@ function Room:update(dt)
             self.player:damage(math.random(entity.baseATK))
             self.player:changeState('alert')
             if self.player.health <= 0 then
-                self.player:changeState('dead') -- dead state?
+                self.player:changeState('dead')
             end
         end
         if entity.dead and not entity.invulnerable then 
@@ -67,8 +67,8 @@ function Room:update(dt)
             local meso_amnt = math.random(entity.meso, math.max(entity.meso - 10,1))
             if meso_amnt <= 10 then
                 local tmp_coin = Item{def = GAME_OBJECT_DEFS['coin-1'], 
-                                    x = math.min(math.max(entity.hitbox.x, 30), VIRTUAL_WIDTH - 30), 
-                                    y = entity.hitbox.y, 
+                                    x = math.min(math.max(entity.x, 30), VIRTUAL_WIDTH - 30), 
+                                    y = entity.y, 
                                     onConsume = function(player)
                                         gSFX['pickup']:play()
                                         self.player.bank = self.player.bank + meso_amnt
@@ -76,8 +76,8 @@ function Room:update(dt)
                 table.insert(self.level.objects, tmp_coin)                
             elseif meso_amnt <= 20 then
                 local tmp_coin = Item{def = GAME_OBJECT_DEFS['coin-2'], 
-                                    x = math.min(math.max(entity.hitbox.x, 30), VIRTUAL_WIDTH - 30),
-                                    y = entity.hitbox.y, 
+                                    x = math.min(math.max(entity.x, 30), VIRTUAL_WIDTH - 30),
+                                    y = entity.y, 
                                     onConsume = function(player)
                                         gSFX['pickup']:play()
                                         self.player.bank = self.player.bank + meso_amnt
@@ -85,8 +85,8 @@ function Room:update(dt)
                 table.insert(self.level.objects, tmp_coin)                
             else
                 local tmp_coin = Item{def = GAME_OBJECT_DEFS['coin-3'], 
-                                    x = math.min(math.max(entity.hitbox.x, 30), VIRTUAL_WIDTH - 30),
-                                    y = entity.hitbox.y, 
+                                    x = math.min(math.max(entity.x, 30), VIRTUAL_WIDTH - 30),
+                                    y = entity.y, 
                                     onConsume = function(player)
                                         gSFX['pickup']:play()
                                         self.player.bank = self.player.bank + meso_amnt
@@ -97,8 +97,8 @@ function Room:update(dt)
 
             if rng_generator == 1 then
                 local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-1'], 
-                                    x = math.min(math.max(entity.hitbox.x + 30, 60), VIRTUAL_WIDTH - 60),
-                                    y = entity.hitbox.y, 
+                                    x = math.min(math.max(entity.x + 30, 60), VIRTUAL_WIDTH - 60),
+                                    y = entity.y, 
                                     onConsume = function(player)
                                         gSFX['pickup-2']:play()
                                         self.player.inventory.str = true
@@ -106,8 +106,8 @@ function Room:update(dt)
                 table.insert(self.level.objects, tmp_obj)
             elseif rng_generator == 2 then
                 local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-2'], 
-                                    x = math.min(math.max(entity.hitbox.x + 30, 60), VIRTUAL_WIDTH - 60),
-                                    y = entity.hitbox.y - 5, 
+                                    x = math.min(math.max(entity.x + 30, 60), VIRTUAL_WIDTH - 60),
+                                    y = entity.y - 5, 
                                     onConsume = function(player)
                                         gSFX['pickup-2']:play()
                                         self.player.inventory.dex = true
@@ -115,8 +115,8 @@ function Room:update(dt)
                 table.insert(self.level.objects, tmp_obj)
             elseif rng_generator == 3 then
                 local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-3'], 
-                                    x = math.min(math.max(entity.hitbox.x + 30, 60), VIRTUAL_WIDTH - 60),
-                                    y = entity.hitbox.y - 5, 
+                                    x = math.min(math.max(entity.x + 30, 60), VIRTUAL_WIDTH - 60),
+                                    y = entity.y - 5, 
                                     onConsume = function(player)
                                         gSFX['pickup-2']:play()
                                     self.player.inventory.int = true
@@ -124,8 +124,8 @@ function Room:update(dt)
                 table.insert(self.level.objects, tmp_obj)
             elseif rng_generator == 4 then
                 local tmp_obj = Item{def = GAME_OBJECT_DEFS['jewel-4'], 
-                                    x = math.min(math.max(entity.hitbox.x + 30, 60), VIRTUAL_WIDTH - 60),
-                                    y = entity.hitbox.y - 5, 
+                                    x = math.min(math.max(entity.x + 30, 60), VIRTUAL_WIDTH - 60),
+                                    y = entity.y - 5, 
                                     onConsume = function(player)
                                         gSFX['pickup-2']:play()
                                     self.player.inventory.luk = true
