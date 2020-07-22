@@ -82,6 +82,7 @@ function StoryState:render()
         love.graphics.print('Pick up items', 502, 402)
         love.graphics.print('Attack', 502, 477)
         love.graphics.print('Use 50 Meso to heal for 50 health', 502, 552)
+        love.graphics.print('Save Game', 502, 627)
 
         love.graphics.setColor(1,1,1,self.opacity)
         love.graphics.draw(gTextures['key-up'], 50, 100, 0, 0.10)
@@ -100,6 +101,8 @@ function StoryState:render()
         love.graphics.draw(gTextures['key-d'], 50, 550, 0, 0.10)
         love.graphics.print('Use 50 Meso to heal for 50 health', 500, 550)
         love.graphics.draw(gTextures['maple'], 125, 545, 0, 0.5)
+        love.graphics.print('Save Game', 500, 625)
+        love.graphics.draw(gTextures['key-s'], 50, 625, 0, 0.10)
     end
 
 end

@@ -3,6 +3,8 @@ BossState = Class{__includes = BaseState}
 function BossState:init(player, dungeon)
     self.player = player
     self.dungeon = dungeon
+    self.saveGameOpacity = 0
+    self.saving = false
     self.currentRoom = self.dungeon.currentRoom
     local bossName = self.currentRoom.boss.name
     local x = self.currentRoom.boss.x
@@ -50,6 +52,16 @@ function BossState:update(dt)
     if not self.dungeon.currentRoom.boss then
         gStateStack:pop()
     end
+    if love.keyboard.wasPressed('s') and not self.saving then
+        self.saving = true
+        self.saveGameOpacity = 1
+        Timer.after(1.5, function()
+            Timer.tween(1, {[self] = {saveGameOpacity = 0}})
+            Timer.after(1.5, function()
+                self.saving = false
+            end)
+        end)
+    end
     -- self.current_room:update(dt)
 
     -- -- remove any nils from pickups, etc.
@@ -80,8 +92,6 @@ function BossState:update(dt)
             r = 1, g = 1, b = 1
         }, 1,
         function()
-            -- gSounds['intro-music']:stop()
-            -- self.tween:remove()
             gStateStack:pop()
             love.audio.pause()
             gStateStack:push(VictoryState())
@@ -98,11 +108,24 @@ function BossState:render()
     -- render dungeon and all entities separate from hearts GUI
     love.graphics.push()
     self.dungeon:render()
+    love.graphics.setColor(1, 1, 1, 50/255)
+    love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
+    love.graphics.setColor(1, 0, 0, 1)
+    love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, math.max(self.boss.health, 0) * (MAP_WIDTH - 10) * TILE_SIZE/self.boss.maxHealth, TILE_SIZE / 2, 8, 8)
+    love.graphics.rectangle('line', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.print(string.upper(self.currentRoom.boss.name), 600, 100)
+
     local task = 'Defeat the mighty '..self.currentRoom.boss.name..' or face great shame!'
     love.graphics.setColor(0,0,0,1)
-    love.graphics.print(task, 802, 30)
+    love.graphics.print(task, 850, 30)
     love.graphics.setColor(1,1,1,1)
-    love.graphics.print(task, 800, 30)
+    love.graphics.print(task, 848, 30)
+
+    love.graphics.setColor(0,0,0,self.saveGameOpacity)
+    love.graphics.print('Cannot save game during boss fight', 940, 60)
+    love.graphics.setColor(1,1,1,self.saveGameOpacity)
+    love.graphics.print('Cannot save game during boss fight', 938, 58)
 
     if self.player.displayLevelUp then
         love.graphics.setFont(gFonts['title-large'])
@@ -190,12 +213,5 @@ function BossState:render()
     end
     love.graphics.draw(gTextures['jewel-4'], 1150, 680, 0, 0.25, 0.25)
 
-    love.graphics.setColor(1, 1, 1, 50/255)
-    love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
-    love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, math.max(self.boss.health, 0) * (MAP_WIDTH - 10) * TILE_SIZE/self.boss.maxHealth, TILE_SIZE / 2, 8, 8)
-    love.graphics.rectangle('line', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
-    love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print(string.upper(self.currentRoom.boss.name), 600, 100)
     love.graphics.pop()
 end

@@ -183,6 +183,7 @@ gTextures = {
     ['key-z'] = love.graphics.newImage('graphics/misc/key-z.png'),
     ['key-c'] = love.graphics.newImage('graphics/misc/key-c.png'),
     ['key-d'] = love.graphics.newImage('graphics/misc/key-d.png'),
+    ['key-s'] = love.graphics.newImage('graphics/misc/key-s.png'),
 }
 
 gBackgrounds = {

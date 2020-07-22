@@ -1,6 +1,7 @@
 Room = Class {}
 
-function Room:init(player, def)
+function Room:init(player, def, roomName)
+    self.roomName = roomName
     self.width = MAP_WIDTH
     self.height = MAP_HEIGHT
     self.level = LevelMaker.generate(def)
@@ -202,8 +203,8 @@ function Room:spawnEnemies()
                 height = ENTITY_DEFS[mobName].height,
                 x = spawnPoints[spawnIndex].x * TILE_SIZE - ENTITY_DEFS[mobName].width,
                 y = (spawnPoints[spawnIndex].y - 1) * TILE_SIZE - ENTITY_DEFS[mobName].height,
-                hitbox_offsetX = 0,
-                hitbox_offsetY = 0
+                hitbox_offsetX = ENTITY_DEFS[mobName].hitbox_offsetX or 0,
+                hitbox_offsetY = ENTITY_DEFS[mobName].hitbox_offsetY or 0
             }
             mob.level = self.level
             mob.stateMachine = StateMachine{

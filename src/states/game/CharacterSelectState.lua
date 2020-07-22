@@ -38,7 +38,7 @@ function CharacterSelectState:update(dt)
             -- gSounds['intro-music']:stop()
             -- self.tween:remove()
             
-            gStateStack:push(PlayState(self.current_char))
+            gStateStack:push(PlayState(self.current_char, false))
             gStateStack:push(FadeOutState({
                 r = 1, g = 1, b = 1
             }, 1,

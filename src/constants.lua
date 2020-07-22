@@ -72,6 +72,8 @@ SHADER = love.graphics.newShader[[
             return outputcolor;
         }
         ]]
+
+SAVEFILE = 'gamesave.lua'
 -- map constants
 --
 -- MAP_WIDTH = VIRTUAL_WIDTH / TILE_SIZE - 2

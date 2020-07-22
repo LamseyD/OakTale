@@ -11,6 +11,7 @@ Player = Class{__includes = Entity}
 function Player:init(def)
     Entity.init(self, def)
     -- self.hitbox = Hitbox(self.x + 24, self.y + 12, self.width, self.height)
+    self.current_char = def.current_char
     self.dy = 0
     self.dx = 0
     self.displayLevelUp = false
@@ -97,16 +98,6 @@ function Player:render()
     Entity.render(self)
     self.hitbox:render()
 
-    --if self.displayLevelUp then
-        --love.graphics.setFont(gFonts['title-large'])
-        --love.graphics.setColor(0,0,0,1)
-        --love.graphics.printf('Level up!', 2, VIRTUAL_HEIGHT/2 - 190, VIRTUAL_WIDTH/2 + 610, 'center')
-        --love.graphics.setColor(208/255,0,1,1)
-        --love.graphics.printf('Level up!', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-        --love.graphics.setColor(1,1,1,1)
-
-    --end
-
     if self.health / self.maxHealth < 0.15 and self.health / self.maxHealth > 0 then
         love.graphics.setFont(gFonts['title-medium'])
         love.graphics.setColor(0,0,0,1)
@@ -114,50 +105,4 @@ function Player:render()
         love.graphics.setColor(1,1,1,1)
         love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
     end
-
-    --love.graphics.setFont(gFonts['title-medium'])
-    --love.graphics.setColor(0,0,0,1)
-    --love.graphics.print('Level ' .. self.lvl, 50, 665)
-    --love.graphics.setColor(1,1,1,1)
-    --love.graphics.print('Level ' .. self.lvl, 45, 660)
-
-    --love.graphics.setFont(gFonts['title-small'])
-    --love.graphics.setColor(1, 1, 1, 50/255)
-    --love.graphics.rectangle('fill', 300, 685, 200, 20)
-    --love.graphics.setColor(1, 0, 0, 1)
-    --love.graphics.rectangle('fill', 300, 685, math.max(math.floor(self.health), 0) * 200/self.maxHealth, 20)
-    --love.graphics.setColor(0, 0, 0, 1)
-    --love.graphics.rectangle('line', 300, 685, 200, 20)
-    
-    --love.graphics.setColor(0,0,0,1)
-    --love.graphics.print('HP:', 250, 683  )
-    --love.graphics.print(self.health .. ' / ' .. self.maxHealth, 365, 683)
-    --love.graphics.setColor(1, 1, 1, 1)
-    --love.graphics.print('HP:', 247, 680  )
-    --love.graphics.print(self.health .. ' / ' .. self.maxHealth, 362, 680)
-    --love.graphics.setColor(1, 1, 1, 1)
-
-    --love.graphics.setColor(1, 1, 1, 50/255)
-    --love.graphics.rectangle('fill', 565, 685, 200, 20)
-    --love.graphics.setColor(240/255, 252/255, 3/255, 1)
-    --love.graphics.rectangle('fill', 565, 685, math.max(math.floor(self.currentExp), 0) * 200/self.expToLevel, 20)
-    --love.graphics.setColor(0, 0, 0, 1)
-    --love.graphics.rectangle('line', 565, 685, 200, 20)
-
-    --love.graphics.setColor(0,0,0,1)
-    --love.graphics.print('EXP:', 515, 683  )
-    --love.graphics.print(self.currentExp .. ' / ' .. self.expToLevel, 630, 683)
-    --love.graphics.setColor(1, 1, 1, 1)
-    --love.graphics.print('EXP:', 512, 680  )
-    --love.graphics.print(self.currentExp .. ' / ' .. self.expToLevel, 627, 680)
-    -- love.graphics.setColor(1, 1, 1, 1)
-
-    --love.graphics.draw(gTextures['maple'], 780, 680, 0, 0.25, 0.25)
-    --love.graphics.setColor(0,0,0,1)
-    --love.graphics.print(': '.. self.bank, 825, 683  )
-    --love.graphics.setColor(1, 1, 1, 1)
-    --love.graphics.print(': '.. self.bank, 822, 680  )
-    -- love.graphics.setColor(255, 0, 255, 255)
-    -- love.graphics.rectangle('line', self.x, self.y, self.width, self.height)
-    -- love.graphics.setColor(255, 255, 255, 255)
 end

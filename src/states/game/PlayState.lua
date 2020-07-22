@@ -1,8 +1,12 @@
 PlayState = Class{__includes = BaseState}
 
-function PlayState:init(current_char)
-    self.current_char = 'char-' .. current_char-- current_char -- possible additional character update here
+function PlayState:init(current_char, load)
+    local gameData = load and table.load(SAVEFILE) or nil
+    self.saving = false
+    self.saveGameOpacity = 0
+    self.current_char = load and gameData.player.current_char or 'char-' .. current_char
     self.player = Player{
+        current_char = self.current_char,
         animations = ENTITY_DEFS[self.current_char].animations,
         walkSpeed = ENTITY_DEFS[self.current_char].walkSpeed,
         x = VIRTUAL_WIDTH/2 - 15,
@@ -17,7 +21,15 @@ function PlayState:init(current_char)
         hitbox_offsetX = ENTITY_DEFS[self.current_char].hitbox_offsetX,
         hitbox_offsetY = ENTITY_DEFS[self.current_char].hitbox_offsetY
     }
-    self.dungeon = Dungeon(self.player)
+    if load then
+    for k, v in pairs(gameData.player) do
+            self.player[k] = v
+        end
+        self.player.hitbox.x = self.player.x - self.player.hitbox_offsetX
+        self.player.hitbox.y = self.player.y - self.player.hitbox_offsetY
+    end
+    local initRoom = gameData and gameData.currentRoom or 'main'
+    self.dungeon = Dungeon(self.player, initRoom)
     -- self.current_room = Room(self.player)
     self.gravityOn = true
     -- self.tileMap = self.dungeon.currentRoom.tileMap
@@ -32,7 +44,6 @@ function PlayState:init(current_char)
         ['alert'] = function() return PlayerAlertState(self.player,self.dungeon) end,
         ['dead'] = function() return PlayerDeadState(self.player, self.dungeon) end
     }
-    
     self.player:changeState('falling')
     self.victory_screen = false
 end
@@ -40,6 +51,17 @@ end
 function PlayState:update(dt)
     -- Timer.update(dt)
     self.dungeon:update(dt)
+    if love.keyboard.wasPressed('s') and not self.saving then
+        saveGame(self.player, self.dungeon.currentRoom.roomName)
+        self.saving = true
+        self.saveGameOpacity = 1
+        Timer.after(1.5, function()
+            Timer.tween(1, {[self] = {saveGameOpacity = 0}})
+            Timer.after(1.5, function()
+                self.saving = false
+            end)
+        end)
+    end
     if self.dungeon.currentRoom.boss then
         gStateStack:push(BossState(
             self.player, 
@@ -112,6 +134,11 @@ function PlayState:render()
         love.graphics.setColor(1,1,1,1)
         love.graphics.print('Now go find and defeat the 4 Geese of the Apocalypse!', 698, 28)
     end
+
+    love.graphics.setColor(0,0,0,self.saveGameOpacity)
+    love.graphics.print('Game Saved', 1150, 60)
+    love.graphics.setColor(1,1,1,self.saveGameOpacity)
+    love.graphics.print('Game Saved', 1148, 58)
 
     if self.player.displayLevelUp then
         love.graphics.setFont(gFonts['title-large'])
