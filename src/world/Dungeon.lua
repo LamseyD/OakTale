@@ -49,9 +49,6 @@ end
 function Dungeon:update(dt)
     for i, item in pairs(self.currentRoom.level.portals) do
         if self.player:collides(item) and love.keyboard.wasPressed('up') then
-            if self.currentRoom.boss then
-                gStateStack:pop()
-            end
             gStateStack:push(FadeInState({
                 r = 1, g = 1, b = 1
             }, 1,

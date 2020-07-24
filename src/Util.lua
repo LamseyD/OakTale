@@ -104,7 +104,7 @@ local function exportstring( s )
     return string.format("%q", s)
  end
 
---// The original Save and Load Functions are from http://lua-users.org/wiki/SaveTableToFile 
+--// The original table.save and table.load Functions are from http://lua-users.org/wiki/SaveTableToFile 
 function table.save(tbl, filename)
     local charS,charE = "   ","\n"
     local file,err = io.open( filename, "wb" )

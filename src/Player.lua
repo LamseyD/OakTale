@@ -98,11 +98,4 @@ function Player:render()
     Entity.render(self)
     self.hitbox:render()
 
-    if self.health / self.maxHealth < 0.15 and self.health / self.maxHealth > 0 then
-        love.graphics.setFont(gFonts['title-medium'])
-        love.graphics.setColor(0,0,0,1)
-        love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-        love.graphics.setColor(1,1,1,1)
-        love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-    end
 end

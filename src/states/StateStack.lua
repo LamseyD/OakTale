@@ -38,4 +38,7 @@ end
 function StateStack:pop()
     self.states[#self.states]:exit()
     table.remove(self.states)
+    if #self.states > 0 then
+        self.states[#self.states]:enter()
+    end
 end

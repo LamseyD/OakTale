@@ -735,7 +735,7 @@ ROOM_DEFS = {
             [1] = {
                 ['x'] = VIRTUAL_WIDTH / 2 - 31,
                 ['y'] = 515,
-                ['connected_map'] = 'tree-trunk-2',
+                ['connected_map'] = 'tree-trunk-3',
                 ['connected_portal'] = 2
             }
         },

@@ -16,6 +16,11 @@ end
 
 function Room:update(dt)
     self.player:update(dt)
+    if not (self.boss and not self.player.quest[self.boss.name]) then
+        if #self.level.entities <= math.random(2, 4) then
+            Room.spawnEnemies(self)
+        end
+    end
     for i, item in pairs(self.level.objects) do
         if item.falling then
             item.dy = item.dy + GRAVITY_AMOUNT
@@ -55,14 +60,16 @@ function Room:update(dt)
         end
         if entity.dead and not entity.invulnerable then 
             --drop items here
-            if entity.texture == "tiv" then
-                self.player.quest.tiv = true
-            elseif entity.texture == "tiguru" then
-                self.player.quest.tiguru = true
-            elseif entity.texture == "timu" then
-                self.player.quest.timu = true
-            elseif entity.texture == "tiru" then
-                self.player.tiru = true
+            if self.boss then
+                if self.boss.name == "tiv" then
+                    self.player.quest.tiv = true
+                elseif self.boss.name == "tiguru" then
+                    self.player.quest.tiguru = true
+                elseif self.boss.name == "timu" then
+                    self.player.quest.timu = true
+                elseif self.boss.name == "tiru" then
+                    self.player.tiru = true
+                end
             end
             local rng_generator = math.random(15)
             local meso_amnt = math.random(entity.meso, math.max(entity.meso - 10,1))
@@ -138,9 +145,6 @@ function Room:update(dt)
                 self.player:levelUp()
             end
             table.remove(self.level.entities, i)
-            if #self.level.entities <= math.random(2, 4) then
-                Room.spawnEnemies(self)
-            end
         elseif entity.health <= 0 then
             entity.visibleHP = false
             entity:changeState('die')

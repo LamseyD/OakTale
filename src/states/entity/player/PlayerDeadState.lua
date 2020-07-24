@@ -19,7 +19,7 @@ function PlayerDeadState:update(dt)
         }, 1,
         function()
             gStateStack:clear()
-            gStateStack:push(CharacterSelectState())
+            gStateStack:push(StartState())
             gSFX['portal']:play()
             gStateStack:push(FadeOutState({
                 r = 1, g = 1, b = 1

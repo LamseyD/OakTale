@@ -3,6 +3,7 @@ BossState = Class{__includes = BaseState}
 function BossState:init(player, dungeon)
     self.player = player
     self.dungeon = dungeon
+    self.bossDefeated = false
     self.saveGameOpacity = 0
     self.saving = false
     self.currentRoom = self.dungeon.currentRoom
@@ -51,6 +52,9 @@ function BossState:update(dt)
     self.dungeon:update(dt)
     if not self.dungeon.currentRoom.boss then
         gStateStack:pop()
+    end
+    if self.boss.health <= 0 then
+        self.bossDefeated = true
     end
     if love.keyboard.wasPressed('s') and not self.saving then
         self.saving = true
@@ -108,15 +112,17 @@ function BossState:render()
     -- render dungeon and all entities separate from hearts GUI
     love.graphics.push()
     self.dungeon:render()
-    love.graphics.setColor(1, 1, 1, 50/255)
-    love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
-    love.graphics.setColor(1, 0, 0, 1)
-    love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, math.max(self.boss.health, 0) * (MAP_WIDTH - 10) * TILE_SIZE/self.boss.maxHealth, TILE_SIZE / 2, 8, 8)
-    love.graphics.rectangle('line', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
-    love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print(string.upper(self.currentRoom.boss.name), 600, 100)
-
-    local task = 'Defeat the mighty '..self.currentRoom.boss.name..' or face great shame!'
+    local task = self.bossDefeated and 'Congratulations! You have defeated '..self.currentRoom.boss.name..'!' or 'Defeat the mighty '..self.currentRoom.boss.name..' or face great shame!'
+    if not self.bossDefeated then
+        love.graphics.setColor(1, 1, 1, 50/255)
+        love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
+        love.graphics.setColor(1, 0, 0, 1)
+        love.graphics.rectangle('fill', 5 * TILE_SIZE, TILE_SIZE, math.max(self.boss.health, 0) * (MAP_WIDTH - 10) * TILE_SIZE/self.boss.maxHealth, TILE_SIZE / 2, 8, 8)
+        love.graphics.rectangle('line', 5 * TILE_SIZE, TILE_SIZE, (MAP_WIDTH - 10) * TILE_SIZE, TILE_SIZE / 2, 8, 8)
+        love.graphics.setColor(1, 1, 1, 1)
+        love.graphics.print(string.upper(self.currentRoom.boss.name), 600, 100)
+    end
+    
     love.graphics.setColor(0,0,0,1)
     love.graphics.print(task, 850, 30)
     love.graphics.setColor(1,1,1,1)
@@ -137,13 +143,13 @@ function BossState:render()
 
     end
 
-    -- if self.player.health / self.player.maxHealth < 0.15 then
-    --     love.graphics.setFont(gFonts['title-medium'])
-    --     love.graphics.setColor(0,0,0,1)
-    --     love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-    --     love.graphics.setColor(1,1,1,1)
-    --     love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
-    -- end
+    if self.player.health / self.player.maxHealth < 0.2 and self.player.health / self.player.maxHealth > 0 then
+        love.graphics.setFont(gFonts['title-medium'])
+        love.graphics.setColor(0,0,0,1)
+        love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+    end
 
     love.graphics.setFont(gFonts['title-medium'])
     love.graphics.setColor(0,0,0,1)

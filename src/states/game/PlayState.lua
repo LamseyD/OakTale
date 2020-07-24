@@ -48,6 +48,10 @@ function PlayState:init(current_char, load)
     self.victory_screen = false
 end
 
+--function PlayState:enter()
+--    self.dungeon.currentRoom:spawnEnemies()
+--end
+
 function PlayState:update(dt)
     -- Timer.update(dt)
     self.dungeon:update(dt)
@@ -62,7 +66,7 @@ function PlayState:update(dt)
             end)
         end)
     end
-    if self.dungeon.currentRoom.boss then
+    if self.dungeon.currentRoom.boss and not self.player.quest[self.dungeon.currentRoom.boss.name] then
         gStateStack:push(BossState(
             self.player, 
             self.dungeon))
@@ -151,6 +155,13 @@ function PlayState:render()
 
     end
 
+    if self.player.health / self.player.maxHealth < 0.2 and self.player.health / self.player.maxHealth > 0 then
+        love.graphics.setFont(gFonts['title-medium'])
+        love.graphics.setColor(0,0,0,1)
+        love.graphics.printf('Press d to use meso to buy potion', 2, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+        love.graphics.setColor(1,1,1,1)
+        love.graphics.printf('Press d to use meso to buy potion',  0, VIRTUAL_HEIGHT/2 - 200, VIRTUAL_WIDTH/2 + 600, 'center')
+    end
 
     love.graphics.setFont(gFonts['title-medium'])
     love.graphics.setColor(0,0,0,1)
