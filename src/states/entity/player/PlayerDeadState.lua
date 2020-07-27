@@ -18,6 +18,7 @@ function PlayerDeadState:update(dt)
             r = 1, g = 1, b = 1
         }, 1,
         function()
+            love.audio.pause()
             gStateStack:clear()
             gStateStack:push(StartState())
             gSFX['portal']:play()
