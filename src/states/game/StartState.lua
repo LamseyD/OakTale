@@ -1,8 +1,10 @@
 StartState = Class{__includes = BaseState}
 
 function StartState:init()
+    gSounds['title']:rewind()
     gSounds['title']:setLooping(true)
     gSounds['title']:play()
+
     self.options = {new = {b = 0},
                     load = {b = 1}}
     self.opacity = 1
