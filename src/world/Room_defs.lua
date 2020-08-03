@@ -522,7 +522,7 @@ ROOM_DEFS = {
                 ['x'] = 215,
                 ['y'] = 5,
                 ['connected_map'] = 'tree-trunk-2',
-                ['connected_portal'] = 1
+                ['connected_portal'] = 2
             }
         },
         ['bgm'] = 'tree-trunk',
@@ -584,15 +584,15 @@ ROOM_DEFS = {
         },
         ['portals'] = {
             [1] = {
-                ['x'] = 200,
-                ['y'] = 5,
-                ['connected_map'] = 'tree-trunk-3',
-                ['connected_portal'] = 1
-            },
-            [2] = {
                 ['x'] = VIRTUAL_WIDTH / 2 - 31,
                 ['y'] = 450,
                 ['connected_map'] = 'tree-trunk-1',
+                ['connected_portal'] = 1
+            },
+            [2] = {
+                ['x'] = 200,
+                ['y'] = 5,
+                ['connected_map'] = 'tree-trunk-3',
                 ['connected_portal'] = 1
             }
         },

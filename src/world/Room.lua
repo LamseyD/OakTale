@@ -68,7 +68,7 @@ function Room:update(dt)
                 elseif self.boss.name == "timu" then
                     self.player.quest.timu = true
                 elseif self.boss.name == "tiru" then
-                    self.player.tiru = true
+                    self.player.quest.tiru = true
                 end
             end
             local rng_generator = math.random(15)
