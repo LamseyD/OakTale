@@ -1,7 +1,7 @@
 StartState = Class{__includes = BaseState}
 
 function StartState:init()
-    gSounds['title']:rewind()
+    gSounds['title']:seek(0)
     gSounds['title']:setLooping(true)
     gSounds['title']:play()
 
